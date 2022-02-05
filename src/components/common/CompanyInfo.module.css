@@ -1,0 +1,16 @@
+.SVGWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.SVGWrapper p {
+  padding-left: 8px;
+}
+
+.messengers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
