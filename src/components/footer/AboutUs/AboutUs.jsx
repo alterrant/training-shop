@@ -1,9 +1,6 @@
 import AboutUsStyle from "./AboutUs.module.css";
 import FooterInfo from "./FooterInfo";
-import {ReactComponent as SVGAddress} from './../../../assets/SVG/location-marker.svg'
-import {ReactComponent as SVGPhone} from './../../../assets/SVG/phone.svg'
-import {ReactComponent as SVGClock} from './../../../assets/SVG/clock.svg'
-import {ReactComponent as SVGMail} from './../../../assets/SVG/mail.svg'
+import {CompanyAddress, CompanyMail, CompanyPhone, CompanySchedule} from "../../common/CompanyInfo";
 
 const AboutUs = () => {
   return (
@@ -32,22 +29,10 @@ const AboutUs = () => {
           </FooterInfo>
           <FooterInfo>
             <h4 className={AboutUsStyle.title}>CONTACT US</h4>
-            <div className={AboutUsStyle.SVGWrapper}>
-              <SVGAddress/>
-              <p>Belarus, Gomel, Lange 17</p>
-            </div>
-            <div className={AboutUsStyle.SVGWrapper}>
-              <SVGPhone/>
-              <p>+375 29 100 20 30</p>
-            </div>
-            <div className={AboutUsStyle.SVGWrapper}>
-              <SVGClock/>
-              <p>All week 24/7</p>
-            </div>
-            <div className={AboutUsStyle.SVGWrapper}>
-              <SVGMail/>
-              <p>info@clevertec.ru</p>
-            </div>
+            <CompanyAddress/>
+            <CompanyPhone/>
+            <CompanySchedule/>
+            <CompanyMail/>
           </FooterInfo>
         </ul>
       </div>

@@ -31,14 +31,3 @@
   color: #121212;
   opacity: 0.8;
 }
-
-.SVGWrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.SVGWrapper p {
-  padding-left: 8px;
-}
