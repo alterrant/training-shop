@@ -1,0 +1,43 @@
+.wrapper {
+  max-width: 1110px;
+  margin: 96px auto;
+
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding-bottom: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blogs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  }
+
+.tittle {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+}
+.seeAllButton {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 13px;
+  text-align: right;
+  letter-spacing: 0.06em;
+  color: #121212;
+  opacity: 0.6;
+}

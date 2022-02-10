@@ -1,0 +1,43 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 350px;
+
+  margin-bottom: 56px;
+}
+
+.img {
+  max-height: 276px;
+  object-fit: contain;
+}
+
+.post {
+  margin: -56px auto;
+  padding: 24px 16px 15px 16px;
+  max-width: 302px;
+  background-color: #FFFFFF;
+}
+
+.tittle {
+  padding-bottom: 12px;
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+}
+
+.description {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  color: #121212;
+  opacity: 0.8;
+}
