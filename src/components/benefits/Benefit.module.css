@@ -1,0 +1,58 @@
+.wrapper {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tittle {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+}
+
+.description {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 22px;
+  color: #121212;
+  opacity: 0.9;
+}
+.description span {
+  color: #E91E63;
+}
+
+.centerMask {
+  width: 100%;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whiteRectangle {
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  min-height: 71px;
+
+  padding: 0 24px 0 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
