@@ -1,0 +1,78 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.priceQuality {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.price {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: #121212;
+}
+.cardsItem {
+  position: relative;
+  min-height: 378px;
+
+  text-decoration: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  }
+.name {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #121212;
+  opacity: 0.6;
+}
+.img {
+  width: 100%;
+}
+.discountWrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 53px;
+  min-height: 31px;
+  background-color: #E91E63;
+}
+
+.discountPrice {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 13px;
+  text-align: center;
+  color: #FFFFFF;
+}
+.fullPrice {
+  padding-left: 4px;
+
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 13px;
+  text-decoration-line: line-through;
+  color: #121212;
+  opacity: 0.4;
+}
