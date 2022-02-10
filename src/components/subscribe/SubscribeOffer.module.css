@@ -1,0 +1,126 @@
+.mask {
+  min-height: 580px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.rectangle {
+  min-height: 461px;
+  max-width: 532px;
+  width: 100%;
+
+  background-color: #FFFFFF;
+  border-radius: 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.wrapper {
+  z-index: 4;
+  min-height: 285px;
+  max-width: 340px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.tittle {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+  opacity: 0.4;
+}
+
+.description {
+  text-align: center;
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 36px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+
+}
+.description span {
+  color: #E91E63;
+}
+
+.form {
+  min-height: 152px;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.inputEmail {
+  min-height: 64px;
+  border: 0;
+  background-color: #F8F8F8;
+}
+.inputEmail, textarea {
+  padding-left: 10px;
+}
+.inputEmail::placeholder {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #121212;
+  opacity: 0.4;
+}
+
+.submit {
+  min-height: 64px;
+  background-color: #121212;
+  border: 0;
+
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  opacity: 0.9;
+}
+
+.women {
+  position: absolute;
+  top: -24px;
+  left: -260px;
+  z-index: 2;
+}
+.men {
+  position: absolute;
+  top: -15px;
+  right: -200px;
+  z-index: 2;
+}
