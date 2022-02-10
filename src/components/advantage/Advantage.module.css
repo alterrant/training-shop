@@ -1,0 +1,37 @@
+.wrapper {
+  width: 100%;
+  max-width: 350px;
+  min-height: 39px;
+
+  display: flex;
+  flex-direction: row;
+  column-gap: 8px;
+}
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tittle {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+}
+
+.description {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 22px;
+  color: #121212;
+  opacity: 0.9;
+}
