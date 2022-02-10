@@ -1,0 +1,177 @@
+.wrapper {
+  max-width: 1110px;
+  min-height: 522px;
+  margin: 32px auto;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 200px 260px;
+  grid-gap: 30px;
+  grid-auto-flow: column;
+  grid-template-areas:
+      "item1 item1 item2 item3"
+      "item1 item1 item4 item4"
+}
+
+.bannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0;
+}
+
+.bigBannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0;
+}
+
+.item1 {
+  grid-area: item1;
+  position: relative;
+}
+.item2 {
+  grid-area: item2;
+  position: relative;
+}
+.item3 {
+  grid-area: item3;
+  position: relative;
+}
+.item4 {
+  grid-area: item4;
+  position: relative;
+}
+.bigBannerMask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.bannerMask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.bigBannerContainer {
+  width: 100%;
+  max-width: 492px;
+  height: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bannerContainer {
+  width: 100%;
+  max-width: 255px;
+  height: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bigBannerWrapper {
+  min-height: 100px;
+  width: 100%;
+  max-width: 289px;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.bannerWrapper {
+  min-height: 48px;
+  width: 100%;
+  max-width: 118px;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.longBannerWrapper {
+  min-height: 48px;
+  width: 100%;
+  max-width: 166px;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.bannerTitle {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+}
+
+.bigBannerText {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+  opacity: 0.4;
+}
+.bigBannerTitle {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  color: #121212;
+}
+
+@media screen and (max-width: 1280px) {
+  .wrapper {
+    min-height: max-content;
+    grid-template-columns:  minmax(255px,1fr) minmax(255px,2fr) minmax(255px,2fr);
+    grid-template-rows: 230px 230px 260px;
+    grid-gap: 30px;
+    grid-template-areas:
+        "item1 item1 item2"
+        "item1 item1 item3"
+        "item4 item4 item4"
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .wrapper {
+    min-height: max-content;
+    grid-template-columns:  repeat(2, 1fr);
+    grid-template-rows: 490px 200px 260px;
+    grid-gap: 30px;
+    grid-template-areas:
+        "item1 item1"
+        "item2 item3"
+        "item4 item4"
+  }
+}
