@@ -1,0 +1,18 @@
+.menu {
+  max-width: 585px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.menuItem {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #121212;
+  text-decoration: none;
+}

@@ -1,0 +1,19 @@
+.wrapper {
+  max-width: 1110px;
+  min-height: 64px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navLogo, h1 {
+  font-family: "Playfair Display SC", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 32px;
+  color: #121212;
+  text-decoration: none;
+}
