@@ -7,7 +7,7 @@ import LatestFromBlog from "../latestFromBlog/LatestFromBlog";
 import Benefits from "../benefits/Benefits";
 
 const Main = () => {
-  debugger
+
   return (
       <>
         <Banners/>

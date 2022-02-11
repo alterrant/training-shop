@@ -5,7 +5,7 @@ import WomenId from "../pages/product/WomenId";
 import App from "../pages/app/App";
 
 export const Router = () => {
-  debugger
+
   return (
       <Routes>
         <Route path="/" element={<App/>}>
