@@ -1,0 +1,43 @@
+.wrapper {
+  max-width: 1280px;
+  margin: 32px auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.filter {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+  opacity: 0.6;
+
+}
+.filterStatus {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.viewStyle {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+}
+.viewStyleSvg {
+  cursor: pointer;
+}
