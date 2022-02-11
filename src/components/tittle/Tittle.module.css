@@ -1,0 +1,48 @@
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  background-color: #F8F8F8;
+}
+
+.container {
+  min-height: 70px;
+  max-width: 1110px;
+  margin: 0 auto;
+}
+
+.tittle {
+  padding-top: 10px;
+
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 36px;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: #121212;
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.productInfoWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.productInfo {
+  display: flex;
+  gap: 2px;
+}
+
+.rating {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
