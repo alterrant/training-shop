@@ -1,20 +1,26 @@
-import WomenS from "../../../components/women's/Women's";
 import Tittle from "../../../components/tittle/Tittle";
 import Preloader from "../../../components/common/Preloader";
 import {useState} from "react";
-import ProductFilter from "../../../components/filter/ProductFilter";
+import FilterBar from "../../../components/filter/FilterBar";
 import FilterCategories from "../../../components/filter/FilterCategories";
+import SelectedFilters from "../../../components/filter/SelectedFilters";
+import {WOMEN_CLOTHES} from "../../../constants/clothes";
+import Clothes from "../../../components/clothes/clothesList/Clothes";
+import ClothesStyle from "../../../components/clothes/ClothesMain.module.css";
+import {useFilter} from "../../../hooks/useFilter";
 
 const WomenPage = () => {
 
   const [isLoading] = useState(true);
   const [isOpenedFilter, setOpenedStatusFilter] = useState(false);
+  const selectedFiltersLists = useFilter();
 
   return (
       <article>
         <Tittle tittle={"WOMEN"}/>
-        <ProductFilter isOpenedFilter={isOpenedFilter}
-                       setOpenedStatusFilter={setOpenedStatusFilter}/>
+        <FilterBar isOpenedFilter={isOpenedFilter}
+                   setOpenedStatusFilter={setOpenedStatusFilter}/>
+        {(selectedFiltersLists.length > 0) && <SelectedFilters selectedFiltersLists={selectedFiltersLists}/>}
         {isOpenedFilter && <FilterCategories/>}
         <WomenS/>
         {isLoading && <Preloader/>}
