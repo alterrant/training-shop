@@ -22,7 +22,9 @@ const WomenPage = () => {
                    setOpenedStatusFilter={setOpenedStatusFilter}/>
         {(selectedFiltersLists.length > 0) && <SelectedFilters selectedFiltersLists={selectedFiltersLists}/>}
         {isOpenedFilter && <FilterCategories/>}
-        <WomenS/>
+        <div className={ClothesStyle.closesWrapper}>
+          <Clothes product={WOMEN_CLOTHES}/>
+        </div>
         {isLoading && <Preloader/>}
       </article>
   )
