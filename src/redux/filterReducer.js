@@ -44,6 +44,10 @@ export const counterSlice = createSlice({
   name: 'productFilters',
   initialState,
   reducers: {
+    setColor: ((state, action) => {
+      const chosenColor = state.Color.find(item => item.name === action.payload);
+      chosenColor.selected = !chosenColor.selected;
+    }),
     setSize: ((state, action) => {
       const chosenSize = state.Size.find(item => item.name === action.payload);
       chosenSize.selected = !chosenSize.selected;
@@ -55,10 +59,19 @@ export const counterSlice = createSlice({
     setPrice: ((state, action) => {
       const chosenPrice = state.Price.find(item => item.name === action.payload);
       chosenPrice.selected = !chosenPrice.selected;
+    }),
+    removeAllFilters: ((state) => {
+      const stateKeys = Object.keys(state);
+
+      stateKeys.forEach(stateKey => {
+        state[stateKey].forEach(filter => {
+          if (filter.selected) filter.selected = false;
+        })
+      })
     })
   }
 })
 
-export const { setSize, setBrand, setPrice } = counterSlice.actions
+export const {setColor, setSize, setBrand, setPrice, removeAllFilters} = counterSlice.actions
 
 export default counterSlice.reducer
