@@ -4,6 +4,7 @@
 }
 
 .wrapper {
+  margin-bottom: 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,5 +23,6 @@
 }
 
 .closesWrapper {
-  margin: 48px 0 48px 0;
+  max-width: 1110px;
+  margin: 0 auto 48px auto;
 }
