@@ -1,4 +1,4 @@
-import ProductFilterStyle from "./ProductFilter.module.css";
+import ProductFilterStyle from "./FilterBar.module.css";
 import {ReactComponent as FilterOpened} from "../../assets/SVG/filterOpened.svg";
 import {ReactComponent as FilterClosed} from "../../assets/SVG/filterClosed.svg";
 import {ReactComponent as ViewList} from "../../assets/SVG/viewList.svg";
@@ -9,7 +9,7 @@ import {ReactComponent as CaretDown} from "../../assets/SVG/caretDownIco.svg";
 import {ReactComponent as CaretUp} from "../../assets/SVG/caretUpIco.svg";
 import {useState} from "react";
 
-const ProductFilter = ({isOpenedFilter, setOpenedStatusFilter}) => {
+const FilterBar = ({isOpenedFilter, setOpenedStatusFilter}) => {
 
   const [isSortTypeOpen, setSortTypeStatus] = useState(false);
   const [sortType] = useState('BESTSELLERS');
@@ -50,4 +50,4 @@ const ProductFilter = ({isOpenedFilter, setOpenedStatusFilter}) => {
   )
 }
 
-export default ProductFilter;
+export default FilterBar;
