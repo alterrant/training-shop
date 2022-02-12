@@ -1,0 +1,11 @@
+.wrapper {
+  padding-top:18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.description {
+  display: flex;
+  gap: 8px;
+}
