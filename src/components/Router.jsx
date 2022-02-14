@@ -14,6 +14,7 @@ export const Router = () => {
           <Route path="women/:id" element={<ProductPage productType={'women'}/>}/>
           <Route path="men" element={<ProductsPage productType={'men'} tittle={'MEN'}/>}/>
           <Route path="men/:id" element={<ProductPage productType={'men'}/>}/>
+          <Route path="*" element={<Main/>}/>
         </Route>
       </Routes>
   )
