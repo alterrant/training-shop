@@ -5,7 +5,7 @@ import footerStyle from "./Footer.module.css";
 
 const Footer = () => {
   return (
-    <footer className={ footerStyle.wrapper }>
+    <footer className={ footerStyle.footer } data-test-id='footer'>
       <JoinUs/>
       <AboutUs/>
       <Copyright/>

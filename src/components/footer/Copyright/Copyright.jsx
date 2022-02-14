@@ -1,4 +1,4 @@
-import Cards from "./Cards";
+import CardsGrey from "./CardsGrey";
 import CopyrightStyle from "./Copyright.module.css";
 
 const Copyright = () => {
@@ -8,7 +8,7 @@ const Copyright = () => {
           <p>Copyright © 2032 all rights reserved</p>
         </li>
         <li className={ CopyrightStyle.cards }>
-          <Cards/>
+          <CardsGrey/>
         </li>
         <li>
           <p>Clevertec.ru/training</p>
