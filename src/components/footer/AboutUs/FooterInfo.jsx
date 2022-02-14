@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 const FooterInfo = ({links, tittle}) => {
   const list = links.map((item) =>
       <li key={item.id}>
-        <Link className={FooterInfoStyle.link} to={`${item.path}`}>{item.name}</Link>
+        <Link className={FooterInfoStyle.link} to={`${item.path}`} data-test-id={`footer-nav-link-${item.name}`}>{item.name} </Link>
       </li>
   );
 
