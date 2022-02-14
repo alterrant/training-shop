@@ -2,7 +2,7 @@ import NavigationStyle from "./Navigation.module.css";
 import {ReactComponent as ShareSVG} from "../../../assets/SVG/share.svg";
 import {NavLink, useLocation} from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = (/*{productName}*/) => {
 
   const addresses = useLocation().pathname.split("/").filter(item => item !== "");
   const address = addresses.map((item, index) => {
