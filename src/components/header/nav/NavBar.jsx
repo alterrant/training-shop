@@ -9,14 +9,13 @@ const NavBar = () => {
         <NavLink
             className={NavBarStyle.menuItem}
             to={`/${item.path}`}
-            /*to={item.path}*/
             data-test-id={`menu-link-${item.path}`}>
           {item.name}
         </NavLink>
       </li>)
 
   return (
-      <ul data-test-id={'menu'} className={NavBarStyle.menu}>
+      <ul className={NavBarStyle.menu} data-test-id={'menu'} >
         {menu}
       </ul>
   )

@@ -8,7 +8,7 @@ const Nav = () => {
   return (
       <nav>
         <div className={NavStyle.wrapper}>
-          <Link className={NavStyle.navLogo} to='/' data-test-id='header-logo-link'>
+          <Link to='/' className={NavStyle.headerNavLogo}  data-test-id='header-logo-link'>
             <h1>
               CleverShop
             </h1>
