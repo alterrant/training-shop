@@ -3,7 +3,6 @@ import {ReactComponent as RefreshSVG} from './../../assets/SVG/refresh.svg';
 import {ReactComponent as SupportSVG} from './../../assets/SVG/support.svg';
 import AdvantagesStyle from './Advantages.module.css';
 import Advantage from "./Advantage";
-import Partition from "../common/Partition";
 
 export const Advantages = () => {
   return (
@@ -24,7 +23,7 @@ export const Advantages = () => {
           />
         </div>
       </section>
-        <Partition/>
+
 </>
   )
 }
