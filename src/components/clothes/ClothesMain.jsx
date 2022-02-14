@@ -3,23 +3,27 @@ import ClothesStyle from "./../clothes/ClothesMain.module.css";
 import Clothes from "./../clothes/clothesList/Clothes";
 import SeeAllButton from "./../clothes/SeeAllButton";
 import ClothesTitle from "../clothes/ClothesTitle";
-import {WOMEN_CLOTHES} from "../../constants/clothes";
+import {getClothes} from "../../encapsulatedCommonLogics/distributions";
 
-const WomenS = () => {
+
+const ClothesMain = ({tittle, productType}) => {
+
+  const product = getClothes(productType);
+
   return (
-      <article className={ClothesStyle.container}>
+      <article className={ClothesStyle.clothes} data-test-id={`clothes-${productType}`}>
         <div className={ClothesStyle.wrapper}>
           <ClothesTitle>
-            WOMEN’S
+            {tittle}
           </ClothesTitle>
           <ClothesNavBar/>
         </div>
         <div className={ClothesStyle.closesWrapper}>
-          <Clothes product={WOMEN_CLOTHES}/>
+          <Clothes product={product}/>
         </div>
         <SeeAllButton/>
       </article>
   )
 }
 
-export default WomenS;
+export default ClothesMain;
