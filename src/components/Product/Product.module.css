@@ -1,0 +1,54 @@
+.container {
+  width: 100%;
+  max-width: 1110px;
+  margin: 32px auto 0 auto;
+  display: grid;
+  grid-template-columns: minmax(100px, 558px) 1fr;
+  column-gap: 30px;
+}
+.wrapper {
+  width: 100%;
+  max-width: 558px;
+  display: flex;
+  column-gap: 16px;
+}
+.productAngles {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+.pointers {
+  display: flex;
+  justify-content: space-between;
+}
+.down {
+  transform: rotate(180deg);
+}
+.imagesWrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+.bigImgWrapper {
+  height: 100%;
+  max-height: 560px;
+  width: 100%;
+  max-width: 450px;
+}
+.bigImg {
+  max-height: 560px;
+  width: 100%;
+  max-width: 450px;
+}
+
+.imgWrapper {
+  height: 100%;
+  max-height: 114px;
+  width: 100%;
+  max-width: 450px;
+}
+.descriptionWrapper {
+  display: flex;
+  flex-direction: column;
+}

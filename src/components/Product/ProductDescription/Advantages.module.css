@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  opacity: 0.6;
+}
+.wrapper > svg {
+  width: 24px;
+  height: 24px;
+}
+.wrapper > p {
+  padding-top: 1px;
+}

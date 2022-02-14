@@ -1,0 +1,130 @@
+.coloredProducts {
+  max-height: 64px;
+  margin-top: 16px;
+  display: flex;
+  gap: 16px;
+}
+.sizesWrapper {
+  margin-top: 32px;
+}
+.productSizes {
+  width: 40px;
+  height: 40px;
+  background-color: #F8F8F8;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sizeGuide {
+  margin: 12px 0 32px 0;
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  color: #121212;
+  opacity: 0.6;
+}
+.sizeGuide > p {
+  height: 18px;
+  padding-top: 1px;
+}
+.addToCardWrapper {
+  width: 100%;
+  max-width: 284px;
+  height: 40px;
+}
+.priceWrapper {
+  margin: 32px 0 32px 0;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.price {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 36px;
+  text-transform: uppercase;
+  color: #121212;
+}
+.advantagesWrapper {
+  margin-top: 37px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.guaranteed {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+}
+.guaranteed > p {
+  width: 100%;
+
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+}
+.description {
+  margin: 32px 0;
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+  opacity: 0.6;
+}
+.additionalInformWrapper {
+  margin: 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.additionalInformWrapper > p {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+}
+.additionalInform > li {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  color: #121212;
+}
+.additionalInform > li > span {
+  text-indent: 2px;
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  color: #121212;
+  opacity: 0.6;
+}
+.reviewsMargin {
+  margin: 32px 0 32px 0;
+}
