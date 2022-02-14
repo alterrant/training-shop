@@ -1,9 +1,8 @@
-import {Routes, Route} from "react-router-dom";
-import Main from "./main/Main";
-import WomenPage from "../pages/categories/women/WomenPage";
-import WomenId from "../pages/product/WomenId";
+import {Route, Routes} from "react-router-dom";
+import Main from "../pages/main/Main";
+import ProductPage from "../pages/product/ProductPage";
 import App from "../pages/app/App";
-import MenPage from "../pages/categories/men/MenPage";
+import ProductsPage from "../pages/categories/ProductsPage";
 
 export const Router = () => {
 
@@ -11,13 +10,13 @@ export const Router = () => {
       <Routes>
         <Route path="/" element={<App/>}>
           <Route index element={<Main/>}/>
-          <Route path="women" element={<WomenPage/>}/>
-          <Route path="women/:id" element={<WomenId/>}/>
-          <Route path="men" element={<MenPage/>}/>
-          <Route path="men/:id" element={<WomenId/>}/>
+          <Route path="women" element={<ProductsPage productType={'women'} tittle={'WOMEN'}/>}/>
+          <Route path="women/:id" element={<ProductPage productType={'women'}/>}/>
+          <Route path="men" element={<ProductsPage productType={'men'} tittle={'MEN'}/>}/>
+          <Route path="men/:id" element={<ProductPage productType={'men'}/>}/>
         </Route>
       </Routes>
-)
+  )
 }
 
 export default Router;
