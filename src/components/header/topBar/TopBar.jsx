@@ -10,9 +10,7 @@ const TopBar = () => {
             <CompanyAddress/>
             <CompanySchedule/>
           </div>
-          <div className={TopBarStyle.messengers}>
-            <Messengers/>
-          </div>
+          <Messengers/>
         </div>
       </div>
   )

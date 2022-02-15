@@ -7,20 +7,22 @@ const JoinUs = () => {
   const onSubmit = () => console.log('emptySubmit');
 
   return (
-      <div className={JoinUsStyle.wrapper}>
-        <p className={JoinUsStyle.text}>BE IN TOUCH WITH US:</p>
+      <div className={JoinUsStyle.background}>
+        <div className={JoinUsStyle.wrapper}>
+          <p className={JoinUsStyle.text}>BE IN TOUCH WITH US:</p>
 
-        <form className={JoinUsStyle.form}
-              onSubmit={handleSubmit(onSubmit)}>
-          <input className={JoinUsStyle.inputEmail}
-                 placeholder="Enter your email"
-                 type="email" {...register("exampleRequired", {required: true})} />
-          {errors.exampleRequired && <span>This field is required</span>}
-          <button className={JoinUsStyle.submit} type="submit">JOIN US</button>
-        </form>
+          <form className={JoinUsStyle.form}
+                onSubmit={handleSubmit(onSubmit)}>
+            <input className={JoinUsStyle.inputEmail}
+                   placeholder="Enter your email"
+                   type="email" {...register("exampleRequired", {required: true})} />
+            {errors.exampleRequired && <span>This field is required</span>}
+            <button className={JoinUsStyle.submit} type="submit">JOIN US</button>
+          </form>
 
-        <div className={JoinUsStyle.messengers}>
-          <Messengers/>
+          <div className={JoinUsStyle.messengers}>
+            <Messengers/>
+          </div>
         </div>
       </div>
   )

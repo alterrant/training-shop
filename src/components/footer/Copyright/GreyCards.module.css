@@ -1,6 +1,8 @@
 .wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  column-gap: 11px;
+  row-gap: 9px;
   flex-wrap: wrap;
+  justify-content: center;
 }

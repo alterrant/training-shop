@@ -12,5 +12,7 @@
 .messengers {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 12px;
+  justify-content: center;
+  /*justify-content: space-between;*/
 }

@@ -9,14 +9,12 @@
   margin: 0 auto;
 
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-}
-
-.messengers {
-  width: 100%;
-  max-width: 86px;
+  row-gap: 14px;
+  column-gap: 502px;
 }
 
 .companyInfo {
@@ -24,8 +22,11 @@
   max-width: 500px;
 
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  row-gap: 8px;
+  column-gap: 20px;
 
   font-family: Spartan, sans-serif;
   font-style: normal;

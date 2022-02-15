@@ -1,12 +1,20 @@
+.background {
+  background-color: #121212;
+
+}
+
 .wrapper {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
 
+  width: 100%;
+  max-width: 1110px;
   min-height: 56px;
-  padding: 0 85px 0 85px;
-  background-color: #121212;
+  margin: 0 auto;
 }
 
 .text {
@@ -78,5 +86,10 @@
   width: 100%;
   max-width: 108px;
   height: 18px;
-  margin-left: 56px;
+}
+
+@media screen and (max-width: 633px) {
+  .wrapper {
+    justify-content: center;
+  }
 }

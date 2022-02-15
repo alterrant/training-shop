@@ -12,12 +12,9 @@ const SubscribeOffer = ({specialOffer}) => {
 
   return (
       <div className={SubscribeStyle.mask}>
-
+        <img className={SubscribeStyle.women} src={subscribeWomen} alt="subsWomen"/>
+        <img className={SubscribeStyle.men} src={subscribeMen} alt="subsMen"/>
         <div className={SubscribeStyle.rectangle}>
-
-          <img className={SubscribeStyle.women} src={subscribeWomen} alt="subsWomen"/>
-          <img className={SubscribeStyle.men} src={subscribeMen} alt="subsMen"/>
-
           <div className={SubscribeStyle.wrapper}>
             <div className={SubscribeStyle.tittle}>
               {specialOffer.tittle}

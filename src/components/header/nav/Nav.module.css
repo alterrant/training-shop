@@ -4,6 +4,7 @@
   margin: 0 auto;
 
   display: flex;
+  gap: 30px;
   justify-content: space-between;
   align-items: center;
 }
@@ -16,4 +17,14 @@
   line-height: 32px;
   color: #121212;
   text-decoration: none;
+}
+
+@media screen and (max-width: 660px) {
+  .wrapper {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-rows: 44px min-content min-content;
+    row-gap: 15px;
+    justify-items: center;
+  }
 }

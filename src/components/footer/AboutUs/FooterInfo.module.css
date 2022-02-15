@@ -1,6 +1,7 @@
 .list {
-  max-width: 255px;
-  width: 100%;
+  width: max-content;
+  /*max-width: 255px;
+  width: 100%;*/
 }
 .title {
   padding-bottom: 8px;
