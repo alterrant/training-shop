@@ -3,8 +3,8 @@ import Benefit2 from './../assets/banner/benefit2.png';
 
 
 export const BENEFITS = [
-  {id: '1', tittle: 'NEW SEASON', description: 'LOOKBOOK COLLECTION', img: Benefit1},
-  {id: '2', tittle: 'SALE', description: 'GET UP TO', discount: '50% OFF', img: Benefit2}
+  {id: '1', tittle: 'NEW SEASON', description: 'LOOKBOOK COLLECTION', img: Benefit1, alt: 'benefit1'},
+  {id: '2', tittle: 'SALE', description: 'GET UP TO', discount: '50% OFF', img: Benefit2, alt: 'benefit2'}
 ]
 
 export const SPECIAL_BENEFIT =

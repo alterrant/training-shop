@@ -3,7 +3,9 @@ import BenefitStyle from './Benefit.module.css';
 export const Benefit = ({item}) => {
 
   return (
-      <div className={BenefitStyle.wrapper} style={{backgroundImage: `url(${item.img})`}}>
+      <div className={BenefitStyle.wrapper}
+          /* style={{backgroundImage: `url(${item.img})`}}*/>
+        <img src={item.img} alt={item.alt}/>
         <div className={BenefitStyle.centerMask}>
           <div className={BenefitStyle.whiteRectangle}>
             <p className={BenefitStyle.tittle}>
