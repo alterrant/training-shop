@@ -13,9 +13,11 @@ const RatingReviews = ({rating, reviewsCounter}) => {
 const ReviewsCounter = ({reviewsCounter}) => {
 
   return (
-      <p className={RatingReviewsStyle.reviews}>
+      <pre>
+        <p className={RatingReviewsStyle.reviews}>
         {`${reviewsCounter} Reviews`}
-      </p>
+        </p>
+      </pre>
   )
 }
 
