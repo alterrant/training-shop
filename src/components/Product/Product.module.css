@@ -32,14 +32,10 @@
 }
 .bigImgWrapper {
   height: 100%;
-  /*max-height: 560px;*/
   width: 100%;
-  /*max-width: 450px;*/
 }
 .bigImg {
-  /*max-height: 560px;*/
   width: 100%;
-  /*max-width: 450px;*/
 }
 
 .imgWrapper {
@@ -68,7 +64,7 @@
   }
   .imagesWrapper {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
   }
 }

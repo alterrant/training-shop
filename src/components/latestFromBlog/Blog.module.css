@@ -3,20 +3,20 @@
   flex-direction: column;
 
   width: 100%;
-  max-width: 350px;
-
   margin-bottom: 56px;
+
+  flex-basis: 350px;
+  flex-grow: 1;
 }
 
 .img {
-  max-height: 276px;
   object-fit: contain;
 }
 
 .post {
   margin: -56px auto;
   padding: 24px 16px 15px 16px;
-  max-width: 302px;
+  width: 86%;
   background-color: #FFFFFF;
 }
 

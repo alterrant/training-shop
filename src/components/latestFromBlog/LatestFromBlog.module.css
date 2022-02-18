@@ -15,9 +15,10 @@
 .blogs {
   display: flex;
   flex-wrap: wrap;
+
   justify-content: center;
   gap: 30px;
-  }
+}
 
 .tittle {
   font-family: Spartan, sans-serif;

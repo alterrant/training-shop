@@ -24,9 +24,10 @@
 }
 
 .description {
-  height: 18px;
+  min-height: 18px;
   margin-bottom: 6px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
