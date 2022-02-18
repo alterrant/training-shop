@@ -1,4 +1,5 @@
 import AdvantageStyle from './Advantage.module.css';
+import PropTypes from 'prop-types';
 
 export const Advantage = ({svg, tittle, description}) => {
   return (
@@ -14,6 +15,12 @@ export const Advantage = ({svg, tittle, description}) => {
         </div>
       </div>
   )
+}
+
+Advantage.propTypes = {
+  svg: PropTypes.element,
+  tittle: PropTypes.string,
+  description: PropTypes.string
 }
 
 export default Advantage;
