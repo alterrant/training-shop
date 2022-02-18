@@ -5,6 +5,7 @@ import banner3 from '../../assets/banner/banner3.png';
 import banner4 from '../../assets/banner/banner4.png';
 import {ReactComponent as LeftArrow} from "../../assets/SVG/leftArrow.svg";
 import {ReactComponent as RightArrow} from "../../assets/SVG/rightArrow.svg";
+import Banner from "./Banner";
 
 const Banners = () => {
   return (
@@ -27,6 +28,19 @@ const Banners = () => {
           <img className={BannersStyle.bigBannerImage} src={banner1} alt="banner1"/>
         </div>
         <div className={BannersStyle.item2}>
+          <Banner tittle={'WOMEN'} backgroundUrl={banner2} altBackground={'banner2'}/>
+        </div>
+        <div className={BannersStyle.item3}>
+          <Banner tittle={'MEN'} backgroundUrl={banner3} altBackground={'banner3'}/>
+        </div>
+        <div className={BannersStyle.item4}>
+          <Banner tittle={'ACCESSORIES'} backgroundUrl={banner4} altBackground={'banner4'}/>
+        </div>
+
+
+
+
+        {/*<div className={BannersStyle.item2}>
           <div className={BannersStyle.bannerMask}>
             <div className={BannersStyle.bannerContainer}>
               <div className={BannersStyle.bannerWrapper}>
@@ -61,7 +75,7 @@ const Banners = () => {
             </div>
           </div>
           <img className={BannersStyle.bannerImage} src={banner4} alt="banner4"/>
-        </div>
+        </div>*/}
       </article>
   )
 }
