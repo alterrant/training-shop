@@ -7,6 +7,14 @@ import RelatedProductImg1 from './../assets/relatedProducts/relatedImg1.png';
 import RelatedProductImg2 from './../assets/relatedProducts/relatedImg2.png';
 import RelatedProductImg3 from './../assets/relatedProducts/relatedImg3.png';
 import RelatedProductImg4 from './../assets/relatedProducts/relatedImg4.png';
+import photoProduct1 from "./../assets/product/product1.png";
+import photoProduct2 from "./../assets/product/product2.png";
+import photoProduct3 from "./../assets/product/product3.png";
+import photoProduct4 from "./../assets/product/product4.png";
+import photoProduct1SVG from "./../assets/product/product1.svg";
+import photoProduct2SVG from "./../assets/product/product2.svg";
+import photoProduct3SVG from "./../assets/product/product3.svg";
+import photoProduct4SVG from "./../assets/product/product4.svg";
 
 const initialState = {
   productInfo: {
@@ -28,6 +36,12 @@ const initialState = {
     sizes: ['XS', 'S', 'M', 'L'],
     discount: null,
     colors: ['Blue', 'White', 'Black', 'Grey'],
+    photos: [
+      {id:1 , src: photoProduct1SVG, alt: 'photoProduct1'},
+      {id:2 , src: photoProduct2SVG, alt: 'photoProduct2'},
+      {id:3 , src: photoProduct3SVG, alt: 'photoProduct3'},
+      {id:4 , src: photoProduct4SVG, alt: 'photoProduct4'},
+    ],
     reviews: [
       {
         id: '1',
@@ -81,6 +95,12 @@ const initialState = {
     {id: '2', productType: 'women', name: 'Women\'s tracksuit Q109', rating: '4', cost: '$ 30.00', discount: '50%', image: RelatedProductImg2},
     {id: '3', productType: 'women', name: 'Women\'s tracksuit Q109', rating: '4', cost: '$ 30.00', discount: '0', image: RelatedProductImg3},
     {id: '4', productType: 'women', name: 'Women\'s tracksuit Q109', rating: '4', cost: '$ 30.00', discount: '0', image: RelatedProductImg4},
+    {id: '5', productType: 'women', name: 'Women\'s tracksuit Q109', rating: '4', cost: '$ 30.00', discount: '0', image: RelatedProductImg3},
+    {id: '6', productType: 'women', name: 'Women\'s tracksuit Q109', rating: '4', cost: '$ 30.00', discount: '0', image: RelatedProductImg1},
+    {id: '7', productType: 'women', name: 'Women\'s tracksuit Q109', rating: '4', cost: '$ 30.00', discount: '50%', image: RelatedProductImg2},
+    {id: '8', productType: 'women', name: 'Women\'s tracksuit Q109', rating: '4', cost: '$ 30.00', discount: '0', image: RelatedProductImg4},
+    {id: '9', productType: 'women', name: 'Women\'s tracksuit Q109', rating: '4', cost: '$ 30.00', discount: '0', image: RelatedProductImg1},
+    {id: '10', productType: 'women', name: 'Women\'s tracksuit Q109', rating: '4', cost: '$ 30.00', discount: '0', image: RelatedProductImg4}
   ]
 }
 

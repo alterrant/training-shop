@@ -4,6 +4,38 @@
   padding: 0;
   list-style: none;
 }
+
 h1 {
   margin: 0;
+}
+
+.swiper-button-next::after {
+  display: none;
+}
+
+.swiper-button-disabled {
+  opacity: 0.5;
+}
+
+.leftSliderArrow, .rightSliderArrow {
+  cursor: pointer;
+  z-index: 1;
+}
+
+.test1, .test2 {
+  cursor: pointer;
+  z-index: 1;
+}
+
+.bottomSliderArrow {
+  transform: rotate(180deg);
+}
+.bottomSliderArrow, .topSliderArrow {
+  cursor: pointer;
+  z-index: 1;
+  height: 40px;
+}
+
+.swiper-slide-active {
+  opacity: 1 !important;
 }

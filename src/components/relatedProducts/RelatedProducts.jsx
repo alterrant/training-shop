@@ -1,8 +1,13 @@
 import RelatedProductsStyle from "./RelatedProducts.module.css";
-import Clothes from "../clothes/clothesList/Clothes";
+import {ClothesItem} from "../clothes/clothesList/Clothes";
 import {useSelector} from "react-redux";
-import { ReactComponent as RightArrow} from "./../../assets/SVG/rightArrow.svg";
+import {ReactComponent as Arrow} from "./../../assets/SVG/rightArrow.svg";
+import {Swiper, SwiperSlide} from "swiper/react";
 
+import {Navigation} from 'swiper';
+import 'swiper/css/grid';
+import 'swiper/css/navigation';
+import 'swiper/css';
 
 const RelatedProducts = () => {
 
@@ -13,11 +18,32 @@ const RelatedProducts = () => {
         <div className={RelatedProductsStyle.wrapper}>
           <h4 className={RelatedProductsStyle.tittle}>RELATED PRODUCTS</h4>
           <div className={RelatedProductsStyle.arrows}>
-            <div><RightArrow/></div>
-            <div><RightArrow/></div>
+            <div className='test2'><Arrow/></div>
+            <div className='test1'><Arrow/></div>
           </div>
         </div>
-        <Clothes product={relatedProductsLists}/>
+        <div>
+          {/*<ul className={ClothesStyle.wrapper}>*/}
+          <div className={RelatedProductsStyle.clothWrap} data-test-id='related-slider'>
+
+            <Swiper
+                modules={[Navigation]}
+                spaceBetween={50}
+                slidesPerView={4}
+                navigation={{
+                  nextEl: '.test1',
+                  prevEl: '.test2'
+                }}
+            >
+              {relatedProductsLists.map(item =>
+                    <SwiperSlide key={item.id}>
+                      <ClothesItem item={item}/>
+                    </SwiperSlide>
+                  )}
+            </Swiper>
+          </div>
+        </div>
+        {/*<Clothes product={relatedProductsLists}/>*/}
       </section>
   )
 }
