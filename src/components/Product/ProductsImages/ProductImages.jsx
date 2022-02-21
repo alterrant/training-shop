@@ -22,9 +22,6 @@ const ProductImages = (/*{product, selectedCategoriesProduct}*/) => {
   // const window = useWindowDimensions1();
   const {width} = useWindowDimensions();
 
-
-
-
   const productPhotos = useSelector(state => state.product.productInfo.photos);
 
   const productPhotoList = productPhotos.map(item =>
@@ -35,7 +32,7 @@ const ProductImages = (/*{product, selectedCategoriesProduct}*/) => {
     return (width <= 750) ? 'horizontal' : 'vertical';
 }
   return (
-      <div className={ProductStyle.wrapper} data-test-id='product-slider'>
+      <div className={ProductStyle.wrapper}>
         <div className={ProductStyle.productAngles}>
           <div className={ProductStyle.pointers}>
             <div className='topSliderArrow'><Pointer/></div>
@@ -70,7 +67,7 @@ const ProductImages = (/*{product, selectedCategoriesProduct}*/) => {
           </div>
           {/*</ul>*/}
         </div>
-        <div className={ProductStyle.bigImgWrapper}>
+        <div className={ProductStyle.bigImgWrapper} data-test-id='product-slider'>
           <Swipe onSwiper={setSecondSwiper}
                  controller={{control: firstSwiper}}
                  images={productPhotos}
