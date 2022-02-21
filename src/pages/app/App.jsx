@@ -4,6 +4,7 @@ import AppStyle from "./App.module.css";
 import {Outlet} from "react-router-dom";
 
 const App = () => {
+
   return (
       <div className={AppStyle.app} data-test-id='app'>
         <Header/>

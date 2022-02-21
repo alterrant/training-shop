@@ -1,4 +1,10 @@
 .header {
   max-width: 1280px;
   margin: 0 auto;
+  background-color: #FFFFFF;
+
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 90;
 }
