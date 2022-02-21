@@ -5,11 +5,13 @@ import LatestFromBlog from "../../components/latestFromBlog/LatestFromBlog";
 import Benefits from "../../components/benefits/Benefits";
 import ClothesMain from "../../components/clothes/ClothesMain";
 import Partition from "../../components/common/Partition";
+import React from "react";
 
 const Main = () => {
 
   return (
       <>
+        <Partition/>
         <Banners/>
         <Advantages/>
         <Partition/>
