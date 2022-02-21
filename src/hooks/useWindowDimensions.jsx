@@ -25,7 +25,7 @@ export function useWindowDimensions1() {
       window.addEventListener('resize', handleResize);
       return () => window.removeEventListener('resize', handleResize);
     }
-  }, [hasWindow]);
+  }, [windowDimensions]);
 
   return windowDimensions;
 }
