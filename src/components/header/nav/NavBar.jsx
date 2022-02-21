@@ -1,11 +1,20 @@
 import {NavLink} from 'react-router-dom';
 import NavBarStyle from "./NavBar.module.css";
 import {MENU} from "../../../constants/menuConst";
+import {useClassNames} from "../../../hooks/useClassName";
+import {menuToggle} from "../../../redux/headerReducer";
+import {useDispatch, useSelector} from "react-redux";
+import {changeBodyOverflow} from "../../../encapsulatedCommonLogics/changeBoodyOverflow";
 
 const NavBar = () => {
 
+  const dispatch = useDispatch();
+  const isMenuOpen = useSelector((state => state.header.isMenuOpen));
+
+  const className = useClassNames('isMenuOpen', NavBarStyle, 'fixedLeftMenu', 'menu', 'header');
+
   const menu = MENU.map(item =>
-      <li key={item.id}>
+      <li className={NavBarStyle.menuItem} key={item.id}>
         <NavLink
             className={NavBarStyle.menuItem}
             to={`/${item.path}`}
@@ -14,8 +23,15 @@ const NavBar = () => {
         </NavLink>
       </li>)
 
+  const handleClick = (event) => {
+    if (event.target.className !== 'NavBar_menuItem__iAC4P') {
+      dispatch(menuToggle());
+      changeBodyOverflow(isMenuOpen);
+    }
+  }
+
   return (
-      <ul className={NavBarStyle.menu} data-test-id={'menu'} >
+      <ul className={className} data-test-id={'burger-menu'} onClick={(event => handleClick(event))}>
         {menu}
       </ul>
   )

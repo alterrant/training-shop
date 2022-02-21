@@ -1,0 +1,53 @@
+.burgerMenu {
+  border: 0;
+  background-color: #FFFFFF;
+  outline:none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 996px) {
+  .burgerMenu {
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+
+  .burgerMenu span {
+    content: '';
+    background-color: #121212;
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 100%;
+    height: 1px;
+    transition: all 0.3s ease 0s;
+  }
+  .burgerMenu:before,
+  .burgerMenu:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    background-color: #121212;
+    height: 1px;
+    width: 100%;
+    transition: all 0.3s ease 0s;
+  }
+  .burgerMenu:before {
+    top: 2px;
+  }
+  .burgerMenu:after {
+    bottom: 2px;
+  }
+  .burgerMenuActive:before {
+    transform: rotate(-45deg);
+    top: 12px;
+  }
+  .burgerMenuActive:after {
+    transform: rotate(45deg);
+    bottom: 11px;
+  }
+  .burgerMenuActive span {
+    transform: scale(0);
+  }
+}

@@ -11,10 +11,9 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   row-gap: 14px;
-  column-gap: 502px;
 }
 
 .companyInfo {
@@ -35,4 +34,9 @@
   line-height: 12px;
   color: #FFFFFF;
   opacity: 0.8;
+}
+@media screen and (max-width: 996px) {
+  .background {
+    display: none;
+  }
 }

@@ -19,12 +19,26 @@
   text-decoration: none;
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 400px) {
   .wrapper {
     display: grid;
     grid-auto-columns: 1fr;
     grid-template-rows: 44px min-content min-content;
     row-gap: 15px;
     justify-items: center;
+  }
+}
+@media screen and (max-width: 996px) {
+  .wrapper {
+    padding: 0 10px;
+  }
+  .burgerMenuActive:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom:-34px;
+    left: 0;
+    width: 100%;
+    height: 34px;
   }
 }
