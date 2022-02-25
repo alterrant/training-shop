@@ -16,17 +16,19 @@ import {getDirection} from "../../../encapsulatedCommonLogics/swipersLogic";
 
 const ProductImages = (/*{product, selectedCategoriesProduct}*/) => {
 
-
   const [firstSwiper, setFirstSwiper] = useState(null);
   const [secondSwiper, setSecondSwiper] = useState(null);
 
-  // const window = useWindowDimensions1();
   const {width} = useWindowDimensions();
-
   const productPhotos = useSelector(state => state.product.productInfo.photos);
 
-  const productPhotoList = productPhotos.map(item =>
-      <SwiperSlide key={item.id}><ProductPhoto src={item.src} alt={item.alt} key={item.id}/></SwiperSlide>
+  const productPhotosList = productPhotos.map(item =>
+      <SwiperSlide key={item.id}>
+        <img className={ProductStyle.imgWrapper}
+             src={item.src}
+             alt={item.alt}
+             key={item.id}/>
+      </SwiperSlide>
   )
 
   return (
@@ -55,7 +57,7 @@ const ProductImages = (/*{product, selectedCategoriesProduct}*/) => {
                       firstSwiper.changeDirection(getDirection(width));
                     }}
             >
-              {productPhotoList}
+              {productPhotosList}
             </Swiper>
           </div>
         </div>
@@ -76,9 +78,3 @@ const ProductImages = (/*{product, selectedCategoriesProduct}*/) => {
 }
 
 export default ProductImages;
-
-const ProductPhoto = ({src, alt}) => {
-  return (
-      <img className={ProductStyle.imgWrapper} src={src} alt={alt}/>
-  )
-}
