@@ -16,19 +16,13 @@
 }
 
 .productAngles {
+  height: max-content;
+  min-width: 0;
+  position: relative;
+
   display: flex;
   flex-direction: column;
   row-gap: 16px;
-  /*height: 100%;*/
-  height: max-content;
-
-
-  position: relative;
-  /*min-height: 0;*/
-  min-width: 0;
-
-  /*Для Wrap*/
-  min-height: max-content;
 }
 
 .pointers {
@@ -43,11 +37,8 @@
 .imagesWrapper {
   display: flex;
   row-gap: 16px;
-  /*height: 112px;*/
   position: relative;
   min-width: 0;
-  /*min-height: 0;*/
-  /*Для Wrap*/
   min-height: max-content;
 }
 
@@ -58,18 +49,31 @@
 .imagesWrapper div div {
   transform: translate3d(0, 0, 0) !important;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
 .imagesWrapper div div div {
   opacity: 0.4;
-  /*Для Wrap*/
   height: max-content;
 }
 
+.bigImgWrapper {
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+  min-height: 0;
+  min-width: 0;
+}
 .bigImg {
   width: 100%;
+}
+
+.bigImgWrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: initial;
 }
 
 .arrows {
@@ -86,10 +90,7 @@
 }
 
 .imgWrapper {
-  height: 100%;
-  max-height: 114px;
-  width: 100%;
-  max-width: 450px;
+  cursor: pointer;
 }
 
 .descriptionWrapper {
@@ -122,19 +123,4 @@
     flex-wrap: wrap;
 
   }
-}
-
-.bigImgWrapper {
-  width: 100%;
-  height: 100%;
-
-  position: relative;
-  min-height: 0;
-  min-width: 0;
-}
-
-.bigImgWrapper img {
-  height: 100%;
-  width: 100%;
-  object-fit: initial;
 }

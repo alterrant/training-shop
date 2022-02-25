@@ -28,18 +28,27 @@ const RelatedProducts = () => {
 
             <Swiper
                 modules={[Navigation]}
-                spaceBetween={50}
-                slidesPerView={4}
+                spaceBetween={30}
+                slidesPerView={1}
                 navigation={{
                   nextEl: '.test1',
                   prevEl: '.test2'
                 }}
+                breakpoints={{
+                  810: {
+                    slidesPerView: 4,
+                  },
+                  490: {
+                    slidesPerView: 2
+                  }
+                }
+                }
             >
               {relatedProductsLists.map(item =>
-                    <SwiperSlide key={item.id}>
-                      <ClothesItem item={item}/>
-                    </SwiperSlide>
-                  )}
+                  <SwiperSlide key={item.id}>
+                    <ClothesItem item={item}/>
+                  </SwiperSlide>
+              )}
             </Swiper>
           </div>
         </div>
