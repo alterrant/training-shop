@@ -7,10 +7,6 @@ import RelatedProductImg1 from './../assets/relatedProducts/relatedImg1.png';
 import RelatedProductImg2 from './../assets/relatedProducts/relatedImg2.png';
 import RelatedProductImg3 from './../assets/relatedProducts/relatedImg3.png';
 import RelatedProductImg4 from './../assets/relatedProducts/relatedImg4.png';
-// import photoProduct1 from "./../assets/product/product1.png";
-// import photoProduct2 from "./../assets/product/product2.png";
-// import photoProduct3 from "./../assets/product/product3.png";
-// import photoProduct4 from "./../assets/product/product4.png";
 import photoProduct1SVG from "./../assets/product/product1.svg";
 import photoProduct2SVG from "./../assets/product/product2.svg";
 import photoProduct3SVG from "./../assets/product/product3.svg";
@@ -86,6 +82,7 @@ const initialState = {
     id: '6200e5031c08840bc803ad2a'
   },
   selectedCategories: {
+    productPhoto: 1,
     color: 'Blue',
     size: 'S',
     image: '1'
@@ -116,10 +113,13 @@ export const productSlice = createSlice({
     }),
     setImage: ((state, action) => {
       state.selectedCategories.image = action.payload;
+    }),
+    changeSelectedPhoto: ((state, action) => {
+      state.selectedCategories.productPhoto = action.payload;
     })
   }
 })
 
-export const {setColor, setSize, setImage} = productSlice.actions
+export const {setColor, setSize, setImage, changeSelectedPhoto} = productSlice.actions
 
 export default productSlice.reducer
