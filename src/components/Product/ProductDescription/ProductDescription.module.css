@@ -1,12 +1,34 @@
-.coloredProducts {
+.kindProductsWrapper {
   margin-top: 16px;
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
 }
+.kindProductsWrapper li {
+  cursor: pointer;
+}
 .sizesWrapper {
   margin-top: 32px;
 }
+.colorWrapper > p span {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+}
+.colorWrapper > p span:first-child,
+.sizesWrapper > p span:first-child {
+  opacity: 0.6;
+}
+.colorWrapper img {
+  height: 100%;
+  width: 100%;
+}
+
 .productSizes {
   width: 40px;
   height: 40px;
@@ -127,4 +149,7 @@
 }
 .reviewsMargin {
   margin: 32px 0 32px 0;
+}
+.selected {
+  border: 2px solid black;
 }

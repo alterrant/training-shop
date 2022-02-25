@@ -8,30 +8,48 @@ import {ReactComponent as MailSVG} from "./../../../assets/SVG/mail.svg";
 import Advantages from "./Advantages";
 import Cards from "../../common/Cards";
 import Reviews from "../../reviews/Reviews";
+import {useDispatch, useSelector} from "react-redux";
+import classNames from 'classnames/bind';
+import {setColor, setSize} from "../../../redux/productReducer";
 
 const ProductDescription = ({product, selectedCategoriesProduct}) => {
 
-  const coloredProducts = product.images.map(item =>
-      <li key={item.id}>
+  const selectedColor = useSelector((state => state.product.selectedCategories.color));
+  const selectedSize = useSelector((state => state.product.selectedCategories.size));
+  const dispatch = useDispatch();
+
+  const cx = classNames.bind(ProductDescriptionStyle);
+
+  const coloredProducts = product.images.map((item) =>
+      <li className={cx({selected: selectedColor === item.color})}
+          key={item.id}
+          onClick={() => dispatch(setColor(item.color))}>
         <img src={item.url} alt={item.id}/>
       </li>)
 
-  const productSizes = product.sizes.map(item =>
-      <li key={item} className={ProductDescriptionStyle.productSizes}>
-        <p>{item}</p>
+  const productSizes = product.sizes.map(size =>
+      <li className={cx({selected: selectedSize === size}, 'productSizes')}
+          key={size}
+          onClick={() => dispatch(setSize(size))}>
+        <p>{size}</p>
       </li>)
 
   return (
       <div className={ProductDescriptionStyle.descriptionWrapper}>
-        <div>
-          <p>Color: <span>{selectedCategoriesProduct.color}</span></p>
-          <ul className={ProductDescriptionStyle.coloredProducts}>
+        <div className={ProductDescriptionStyle.colorWrapper}>
+          <p>
+            <span>Color:</span>
+            <span>{selectedCategoriesProduct.color}</span>
+          </p>
+          <ul className={ProductDescriptionStyle.kindProductsWrapper}>
             {coloredProducts}
           </ul>
         </div>
         <div className={ProductDescriptionStyle.sizesWrapper}>
-          <p>Size: <span>{selectedCategoriesProduct.size}</span></p>
-          <ul className={ProductDescriptionStyle.coloredProducts}>
+          <p>
+            <span>Size:</span>
+            <span>{selectedCategoriesProduct.size}</span></p>
+          <ul className={ProductDescriptionStyle.kindProductsWrapper}>
             {productSizes}
           </ul>
         </div>
