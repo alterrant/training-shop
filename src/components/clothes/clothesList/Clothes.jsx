@@ -47,10 +47,10 @@ export const ClothesItem = ({item}) => {
           {item.name}
         </div>
         <div className={ClothesStyle.priceQuality}>
-          <p className={ClothesStyle.price}>
+          <pre><p className={ClothesStyle.price}>
             {item.cost}
             {item.discount !== '0' && <span className={ClothesStyle.fullPrice}>{fullPrice(item.discount, item.cost)}</span>}
-          </p>
+          </p></pre>
           <RatingStars rating={item.rating}/>
         </div>
       </NavLink>

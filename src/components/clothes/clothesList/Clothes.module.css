@@ -21,7 +21,9 @@
 }
 .cardsItem {
   position: relative;
-  max-height: 378px;
+  /*max-height: 378px;*/
+  width: 100%;
+  max-height: max-content;
 
   text-decoration: none;
 
