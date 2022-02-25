@@ -11,6 +11,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import "swiper/css/grid";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
+import {getDirection} from "../../../encapsulatedCommonLogics/swipersLogic";
 
 
 const ProductImages = (/*{product, selectedCategoriesProduct}*/) => {
@@ -28,18 +29,13 @@ const ProductImages = (/*{product, selectedCategoriesProduct}*/) => {
       <SwiperSlide key={item.id}><ProductPhoto src={item.src} alt={item.alt} key={item.id}/></SwiperSlide>
   )
 
-  function getDirection() {
-    return (width <= 750) ? 'horizontal' : 'vertical';
-}
   return (
       <div className={ProductStyle.wrapper}>
         <div className={ProductStyle.productAngles}>
           <div className={ProductStyle.pointers}>
             <div className='topSliderArrow'><Pointer/></div>
             <div className='bottomSliderArrow'><Pointer/></div>
-            {/*<Pointer className={ProductStyle.down}/>*/}
           </div>
-          {/*<ul className={ProductStyle.imagesWrapper}>*/}
           <div className={ProductStyle.imagesWrapper}>
             <Swiper onSwiper={setFirstSwiper}
                     controller={{control: secondSwiper}}
@@ -48,24 +44,20 @@ const ProductImages = (/*{product, selectedCategoriesProduct}*/) => {
                     slidesPerView={1}
                     height={114}
                     width={96}
-
+                    slideToClickedSlide={true}
                     watchOverflow={false}
-                    direction={getDirection()}
+                    direction={getDirection(width)}
                     navigation={{
                       nextEl: '.bottomSliderArrow',
                       prevEl: '.topSliderArrow'
                     }}
                     onResize={() => {
-                      firstSwiper.changeDirection(getDirection());
-                    }}
-                    onChangeDirection={() => {
-
+                      firstSwiper.changeDirection(getDirection(width));
                     }}
             >
               {productPhotoList}
             </Swiper>
           </div>
-          {/*</ul>*/}
         </div>
         <div className={ProductStyle.bigImgWrapper} data-test-id='product-slider'>
           <Swipe onSwiper={setSecondSwiper}
@@ -87,10 +79,6 @@ export default ProductImages;
 
 const ProductPhoto = ({src, alt}) => {
   return (
-      // <li>
-      //   <div className={ProductStyle.imgWrapper}>
-      <img src={src} alt={alt}/>
-      // </div>
-      // </li>
+      <img className={ProductStyle.imgWrapper} src={src} alt={alt}/>
   )
 }
