@@ -9,9 +9,8 @@ export const useProduct = ({products, productType}) => {
   const productInfo = useSelector(state => state.product.productInfo);
 
   useEffect(() => {
-
     const product = products[productType].find(item => item.id === productId.id);
-    console.log(product)
+
     dispatch(setProduct(product));
 
     return () => dispatch(resetProduct());
