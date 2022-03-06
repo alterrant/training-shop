@@ -3,8 +3,8 @@ import Main from "../pages/main/Main";
 import ProductPage from "../pages/product/ProductPage";
 import App from "../pages/app/App";
 import ProductsPage from "../pages/categories/ProductsPage";
-import {useDispatch, useSelector} from "react-redux";
-import {useCallback, useEffect} from "react";
+import {useSelector} from "react-redux";
+import {useEffect} from "react";
 import {setInitSuccess} from "../redux/initializeReducer";
 import {useStableDispatch} from "../hooks/useRedux";
 
@@ -12,8 +12,6 @@ export const Router = () => {
 
   const isInit = useSelector((state) => state.initialize.isInit);
   const stableDispatch = useStableDispatch();
-  // const dispatch = useDispatch();
-  // const stableDispatch = useCallback(dispatch, [dispatch]);
 
   useEffect(() => {
     //потом будет логика инициализации
