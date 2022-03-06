@@ -32,7 +32,7 @@ export const filterProducts = (genderProducts, selectedFiltersLists) => {
     const resultFilterProduct = selectedFiltersLists.reduce((prevFilter, curFilter) => {
       if (prevFilter.filterType === curFilter.filterType) return {
         filterType: curFilter.filterType,
-        isProductConformFilter: isPreviousFiltersConfirm && isProductConformFilter(product, curFilter) || prevFilter.isProductConformFilter
+        isProductConformFilter: (isPreviousFiltersConfirm && isProductConformFilter(product, curFilter)) || prevFilter.isProductConformFilter
       };
 
       isPreviousFiltersConfirm = prevFilter.isProductConformFilter;
@@ -70,7 +70,7 @@ const isProductConformFilter = (product, curFilter) => {
       return (minFilterPrice === maxFilterPrice) ?
           minFilterPrice <= product[curFilter.filterType]
           :
-          (minFilterPrice <= product[curFilter.filterType] && maxFilterPrice >= product[curFilter.filterType]);
+          (minFilterPrice <= product[curFilter.filterType] && (maxFilterPrice >= product[curFilter.filterType]));
     case  'brand':
       return product[curFilter.filterType] === curFilter.filterValue;
     case 'sizes':
