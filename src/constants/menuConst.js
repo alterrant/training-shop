@@ -8,12 +8,12 @@ export const MENU = [
   {id: '7', name: 'Contact', path: 'contact'}
 ];
 
-export const CLOTHESNAVBAR = [
-  {id: '1', name: 'NEW ARRIVALS'},
-  {id: '2', name: 'SPECIALS'},
-  {id: '3', name: 'BESTSELLERS'},
-  {id: '4', name: 'MOST VIEWED'},
-  {id: '5', name: 'FEATURED PRODUCTS'}
+export const CLOTHES_DICTIONARY = [
+  {id: '1', name: 'NEW ARRIVALS', filterName: 'isNewArrivals'},
+  {id: '2', name: 'SPECIALS', filterName: 'isSpecial'},
+  {id: '3', name: 'BESTSELLERS', filterName: 'isBestseller'},
+  {id: '4', name: 'MOST VIEWED', filterName: 'isMostViewed'},
+  {id: '5', name: 'FEATURED PRODUCTS', filterName: 'isFeatured'}
 ];
 
 export const FOOTERNAVBAR = [

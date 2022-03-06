@@ -60,7 +60,8 @@
 
 .bigImgWrapper {
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
+  height: max-content;
 
   position: relative;
   min-height: 0;
@@ -72,6 +73,7 @@
 
 .bigImgWrapper img {
   height: 100%;
+  /*height: max-content;*/
   width: 100%;
   object-fit: initial;
 }
@@ -91,11 +93,16 @@
 
 .imgWrapper {
   cursor: pointer;
+  width: 100%;
+  max-width: 94px;
 }
 
 .descriptionWrapper {
   display: flex;
   flex-direction: column;
+}
+.swiper {
+  height: 100%;
 }
 
 @media screen and (max-width: 750px) {

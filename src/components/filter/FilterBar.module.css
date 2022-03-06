@@ -10,6 +10,12 @@
 
 }
 .filter {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+
   display: flex;
   gap: 12px;
   align-items: center;
@@ -29,6 +35,9 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+}
+.filter > p {
+  padding-top: 2px;
 }
 .text {
   display: flex;

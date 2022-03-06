@@ -5,14 +5,10 @@ import {ReactComponent as ViewList} from "../../assets/SVG/viewList.svg";
 import {ReactComponent as ViewListActive} from "../../assets/SVG/viewListActive.svg";
 import {ReactComponent as ViewGrid} from "../../assets/SVG/viewGrid.svg";
 import {ReactComponent as ViewGridActive} from "../../assets/SVG/viewGridActive.svg";
-import {ReactComponent as CaretDown} from "../../assets/SVG/caretDownIco.svg";
-import {ReactComponent as CaretUp} from "../../assets/SVG/caretUpIco.svg";
 import {useState} from "react";
 
 const FilterBar = ({isOpenedFilter, setOpenedStatusFilter}) => {
 
-  const [isSortTypeOpen, setSortTypeStatus] = useState(false);
-  const [sortType] = useState('BESTSELLERS');
   const [viewStyle, changeViewStyle] = useState('grid');
 
   const isListStyleActive = (viewStyle === 'list');
@@ -24,27 +20,19 @@ const FilterBar = ({isOpenedFilter, setOpenedStatusFilter}) => {
 
   return (
       <div className={ProductFilterStyle.wrapper}>
-        <div className={ProductFilterStyle.filter}>
-          <div className={ProductFilterStyle.filterStatus}
-               onClick={() => setOpenedStatusFilter(!isOpenedFilter)}>
+        <button className={ProductFilterStyle.filter}
+                onClick={() => setOpenedStatusFilter(!isOpenedFilter)}
+                data-test-id='filter-button'>
+          <div className={ProductFilterStyle.filterStatus}>
             {isOpenedFilter ? <FilterOpened/> : <FilterClosed/>}
           </div>
-          Filter
-        </div>
+          <p>Filter</p>
+        </button>
         <div className={ProductFilterStyle.viewStyle}>
-            <div onClick={() => setViewStyle('grid')}
-                className={ProductFilterStyle.viewStyleSvg}>{isListStyleActive ? <ViewListActive/> : <ViewList/>}</div>
-            <div onClick={() => setViewStyle('list')}
-                className={ProductFilterStyle.viewStyleSvg}>{isListStyleActive ? <ViewGrid/> : <ViewGridActive/>}</div>
-        </div>
-        <div>
-          <div className={ProductFilterStyle.filter}>
-            {sortType}
-            <div className={ProductFilterStyle.filterStatus}
-                 onClick={() => setSortTypeStatus(!isSortTypeOpen)}>
-              {isSortTypeOpen ? <CaretDown/> : <CaretUp/>}
-            </div>
-          </div>
+          <div onClick={() => setViewStyle('grid')}
+               className={ProductFilterStyle.viewStyleSvg}>{isListStyleActive ? <ViewListActive/> : <ViewList/>}</div>
+          <div onClick={() => setViewStyle('list')}
+               className={ProductFilterStyle.viewStyleSvg}>{isListStyleActive ? <ViewGrid/> : <ViewGridActive/>}</div>
         </div>
       </div>
   )

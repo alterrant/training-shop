@@ -14,7 +14,7 @@ const NavBar = () => {
   const className = useClassNames('isMenuOpen', NavBarStyle, 'fixedLeftMenu', 'menu', 'header');
 
   const menu = MENU.map(item =>
-      <li className={NavBarStyle.menuItem} key={item.id}>
+      <li onClick={(event => handleClick(event))} className={NavBarStyle.menuItem} key={item.id}>
         <NavLink
             className={NavBarStyle.menuItem}
             to={`/${item.path}`}
@@ -31,7 +31,7 @@ const NavBar = () => {
   }
 
   return (
-      <ul className={className} data-test-id={'burger-menu'} onClick={(event => handleClick(event))}>
+      <ul className={className} data-test-id={'burger-menu'}>
         {menu}
       </ul>
   )

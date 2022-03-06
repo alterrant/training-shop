@@ -19,40 +19,44 @@ const Clothes = ({product}) => {
 
 export default Clothes;
 
-const Discount = ({discount}) => {
-  return (
-      <div className={ClothesStyle.discountWrapper}>
-        <p className={ClothesStyle.discountPrice}>{"-" + discount}</p>
-      </div>
-  )
-}
-
 export const ClothesItem = ({item}) => {
-
-  const fullPrice = (discount, cost) => {
-    //const dollarPrice = cost.split(' ')[1];
-    const safetyPrice = cost.split(' ').find(item => parseInt(item));
-    return ((parseInt(safetyPrice) / (100-parseInt(discount))) * 100).toFixed(2);
-  }
 
   return (
       <NavLink className={ClothesStyle.cardsItem}
-               to={`/${item.productType}/${item.id}`}
+               to={`/${item.category}/${item.id}`}
                data-test-id={`clothes-card-${item.productType}`}>
-        {item.discount !== '0' && <Discount discount={item.discount}/>}
+        {item.discount && <Discount discount={item.discount}/>}
         <div>
-          <img className={ClothesStyle.img} src={item.image} alt={item.image}/>
+          {Array.isArray(item.images) ?
+              <img className={ClothesStyle.img} src={`https://training.cleverland.by/shop${item.images[0].url}`}
+                   alt={item.name}/>
+              :
+              <img className={ClothesStyle.img} src={item.images}
+                   alt={item.name}/>
+          }
         </div>
         <div className={ClothesStyle.name}>
           {item.name}
         </div>
         <div className={ClothesStyle.priceQuality}>
           <pre><p className={ClothesStyle.price}>
-            {item.cost}
-            {item.discount !== '0' && <span className={ClothesStyle.fullPrice}>{fullPrice(item.discount, item.cost)}</span>}
+            {'$ ' + item.price}
+            {item.discount && <span className={ClothesStyle.fullPrice}>{'$ ' + fullPrice(item.discount, item.price)}</span>}
           </p></pre>
           <RatingStars rating={item.rating}/>
         </div>
       </NavLink>
+  )
+}
+
+const fullPrice = (discount, price) => {
+  return ((parseInt(price) / (100 + parseInt(discount))) * 100).toFixed(2);
+}
+
+const Discount = ({discount}) => {
+  return (
+      <div className={ClothesStyle.discountWrapper}>
+        <p className={ClothesStyle.discountPrice}>{discount}</p>
+      </div>
   )
 }

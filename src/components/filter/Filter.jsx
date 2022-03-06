@@ -6,9 +6,10 @@ const Filter = ({filterName, changeHandler}) => {
   const filterList = useSelector((state => state.filter[filterName]));
 
   const filter = filterList.map(item =>
-      <li className={FilterStyle.description} key={item.id}>
+      <li className={FilterStyle.description} key={item.id}
+          data-test-id={`filter-${filterName}-${item.name}`}>
         <div>
-          <Checkbox type={item.type} value={item.selected} payload={item.name} changeHandler={changeHandler} color={item.color}/>
+          <Checkbox value={item.selected} payload={item.name} changeHandler={changeHandler} color={item.color}/>
         </div>
         <div>{item.name}</div>
       </li>
@@ -17,9 +18,10 @@ const Filter = ({filterName, changeHandler}) => {
   return (
       <>
         <li className={FilterStyle.tittle}>
-          {filterName}
+          {filterName[0].toUpperCase() + filterName.slice(1)}
         </li>
-        <ul className={FilterStyle.wrapper}>
+        <ul className={FilterStyle.wrapper}
+            data-test-id={`filters-${filterName}`}>
           {filter}
         </ul>
       </>

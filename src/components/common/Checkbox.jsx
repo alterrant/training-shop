@@ -1,7 +1,7 @@
 import CheckboxStyle from "./Checkbox.module.css";
 import {useDispatch} from "react-redux";
 
-const Checkbox = ({type, color, value, payload, changeHandler}) => {
+const Checkbox = ({color, value, payload, changeHandler}) => {
 
   const dispatch = useDispatch();
 
@@ -11,9 +11,10 @@ const Checkbox = ({type, color, value, payload, changeHandler}) => {
   const buttonStyle = (color) ? customRadioButtonStyle : customCheckboxStyle;
 
   return (
+
       <label className={buttonStyle} style={{backgroundColor: `${color}`}}>
-        {(color) ? <Ring isActive={value}/> : <Vector isActive={value}/>}
-        <input type={type} checked={value} onChange={() => dispatch(changeHandler(payload))}/>
+        {(!color) && <Vector isActive={value}/>}
+        <input type='checkbox' checked={value} onChange={() => dispatch(changeHandler(payload))}/>
       </label>
   )
 }
@@ -31,24 +32,6 @@ const Vector = ({isActive}) => {
              3.20987C1.41296 3.20805 1.61504 3.28869 1.76593 3.43441L4.40033 6.06881L10.2347 0.234412C10.3847
               0.0844356 10.5882 0.000183105 10.8003 0.000183105C11.0125 0.000183105 11.2159 0.0844356 11.3659
                0.234412Z" fill={isActive ? "#121212" : "none"}/>
-      </svg>
-  )
-}
-const Ring = ({isActive}) => {
-  return (
-      <svg
-          className="progress-ring"
-          width="14"
-          height="14"
-          overflow="visible">
-        <circle
-            className="progress-ring__circle"
-            stroke={isActive ? "#575454" : "none"}
-            strokeWidth="1"
-            fill="transparent"
-            r="8"
-            cx="7"
-            cy="7"/>
       </svg>
   )
 }

@@ -1,12 +1,24 @@
-import {CLOTHESNAVBAR} from "../../constants/menuConst";
 import ClothesNavBarStyle from "./ClothesNavBar.module.css";
+import {useDispatch, useSelector} from "react-redux";
+import {setSelectedParticulars} from "../../redux/clothesReducer";
+import classNames from "classnames/bind";
 
-const ClothesNavBar = () => {
+const ClothesNavBar = ({clothesNavBar, productType}) => {
+  const selectedParticular = useSelector(state => state.clothes[productType].selectedParticulars)
+  const dispatch = useDispatch();
 
-  const navBarList = CLOTHESNAVBAR.map(item =>
-  <li className={ClothesNavBarStyle.list} key={item.id}>
-    {item.name}
-  </li>
+  const cs = classNames.bind(ClothesNavBarStyle);
+
+  const navBarList = clothesNavBar.map(item =>
+      <li key={item.id}>
+        <button className={cs('button', {activeButton: selectedParticular === item.filterName})}
+                onClick={() =>
+                    dispatch(setSelectedParticulars({gender: productType, particular: item.filterName}))
+                }
+                data-test-id={`clothes-${productType}-${item.filterName}`}>
+          {item.name}
+        </button>
+      </li>
   )
 
   return (

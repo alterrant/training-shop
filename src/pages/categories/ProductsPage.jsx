@@ -6,16 +6,18 @@ import FilterCategories from "../../components/filter/FilterCategories";
 import SelectedFilters from "../../components/filter/SelectedFilters";
 import Clothes from "../../components/clothes/clothesList/Clothes";
 import ClothesStyle from "../../components/clothes/ClothesMain.module.css";
-import {useFilter} from "../../hooks/useFilter";
-import {getClothes} from "../../encapsulatedCommonLogics/distributions";
+import {useProducts} from "../../hooks/useProducts";
+import {getGenderProducts} from "../../encapsulatedCommonLogics/getProducts";
+import {PRODUCTS} from "../../products";
+import {useSelector} from "react-redux";
 
 const ProductsPage = ({productType, tittle}) => {
-
-  const product = getClothes(productType);
-
   const [isLoading] = useState(true);
   const [isOpenedFilter, setOpenedStatusFilter] = useState(false);
-  const selectedFiltersLists = useFilter();
+
+  const selectedFiltersLists = useSelector(state => state.filter.selectedFilters);
+  const genderProducts = getGenderProducts(productType, PRODUCTS);
+  const products = useProducts(productType, genderProducts, selectedFiltersLists, setOpenedStatusFilter);
 
   return (
       <article data-test-id={`products-page-${productType}`}>
@@ -23,9 +25,9 @@ const ProductsPage = ({productType, tittle}) => {
         <FilterBar isOpenedFilter={isOpenedFilter}
                    setOpenedStatusFilter={setOpenedStatusFilter}/>
         {(selectedFiltersLists.length > 0) && <SelectedFilters selectedFiltersLists={selectedFiltersLists}/>}
-        {isOpenedFilter && <FilterCategories/>}
+        {isOpenedFilter && <FilterCategories productType={productType}/>}
         <div className={ClothesStyle.closesWrapper}>
-          <Clothes product={product}/>
+          {(products.length > 0) ? <Clothes product={products}/> : <div>Sorry, we haven't available products</div>}
         </div>
         {isLoading && <Preloader/>}
       </article>

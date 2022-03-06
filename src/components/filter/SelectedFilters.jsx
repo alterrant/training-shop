@@ -10,7 +10,7 @@ const SelectedFilters = ({selectedFiltersLists}) => {
           className={ActiveFiltersStyle.selectedFilterText}>
         <RemoveFilter filterType={item.filterType} filterValue={item.filterValue}/>
         <p>
-          {`${item.filterType}: ${item.filterValue}`}
+          {`${item.filterType[0].toUpperCase() + item.filterType.slice(1)}: ${item.filterValue}`}
         </p>
       </li>)
 

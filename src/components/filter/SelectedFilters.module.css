@@ -32,8 +32,8 @@
 }
 .selectedFilterText > p {
   height: 22px;
-  padding-top: 1px;
 }
 .removeFilter {
   cursor: pointer;
+  display: flex;
 }

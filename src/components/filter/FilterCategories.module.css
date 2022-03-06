@@ -17,6 +17,7 @@
 }
 
 .column {
+  padding-left: 1px;
   max-height: 272px;
   width: 100%;
   max-width: 234px;
@@ -29,7 +30,7 @@
 
 /* полоса прокрутки (скроллбар) */
 .column::-webkit-scrollbar {
-  width: 3px; /* ширина для вертикального скролла */
+  width:3px; /* ширина для вертикального скролла */
   background-color: #E6E6E6;
 }
 

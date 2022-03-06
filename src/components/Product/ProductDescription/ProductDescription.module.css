@@ -25,13 +25,16 @@
   opacity: 0.6;
 }
 .colorWrapper img {
+  object-position: center;
+  object-fit: cover;
   height: 100%;
   width: 100%;
 }
 
 .productSizes {
-  width: 40px;
+  min-width: 40px;
   height: 40px;
+  padding: 0 14px 0 14px;
   background-color: #F8F8F8;
 
   display: flex;
@@ -152,4 +155,9 @@
 }
 .selected {
   border: 2px solid black;
+}
+
+.coloredProductsImg {
+  max-width: 64px;
+  max-height: 64px;
 }

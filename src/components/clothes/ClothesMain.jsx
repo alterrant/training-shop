@@ -3,12 +3,16 @@ import ClothesStyle from "./../clothes/ClothesMain.module.css";
 import Clothes from "./../clothes/clothesList/Clothes";
 import SeeAllButton from "./../clothes/SeeAllButton";
 import ClothesTitle from "../clothes/ClothesTitle";
-import {getClothes} from "../../encapsulatedCommonLogics/distributions";
-
+import {useParticularProducts} from "../../hooks/useProducts";
+import {getGenderProducts} from "../../encapsulatedCommonLogics/getProducts";
+import {PRODUCTS} from "../../products";
 
 const ClothesMain = ({tittle, productType}) => {
 
-  const product = getClothes(productType);
+  //genderProducts будут передаваться пропсами
+  const genderProducts = getGenderProducts(productType, PRODUCTS);
+
+  const {selectedParticularProducts, clothesNavBar} = useParticularProducts(productType, genderProducts);
 
   return (
       <article className={ClothesStyle.clothes} data-test-id={`clothes-${productType}`}>
@@ -16,10 +20,10 @@ const ClothesMain = ({tittle, productType}) => {
           <ClothesTitle>
             {tittle}
           </ClothesTitle>
-          <ClothesNavBar/>
+          <ClothesNavBar clothesNavBar={clothesNavBar} productType={productType}/>
         </div>
         <div className={ClothesStyle.closesWrapper}>
-          <Clothes product={product}/>
+          {clothesNavBar[0].id && <Clothes product={selectedParticularProducts}/>}
         </div>
         <SeeAllButton/>
       </article>

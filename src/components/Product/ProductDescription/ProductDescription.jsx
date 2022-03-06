@@ -11,6 +11,7 @@ import Reviews from "../../reviews/Reviews";
 import {useDispatch, useSelector} from "react-redux";
 import classNames from 'classnames/bind';
 import {setColor, setSize} from "../../../redux/productReducer";
+import {getProductAvailableColors} from "../../../encapsulatedCommonLogics/filters";
 
 const ProductDescription = ({product, selectedCategoriesProduct}) => {
 
@@ -19,12 +20,14 @@ const ProductDescription = ({product, selectedCategoriesProduct}) => {
   const dispatch = useDispatch();
 
   const cx = classNames.bind(ProductDescriptionStyle);
+  const unicColoredProducts = getProductAvailableColors(product);
+  const unicProductColors = unicColoredProducts.map(item => item.color);
 
-  const coloredProducts = product.images.map((item) =>
-      <li className={cx({selected: selectedColor === item.color})}
+  const coloredProducts = unicColoredProducts.map((item) =>
+      <li className={cx({selected: selectedColor === item.color}, 'coloredProductsImg')}
           key={item.id}
           onClick={() => dispatch(setColor(item.color))}>
-        <img src={item.url} alt={item.id}/>
+        <img src={`https://training.cleverland.by/shop${item.url}`} alt={`product ${item.color}`}/>
       </li>)
 
   const productSizes = product.sizes.map(size =>
@@ -59,7 +62,7 @@ const ProductDescription = ({product, selectedCategoriesProduct}) => {
         </div>
         <Partition/>
         <div className={ProductDescriptionStyle.priceWrapper}>
-          <pre><p className={ProductDescriptionStyle.price}>{product.price}</p></pre>
+          <pre><p className={ProductDescriptionStyle.price}>{`$ ${product.price}`}</p></pre>
           <div className={ProductDescriptionStyle.addToCardWrapper}>
             <AddToCard/>
           </div>
@@ -81,14 +84,14 @@ const ProductDescription = ({product, selectedCategoriesProduct}) => {
         <div className={ProductDescriptionStyle.additionalInformWrapper}>
           <p>ADDITIONAL INFORMATION</p>
           <ul className={ProductDescriptionStyle.additionalInform}>
-            <li >Color: <span>{product.colors.join(', ')}</span></li>
+            <li >Color: <span>{unicProductColors.join(', ')}</span></li>
             <li>Size: <span>{product.sizes.join(', ')}</span></li>
-            <li>Material: <span>{product.materials.join(', ')}</span></li>
+            <li>Material: <span>{product.material}</span></li>
           </ul>
         </div>
         <Partition/>
         <div className={ProductDescriptionStyle.reviewsMargin}>
-          <Reviews reviews={product.reviews}/>
+          <Reviews reviews={product.reviews} rating={product.rating}/>
         </div>
         <Partition/>
       </div>

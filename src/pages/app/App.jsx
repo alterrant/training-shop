@@ -5,13 +5,13 @@ import {Outlet} from "react-router-dom";
 
 const App = () => {
 
-  return (
-      <div className={AppStyle.app} data-test-id='app'>
-        <Header/>
-        <Outlet />
-        <Footer/>
-      </div>
-  )
+    return (
+        <div className={AppStyle.app} data-test-id='app'>
+          <Header/>
+          <Outlet/>
+          <Footer/>
+        </div>
+    )
 }
 
 export default App;

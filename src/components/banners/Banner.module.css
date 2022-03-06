@@ -15,10 +15,11 @@
 }
 .bannerWrapper {
   min-height: 48px;
-  width: 100%;
-  max-width: 118px;
+  min-width: 118px;
+  max-width: max-content;
   border-radius: 4px;
   background-color: #FFFFFF;
+  padding: 13px 24px 13px 24px;
 
   display: flex;
   flex-direction: column;
