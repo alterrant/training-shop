@@ -13,12 +13,12 @@ export const Router = () => {
   const isInit = useSelector((state) => state.initialize.isInit);
   // const dispatch = useStableDispatch();
   const dispatch = useDispatch();
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
 
   useEffect(() => {
     //потом будет логика инициализации
     stableDispatch(setInitSuccess());
-  }, []);
+  }, [stableDispatch]);
 
   if (isInit) {
     return (
