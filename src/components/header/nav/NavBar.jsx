@@ -14,7 +14,7 @@ const NavBar = () => {
   const className = useClassNames('isMenuOpen', NavBarStyle, 'fixedLeftMenu', 'menu', 'header');
 
   const menu = MENU.map(item =>
-      <li onClick={(event => handleClick(event))} className={NavBarStyle.menuItem} key={item.id}>
+      <li className={NavBarStyle.menuItem} key={item.id}>
         <NavLink
             className={NavBarStyle.menuItem}
             to={`/${item.path}`}
@@ -24,14 +24,18 @@ const NavBar = () => {
       </li>)
 
   const handleClick = (event) => {
-    if (event.target.className !== 'NavBar_menuItem__iAC4P') {
+
+    if (isMenuOpen && event.target.className !== 'NavBar_menuItem__iAC4P') {
+
       dispatch(menuToggle());
       changeBodyOverflow(isMenuOpen);
     }
   }
 
   return (
-      <ul className={className} data-test-id={'burger-menu'}>
+      <ul onClick={(event => handleClick(event))}
+          className={className}
+          data-test-id={'burger-menu'}>
         {menu}
       </ul>
   )
