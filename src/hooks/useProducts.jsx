@@ -1,5 +1,5 @@
-import {useCallback, useEffect, useMemo} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useEffect, useMemo} from "react";
+import {useSelector} from "react-redux";
 import {filterProducts, getAvailableParticulars} from "../encapsulatedCommonLogics/filters";
 import {filterProductsByParticulars} from "../encapsulatedCommonLogics/getProducts";
 import {
@@ -17,9 +17,7 @@ export const useParticularProducts = (productType, genderProducts) => {
   const selectedParticularProducts = useSelector(state => state.clothes?.[productType]?.products);
   const clothesNavBar = useSelector(state => state.clothes?.[productType]?.navBar);
   const selectedParticular = useSelector(state => state.clothes?.[productType]?.selectedParticulars);
-  // const dispatch = useStableDispatch();
-  const dispatch = useDispatch();
-  const stableDispatch = useCallback(dispatch, [dispatch]);
+  const stableDispatch = useStableDispatch();
   const memorizedGenderProducts = useMemo(() => genderProducts, [genderProducts]);
   const memorizedProductType = useMemo(() => productType, [productType]);
 
@@ -30,13 +28,13 @@ export const useParticularProducts = (productType, genderProducts) => {
     stableDispatch(setSelectedParticulars({gender: memorizedProductType, particular: navBar[0]?.filterName}));
 
     return () => stableDispatch(resetParticulars({gender: memorizedProductType}));
-  }, []);
+  }, [memorizedGenderProducts, memorizedProductType, stableDispatch]);
 
   useEffect(() => {
     const filteredProd = filterProductsByParticulars({memorizedGenderProducts, selectedParticular});
 
     stableDispatch(setProducts({gender: memorizedProductType, products: filteredProd}));
-  }, [selectedParticular]);
+  }, [selectedParticular, memorizedGenderProducts, memorizedProductType, stableDispatch]);
 
   return {selectedParticularProducts, clothesNavBar};
 }
@@ -44,23 +42,19 @@ export const useParticularProducts = (productType, genderProducts) => {
 export const useProducts = (productType, genderProducts, selectedFiltersLists, setOpenedStatusFilter) => {
   const products = useSelector(state => state.clothes?.[productType]?.products);
   const page = useParams();
-  // const dispatch = useStableDispatch();
-  const dispatch = useDispatch();
-  const stableDispatch = useCallback(dispatch, [dispatch]);
+  const stableDispatch = useStableDispatch();
   const memorizedGenderProducts = useMemo(() => genderProducts, [genderProducts]);
   const memorizedProductType = useMemo(() => productType, [productType]);
-  const memorizedSelectedFiltersLists = useMemo(() => selectedFiltersLists, [selectedFiltersLists]);
-  const stableSetOpenedStatusFilter = useCallback(setOpenedStatusFilter, [page])
 
   useEffect(() => {
     //Убрать баг можно, создав переменную isLoaded в useParams. Initial = false, toggle при смене useEffect(..., [page]);
-    if (memorizedSelectedFiltersLists.length === 0 && products.length !== 0) stableDispatch(setProducts({gender: memorizedProductType, products: memorizedGenderProducts}));
-    else if (memorizedSelectedFiltersLists.length !== 0) {
-      const filteredProducts = filterProducts(memorizedGenderProducts, memorizedSelectedFiltersLists);
+    if (selectedFiltersLists.length === 0 && products.length !== 0) stableDispatch(setProducts({gender: memorizedProductType, products: memorizedGenderProducts}));
+    else if (selectedFiltersLists.length !== 0) {
+      const filteredProducts = filterProducts(memorizedGenderProducts, selectedFiltersLists);
 
       stableDispatch(setProducts({gender: memorizedProductType, products: filteredProducts}));
     }
-  }, [memorizedSelectedFiltersLists.length]);
+  }, [selectedFiltersLists.length, memorizedGenderProducts, memorizedProductType, selectedFiltersLists, products.length, stableDispatch]);
 
   useEffect(() => {
     stableDispatch(setProducts({gender: memorizedProductType, products: memorizedGenderProducts}));
@@ -68,9 +62,9 @@ export const useProducts = (productType, genderProducts, selectedFiltersLists, s
     return () => {
       stableDispatch(resetProducts({gender: memorizedProductType}));
       stableDispatch(removeAllFilters());
-      stableSetOpenedStatusFilter(false);
+      setOpenedStatusFilter(false);
     }
-  }, [page]);
+  }, [page, memorizedGenderProducts, memorizedProductType, stableDispatch, setOpenedStatusFilter]);
 
   return products;
 }
