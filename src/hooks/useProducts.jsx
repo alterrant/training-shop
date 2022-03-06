@@ -1,5 +1,5 @@
-import {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useCallback, useEffect, useMemo} from "react";
+import {useSelector} from "react-redux";
 import {filterProducts, getAvailableParticulars} from "../encapsulatedCommonLogics/filters";
 import {filterProductsByParticulars} from "../encapsulatedCommonLogics/getProducts";
 import {
@@ -11,26 +11,29 @@ import {
 } from "../redux/clothesReducer";
 import {useParams} from "react-router-dom";
 import {removeAllFilters} from "../redux/filterReducer";
+import {useStableDispatch} from "./useRedux";
 
 export const useParticularProducts = (productType, genderProducts) => {
   const selectedParticularProducts = useSelector(state => state.clothes?.[productType]?.products);
   const clothesNavBar = useSelector(state => state.clothes?.[productType]?.navBar);
   const selectedParticular = useSelector(state => state.clothes?.[productType]?.selectedParticulars);
-  const dispatch = useDispatch();
+  const dispatch = useStableDispatch();
+  const memorizedGenderProducts = useMemo(() => genderProducts, [genderProducts]);
+  const memorizedProductType = useMemo(() => productType, [productType]);
 
   useEffect(() => {
-    const navBar = getAvailableParticulars(genderProducts);
+    const navBar = getAvailableParticulars(memorizedGenderProducts);
 
-    dispatch(setAvailableParticulars({gender: productType, clothesNavBar: navBar}));
-    dispatch(setSelectedParticulars({gender: productType, particular: navBar[0]?.filterName}));
+    dispatch(setAvailableParticulars({gender: memorizedProductType, clothesNavBar: navBar}));
+    dispatch(setSelectedParticulars({gender: memorizedProductType, particular: navBar[0]?.filterName}));
 
-    return () => dispatch(resetParticulars({gender: productType}));
+    return () => dispatch(resetParticulars({gender: memorizedProductType}));
   }, []);
 
   useEffect(() => {
-    const filteredProd = filterProductsByParticulars({genderProducts, selectedParticular});
+    const filteredProd = filterProductsByParticulars({memorizedGenderProducts, selectedParticular});
 
-    dispatch(setProducts({gender: productType, products: filteredProd}));
+    dispatch(setProducts({gender: memorizedProductType, products: filteredProd}));
   }, [selectedParticular]);
 
   return {selectedParticularProducts, clothesNavBar};
@@ -39,25 +42,29 @@ export const useParticularProducts = (productType, genderProducts) => {
 export const useProducts = (productType, genderProducts, selectedFiltersLists, setOpenedStatusFilter) => {
   const products = useSelector(state => state.clothes?.[productType]?.products);
   const page = useParams();
-  const dispatch = useDispatch();
+  const dispatch = useStableDispatch();
+  const memorizedGenderProducts = useMemo(() => genderProducts, [genderProducts]);
+  const memorizedProductType = useMemo(() => productType, [productType]);
+  const memorizedSelectedFiltersLists = useMemo(() => selectedFiltersLists, [selectedFiltersLists]);
+  const stableSetOpenedStatusFilter = useCallback(setOpenedStatusFilter, [page])
 
   useEffect(() => {
     //Убрать баг можно, создав переменную isLoaded в useParams. Initial = false, toggle при смене useEffect(..., [page]);
-    if (selectedFiltersLists.length === 0 && products.length !== 0) dispatch(setProducts({gender: productType, products: genderProducts}));
-    else if (selectedFiltersLists.length !== 0) {
-      const filteredProducts = filterProducts(genderProducts, selectedFiltersLists);
-      debugger
-      dispatch(setProducts({gender: productType, products: filteredProducts}));
+    if (memorizedSelectedFiltersLists.length === 0 && products.length !== 0) dispatch(setProducts({gender: memorizedProductType, products: memorizedGenderProducts}));
+    else if (memorizedSelectedFiltersLists.length !== 0) {
+      const filteredProducts = filterProducts(memorizedGenderProducts, memorizedSelectedFiltersLists);
+
+      dispatch(setProducts({gender: memorizedProductType, products: filteredProducts}));
     }
-  }, [selectedFiltersLists.length]);
+  }, [memorizedSelectedFiltersLists.length]);
 
   useEffect(() => {
-    dispatch(setProducts({gender: productType, products: genderProducts}));
+    dispatch(setProducts({gender: memorizedProductType, products: memorizedGenderProducts}));
 
     return () => {
-      dispatch(resetProducts({gender: productType}));
+      dispatch(resetProducts({gender: memorizedProductType}));
       dispatch(removeAllFilters());
-      setOpenedStatusFilter(false);
+      stableSetOpenedStatusFilter(false);
     }
   }, [page]);
 

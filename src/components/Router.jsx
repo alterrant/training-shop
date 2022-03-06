@@ -4,16 +4,19 @@ import ProductPage from "../pages/product/ProductPage";
 import App from "../pages/app/App";
 import ProductsPage from "../pages/categories/ProductsPage";
 import {useSelector} from "react-redux";
+import {useEffect} from "react";
+import {setInitSuccess} from "../redux/initializeReducer";
+import {useStableDispatch} from "../hooks/useRedux";
 
 export const Router = () => {
 
   const isInit = useSelector((state) => state.initialize.isInit);
-  /*const dispatch = useDispatch();
+  const dispatch = useStableDispatch();
 
   useEffect(() => {
     //потом будет логика инициализации
     dispatch(setInitSuccess());
-  }, []);*/
+  }, []);
 
   if (isInit) {
     return (
