@@ -3,7 +3,7 @@ import FilterCategoriesStyle from "./FilterCategories.module.css";
 import Filter from "./Filter";
 import {chooseFilterAction} from "../../encapsulatedCommonLogics/distributionFilters";
 
-const FilterCategories = (productType) => {
+const FilterCategories = ({productType}) => {
 
   const filters = useSelector((state => state.filter.categories));
 
