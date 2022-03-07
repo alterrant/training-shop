@@ -13,9 +13,9 @@ const FilterCategories = (productType) => {
   </ul>)
 
   return (
-      <div className={FilterCategoriesStyle.container}>
-        <ul className={FilterCategoriesStyle.wrapper}
-            data-test-id={`filters-${productType}`}>
+      <div className={FilterCategoriesStyle.container}
+           data-test-id={`filters-${productType}`}>
+        <ul className={FilterCategoriesStyle.wrapper}>
           {filterLists}
         </ul>
       </div>

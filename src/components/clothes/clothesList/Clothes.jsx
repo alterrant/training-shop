@@ -2,7 +2,7 @@ import ClothesStyle from "./Clothes.module.css";
 import {NavLink} from "react-router-dom";
 import RatingStars from "../../common/RatingStars";
 
-const Clothes = ({product}) => {
+const Clothes = ({product, productType}) => {
 
   const listClothes = product.map(item =>
       <li key={item.id}>
@@ -11,7 +11,8 @@ const Clothes = ({product}) => {
   );
 
   return (
-      <ul className={ClothesStyle.wrapper}>
+      <ul data-test-id={`clothes-card-${productType}`}
+          className={ClothesStyle.wrapper}>
         {listClothes}
       </ul>
   )
@@ -23,8 +24,7 @@ export const ClothesItem = ({item}) => {
 
   return (
       <NavLink className={ClothesStyle.cardsItem}
-               to={`/${item.category}/${item.id}`}
-               data-test-id={`clothes-card-${item.productType}`}>
+               to={`/${item.category}/${item.id}`}>
         {item.discount && <Discount discount={item.discount}/>}
         <div>
           {Array.isArray(item.images) ?

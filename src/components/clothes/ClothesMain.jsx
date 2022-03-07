@@ -23,7 +23,7 @@ const ClothesMain = ({tittle, productType}) => {
           <ClothesNavBar clothesNavBar={clothesNavBar} productType={productType}/>
         </div>
         <div className={ClothesStyle.closesWrapper}>
-          {clothesNavBar[0].id && <Clothes product={selectedParticularProducts}/>}
+          {clothesNavBar[0].id && <Clothes product={selectedParticularProducts} productType={productType}/>}
         </div>
         <SeeAllButton/>
       </article>
