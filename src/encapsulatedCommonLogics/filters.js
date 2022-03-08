@@ -73,8 +73,8 @@ const isProductConformFilter = (product, curFilter) => {
           (minFilterPrice <= product[curFilter.filterType] && (maxFilterPrice >= product[curFilter.filterType]));
     case  'brand':
       return product[curFilter.filterType] === curFilter.filterValue;
-    case 'sizes':
-      return product[curFilter.filterType].find(item => item === curFilter.filterValue);
+    case 'size':
+      return product['sizes'].find(item => item === curFilter.filterValue);
     case 'color':
       return product.images.find(productPhoto => productPhoto[curFilter.filterType] === curFilter.filterValue);
     default:

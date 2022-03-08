@@ -90,13 +90,13 @@ export const useProducts = (productType, genderProducts, selectedFiltersLists, s
 
 const getAvailableFilters = (availableColors, availableSizes, availableBrands) => {
   const filters = {}
-  const filterTypes = ['color', 'sizes', 'brand'];
+  const filterTypes = ['color', 'size', 'brand'];
 
   const availableFilter = (filterType) => {
     switch (filterType) {
       case 'color':
         return availableColors;
-      case 'sizes':
+      case 'size':
         return availableSizes;
       case 'brand':
         return availableBrands;

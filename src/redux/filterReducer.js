@@ -3,7 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 const initialState = {
   selectedFilters: [],
   color: [],
-  sizes: [],
+  size: [],
   brand: [],
   price: [
     {id: '1', name: '$500+', selected: false},
@@ -12,7 +12,7 @@ const initialState = {
     {id: '4', name: '$50-$100', selected: false},
     {id: '5', name: '$0-$50', selected: false}
   ],
-  categories: ['color', 'sizes', 'brand', 'price']
+  categories: ['color', 'size', 'brand', 'price']
 }
 
 export const counterSlice = createSlice({
@@ -21,14 +21,14 @@ export const counterSlice = createSlice({
   reducers: {
     getFilters: ((state, action) => {
       state.color = action.payload.color;
-      state.sizes = action.payload.sizes;
+      state.size = action.payload.size;
       state.brand = action.payload.brand;
     }),
     getColor: ((state, action) => {
       state.color = action.payload;
     }),
-    getSizes: ((state, action) => {
-      state.sizes = action.payload;
+    getSize: ((state, action) => {
+      state.size = action.payload;
     }),
     getBrand: ((state, action) => {
       state.brand = action.payload;
@@ -44,12 +44,12 @@ export const counterSlice = createSlice({
       if (chosenColor.selected) state.selectedFilters.push({filterType: 'color', filterValue: chosenColor.name});
       else deleteSelectedFilter(state, 'color', chosenColor.name);
     }),
-    setSizes: ((state, action) => {
-      const chosenSizes = state.sizes.find(item => item.name === action.payload);
-      chosenSizes.selected = !chosenSizes.selected;
+    setSize: ((state, action) => {
+      const chosenSize = state.size.find(item => item.name === action.payload);
+      chosenSize.selected = !chosenSize.selected;
 
-      if (chosenSizes.selected) state.selectedFilters.push({filterType: 'sizes', filterValue: chosenSizes.name});
-      else deleteSelectedFilter(state, 'sizes', chosenSizes.name);
+      if (chosenSize.selected) state.selectedFilters.push({filterType: 'size', filterValue: chosenSize.name});
+      else deleteSelectedFilter(state, 'size', chosenSize.name);
     }),
     setBrand: ((state, action) => {
       const chosenBrand = state.brand.find(item => item.name === action.payload);
@@ -75,14 +75,14 @@ export const counterSlice = createSlice({
         })
       })*/
       state.color = [];
-      state.sizes = [];
+      state.size = [];
       state.brand = [];
       state.selectedFilters = [];
     }),
   }
 })
 
-export const {getFilters, setColor, setSizes, setBrand, setPrice, removeAllFilters} = counterSlice.actions;
+export const {getFilters, setColor, setSize, setBrand, setPrice, removeAllFilters} = counterSlice.actions;
 
 export default counterSlice.reducer;
 
