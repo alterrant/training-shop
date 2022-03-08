@@ -5,14 +5,14 @@ import RatingStars from "../../common/RatingStars";
 const Clothes = ({product, productType}) => {
 
   const listClothes = product.map(item =>
-      <li key={item.id}>
+      <li key={item.id}
+          data-test-id={`clothes-card-${productType}`}>
         <ClothesItem item={item}/>
       </li>
   );
 
   return (
-      <ul data-test-id={`clothes-card-${productType}`}
-          className={ClothesStyle.wrapper}>
+      <ul className={ClothesStyle.wrapper}>
         {listClothes}
       </ul>
   )
