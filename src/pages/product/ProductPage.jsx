@@ -16,7 +16,7 @@ const ProductPage = ({productType}) => {
   /*const relatedProducts = useSelector(state => state.product.relatedProducts);*/
 
   return (
-      <>
+      <div data-test-id={`product-page-${productType}`}>
         <div>
           <Tittle tittle={productInfo.name}
                   rating={productInfo.rating}
@@ -27,7 +27,7 @@ const ProductPage = ({productType}) => {
         {productInfo.id && <Product product={productInfo}
                                     selectedCategoriesProduct={selectedCategoriesProduct}/>}
         <RelatedProducts/>
-      </>
+      </div>
   )
 }
 
