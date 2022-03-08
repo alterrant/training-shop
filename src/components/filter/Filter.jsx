@@ -9,7 +9,7 @@ const Filter = ({filterName, changeHandler}) => {
       <li className={FilterStyle.description} key={item.id}
           data-test-id={`filter-${filterName}-${item.name}`}>
         <div>
-          <Checkbox value={item.selected} payload={item.name} changeHandler={changeHandler} color={item.color}/>
+          <Checkbox value={item.selected} payload={item.name} changeHandler={changeHandler} filterName={filterName}/>
         </div>
         <div>{item.name}</div>
       </li>

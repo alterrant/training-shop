@@ -1,9 +1,10 @@
 import CheckboxStyle from "./Checkbox.module.css";
 import {useDispatch} from "react-redux";
 
-const Checkbox = ({color, value, payload, changeHandler}) => {
+const Checkbox = ({filterName, value, payload, changeHandler}) => {
 
   const dispatch = useDispatch();
+  const color = (filterName === 'color') ? payload : null;
 
   const customCheckboxStyle = `${CheckboxStyle.customCheckbox} ${value ? CheckboxStyle.customCheckboxActive : ""}`;
   const customRadioButtonStyle = `${CheckboxStyle.customRadioButton} ${value ? CheckboxStyle.customRadioButtonActive : ""}`;

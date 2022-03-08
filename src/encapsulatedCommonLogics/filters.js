@@ -83,7 +83,7 @@ const isProductConformFilter = (product, curFilter) => {
 }
 
 
-export const getAvailableFilters = (genderProducts) => {
+export const getUnicFilterValues = (genderProducts) => {
   const availableColors = new Set([]);
   const availableSizes = new Set([]);
   const availablePrices = new Set([]);
@@ -91,21 +91,22 @@ export const getAvailableFilters = (genderProducts) => {
 
   //поиск уникальных цветов
   genderProducts.forEach(item => {
-    item.images.forEach(images => availableColors.add(images.color))
+    item.images.forEach(images => availableColors.add(images.color));
   })
   //поиск уникальных размеров продуктов
   genderProducts.forEach(item => {
-    item.sizes.forEach(size => availableSizes.add(size))
+    item.sizes.forEach(size => availableSizes.add(size));
   })
   //поиск уникальных стоимостей
   genderProducts.forEach(item => {
-    availablePrices.add(item.price)
+    availablePrices.add(item.price);
   })
   //поиск уникальных брендов
   genderProducts.forEach(item => {
-    availableBrands.add(item.brand)
+    availableBrands.add(item.brand);
   })
-  return {availableColors, availableSizes, availablePrices, availableBrands}
+
+  return {availableColors, availableSizes, availableBrands};
 }
 
 export const getProductAvailableColors = (product) => {
