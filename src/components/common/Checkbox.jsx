@@ -15,7 +15,10 @@ const Checkbox = ({filterName, value, payload, changeHandler}) => {
 
       <label className={buttonStyle} style={{backgroundColor: `${color}`}}>
         {(!color) && <Vector isActive={value}/>}
-        <input type='checkbox' checked={value} onChange={() => dispatch(changeHandler(payload))}/>
+        <input data-test-id={`filter-${filterName}-${payload}`}
+               type='checkbox'
+               checked={value}
+               onChange={() => dispatch(changeHandler(payload))}/>
       </label>
   )
 }

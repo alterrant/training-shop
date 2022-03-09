@@ -7,8 +7,7 @@ const Filter = ({filterName, changeHandler}) => {
   const dispatch = useDispatch();
 
   const filter = filterList.map(item =>
-      <li className={FilterStyle.description} key={item.id}
-          data-test-id={`filter-${filterName}-${item.name}`}>
+      <li className={FilterStyle.description} key={item.id}>
         <Checkbox value={item.selected} payload={item.name} changeHandler={changeHandler} filterName={filterName}/>
         <div className={FilterStyle.label}
              onClick={() => dispatch(changeHandler(item.name))}>
