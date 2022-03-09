@@ -3,9 +3,9 @@ import {useState} from "react";
 import {WHITE, YELLOW} from "../../constants/colors";
 import {nanoid} from "nanoid";
 
-const RatingStars = ({rating}) => {
+const RatingStars = ({rating, isRatingInteractive = false}) => {
 
-  const [myRating, setMyRating] = useState(null)
+  const [myRating, setMyRating] = useState(null);
   const fiveElementsTemplate = [0, 1, 2, 3, 4];
 
   const starList = fiveElementsTemplate.map((item, index) => {
@@ -13,16 +13,19 @@ const RatingStars = ({rating}) => {
     if (myRating && (index + 1) <= myRating) return <Star setMyRating={setMyRating}
                                                           color={YELLOW}
                                                           index={index}
+                                                          isRatingInteractive={isRatingInteractive}
                                                           key={nanoid()}/>
 
     else if (!myRating && rating && (index + 1) <= rating) return <Star setMyRating={setMyRating}
                                                                         color={YELLOW}
                                                                         index={index}
+                                                                        isRatingInteractive={isRatingInteractive}
                                                                         key={nanoid()}/>
 
     return <Star setMyRating={setMyRating}
                  color={WHITE}
                  index={index}
+                 isRatingInteractive={isRatingInteractive}
                  key={nanoid()}/>
 
   })
@@ -35,12 +38,20 @@ const RatingStars = ({rating}) => {
 
 export default RatingStars;
 
-const Star = ({color, setMyRating, index}) => {
+const Star = ({color, setMyRating, index, isRatingInteractive}) => {
+
+  if (!isRatingInteractive) return (
+      <li className={RatingStarsStyle.item}>
+        <StarSVG fill={color}/>
+      </li>
+  )
+
   return (
       <li onMouseEnter={() => setMyRating(index + 1)}
           onMouseLeave={() => setMyRating(null)}
-          className={RatingStarsStyle.item}
-      ><StarSVG fill={color}/></li>
+          className={RatingStarsStyle.item}>
+        <StarSVG fill={color}/>
+      </li>
   )
 }
 
