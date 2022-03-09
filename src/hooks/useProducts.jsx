@@ -39,7 +39,7 @@ export const useParticularProducts = (productType, genderProducts) => {
   useEffect(() => {
     const filteredProd = filterProductsByParticulars({genderProducts, selectedParticular});
 
-    stableDispatch(setProducts({
+    selectedParticular && stableDispatch(setProducts({
       gender: productType,
       products: filteredProd
     }));
