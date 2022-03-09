@@ -1,17 +1,13 @@
 import RelatedProductsStyle from "./RelatedProducts.module.css";
 import {ClothesItem} from "../clothes/clothesList/Clothes";
-import {useSelector} from "react-redux";
 import {ReactComponent as Arrow} from "./../../assets/SVG/rightArrow.svg";
 import {Swiper, SwiperSlide} from "swiper/react";
-
 import {Navigation} from 'swiper';
 import 'swiper/css/grid';
 import 'swiper/css/navigation';
 import 'swiper/css';
 
-const RelatedProducts = () => {
-
-  const relatedProductsLists = useSelector(state => state.product.relatedProducts);
+const RelatedProducts = ({genderProducts}) => {
 
   return (
       <section className={RelatedProductsStyle.container}>
@@ -23,9 +19,7 @@ const RelatedProducts = () => {
           </div>
         </div>
         <div>
-          {/*<ul className={ClothesStyle.wrapper}>*/}
           <div className={RelatedProductsStyle.clothWrap} data-test-id='related-slider'>
-
             <Swiper
                 modules={[Navigation]}
                 spaceBetween={30}
@@ -44,7 +38,7 @@ const RelatedProducts = () => {
                 }
                 }
             >
-              {relatedProductsLists.map(item =>
+              {genderProducts.map(item =>
                   <SwiperSlide key={item.id}>
                     <ClothesItem item={item}/>
                   </SwiperSlide>
@@ -52,7 +46,6 @@ const RelatedProducts = () => {
             </Swiper>
           </div>
         </div>
-        {/*<Clothes product={relatedProductsLists}/>*/}
       </section>
   )
 }

@@ -4,16 +4,15 @@ import Product from "../../components/Product/Product";
 import RelatedProducts from "../../components/relatedProducts/RelatedProducts";
 import {useProduct} from "../../hooks/useProduct";
 import {PRODUCTS} from "../../products";
+import {getGenderProducts} from "../../encapsulatedCommonLogics/getProducts";
 
 const ProductPage = ({productType}) => {
 
   const products = PRODUCTS;
   const productInfo = useProduct({products, productType});
   const productInStore = useSelector(state => state.product.availabilityInStore);
-
-  // const productInfo = useSelector(state => state.product.productInfo);
+  const genderProducts = getGenderProducts(productType, PRODUCTS)
   const selectedCategoriesProduct = useSelector(state => state.product.selectedCategories);
-  /*const relatedProducts = useSelector(state => state.product.relatedProducts);*/
 
   return (
       <div data-test-id={`product-page-${productType}`}>
@@ -26,7 +25,7 @@ const ProductPage = ({productType}) => {
         </div>
         {productInfo.id && <Product product={productInfo}
                                     selectedCategoriesProduct={selectedCategoriesProduct}/>}
-        <RelatedProducts/>
+        <RelatedProducts genderProducts={genderProducts}/>
       </div>
   )
 }
