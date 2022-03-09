@@ -24,8 +24,8 @@ const ProductsPage = ({productType, tittle}) => {
         <Tittle tittle={tittle}/>
         <FilterBar isOpenedFilter={isOpenedFilter}
                    setOpenedStatusFilter={setOpenedStatusFilter}/>
-        {(selectedFiltersLists.length > 0) && <SelectedFilters selectedFiltersLists={selectedFiltersLists}/>}
         {isOpenedFilter && <FilterCategories productType={productType}/>}
+        {(selectedFiltersLists.length > 0) && <SelectedFilters selectedFiltersLists={selectedFiltersLists}/>}
         <div className={ClothesStyle.closesWrapper}>
           {(products.length > 0) ? <Clothes product={products} productType={productType}/> : <div>Sorry, we haven't available products</div>}
         </div>

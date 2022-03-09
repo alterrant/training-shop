@@ -9,3 +9,6 @@
   display: flex;
   gap: 8px;
 }
+.label {
+  cursor: pointer;
+}

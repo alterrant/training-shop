@@ -1,17 +1,19 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import FilterStyle from "./Filter.module.css";
 import Checkbox from "../common/Checkbox";
 
 const Filter = ({filterName, changeHandler}) => {
   const filterList = useSelector((state => state.filter[filterName]));
+  const dispatch = useDispatch();
 
   const filter = filterList.map(item =>
       <li className={FilterStyle.description} key={item.id}
           data-test-id={`filter-${filterName}-${item.name}`}>
-        <div>
-          <Checkbox value={item.selected} payload={item.name} changeHandler={changeHandler} filterName={filterName}/>
+        <Checkbox value={item.selected} payload={item.name} changeHandler={changeHandler} filterName={filterName}/>
+        <div className={FilterStyle.label}
+             onClick={() => dispatch(changeHandler(item.name))}>
+          {item.name}
         </div>
-        <div>{item.name}</div>
       </li>
   )
 
