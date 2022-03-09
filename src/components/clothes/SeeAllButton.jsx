@@ -1,10 +1,14 @@
 import SeeAllButtonStyle from "./SeeAllButton.module.css";
+import {NavLink} from "react-router-dom";
 
-const SeeAllButton = () => {
+const SeeAllButton = ({productType}) => {
   return (
-      <button className={SeeAllButtonStyle.button}>
+      <NavLink to={productType}
+               className={SeeAllButtonStyle.link}>
+        <button className={SeeAllButtonStyle.button}>
           See All
-      </button>
+        </button>
+      </NavLink>
   )
 }
 

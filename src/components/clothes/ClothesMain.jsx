@@ -25,7 +25,7 @@ const ClothesMain = ({tittle, productType}) => {
         <div className={ClothesStyle.closesWrapper}>
           {clothesNavBar[0].id && <Clothes product={selectedParticularProducts} productType={productType}/>}
         </div>
-        <SeeAllButton/>
+        <SeeAllButton productType={productType}/>
       </article>
   )
 }
