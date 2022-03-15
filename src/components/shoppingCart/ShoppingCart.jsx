@@ -7,7 +7,7 @@ import ShoppingCartProduct from "./product/ShoppingCartProduct";
 import Partition from "../common/Partition";
 import EmptyShoppingCart from "./emptyShoppingCart/EmptyShoppingCart";
 import {useStableDispatch} from "../../hooks/useRedux";
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import {changeBodyOverflow} from "../../encapsulatedCommonLogics/changeBoodyOverflow";
 import classNames from "classnames/bind";
 
@@ -23,24 +23,21 @@ const ShoppingCart = () => {
   const totalCartPrice = getTotalCartPrice({shoppingCartProducts});
 
   const cx = classNames.bind(ShoppingCartStyle);
-  const className = cx('background', (isShoppingCartOpen) ? 'visibilityVisible' : 'visibilityHidden')
+  const className = cx('background', (isShoppingCartOpen) ? 'visibilityVisible' : 'visibilityHidden');
 
   const handleShoppingCartKeyDown = (e) => {
     if (e.code === 'Escape') dispatch(shoppingCartToggle());
   }
 
   const closeShoppingCartHandler = (e) => {
-    if (isShoppingCartOpen && e.target.className ===
-        'ShoppingCart_background__SG2EI ShoppingCart_visibilityVisible__P-NFP') {
+    if (isShoppingCartOpen && e.target.className === className) {
+
       dispatch(shoppingCartToggle());
     }
   }
 
   useEffect(() => {
     changeBodyOverflow(!isShoppingCartOpen);
-  }, [isShoppingCartOpen]);
-
-  useEffect(() => {
     refCloseSVG.current.focus();
   }, [isShoppingCartOpen]);
 
@@ -56,7 +53,6 @@ const ShoppingCart = () => {
             </div>
             <button
                 ref={refCloseSVG}
-                autoFocus={true}
                 onKeyDown={(e) => handleShoppingCartKeyDown(e)}
                 onClick={() => dispatch(shoppingCartToggle())}
                 className={ShoppingCartStyle.closeSVG}>
@@ -77,6 +73,7 @@ export default ShoppingCart;
 
 const ShoppingCartContent = ({shoppingCartProducts, totalCartPrice}) => {
   const dispatch = useStableDispatch();
+  const [navigationStage, setNavigationStage] = useState('Item in Cart');
 
   const shoppingCartProductList = shoppingCartProducts.map(item =>
       <li key={`${item.color}+${item.size}`}>
@@ -87,7 +84,7 @@ const ShoppingCartContent = ({shoppingCartProducts, totalCartPrice}) => {
   return (
       <div className={ShoppingCartStyle.container}>
         <div>
-          <ShoppingCartNavigation/>
+          <ShoppingCartNavigation setNavigationStage={setNavigationStage} navigationStage={navigationStage}/>
           <ul className={ShoppingCartStyle.products}>
             {shoppingCartProductList}
           </ul>

@@ -12,7 +12,7 @@ const ShoppingCartProduct = ({shoppingCartProduct}) => {
   const dispatch = useStableDispatch();
   const productTotalPrice = getProductTotalPrice({shoppingCartProduct});
 
-  return (//{productId: null, img: null, name: null, color: null, size: null, price: null, productCounter: null}
+  return (
       <div className={ShoppingCartProductStyle.wrapper}
            data-test-id={'cart-card'}>
         <div className={ShoppingCartProductStyle.image}>
@@ -35,6 +35,7 @@ const ShoppingCartProduct = ({shoppingCartProduct}) => {
                   color: shoppingCartProduct.color,
                   size: shoppingCartProduct.size
                 }))}
+                        disabled={shoppingCartProduct.productQuantity === 1}
                         data-test-id={'minus-product'}>
                   -
                 </button>

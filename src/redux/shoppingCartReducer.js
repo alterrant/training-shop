@@ -27,9 +27,10 @@ export const shoppingCartSlice = createSlice({
     })),
     decrementProductQuantity: (((state, action) => {
       const productInCartIndex = findProductIndexInCart({state, action});
-
+      // не понравилось ментору. Хочет отключить кнопку, вместо удаления
       if (state.products[productInCartIndex].productQuantity === 1) deleteProductFromCart({productInCartIndex, state});
       else state.products[productInCartIndex].productQuantity--;
+      // if (state.products[productInCartIndex].productQuantity > 1) state.products[productInCartIndex].productQuantity--;
     })),
   }
 })

@@ -2,11 +2,18 @@
   display: flex;
   gap: 12px;
   align-items: center;
-  margin-bottom: 22px;
+  margin: 18px 0 22px 0;
 }
-.wrapper > p {
+
+.navigationStage {
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 130%;
+
   color: #E6E6E6;
 }
-.active {
+.navigationStageActive {
   color: #121212;
 }

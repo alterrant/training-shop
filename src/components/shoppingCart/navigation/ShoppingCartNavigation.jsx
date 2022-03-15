@@ -1,13 +1,17 @@
 import ShoppingCartNavigationStyle from './ShoppingCartNavigation.module.css';
+import classNames from "classnames/bind";
 
-const ShoppingCartNavigation = () => {
+const ShoppingCartNavigation = ({navigationStage}) => {
+  const cx = classNames.bind(ShoppingCartNavigationStyle);
+
+  const stagesList = ['Item in Cart', '/', 'Delivery info', '/', 'Payment'].map(item => {
+    if (item === '/') return <p>{item}</p>
+    return <p className={cx('navigationStage', {navigationStageActive: item === navigationStage})}>{item}</p>
+  })
+
   return (
       <div className={ShoppingCartNavigationStyle.wrapper}>
-        <p>Item in Cart</p>
-        <p>/</p>
-        <p>Delivery info</p>
-        <p>/</p>
-        <p>Payment</p>
+        {stagesList}
       </div>
   )
 }

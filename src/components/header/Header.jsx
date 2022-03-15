@@ -10,6 +10,6 @@ const Header = () => {
         <Nav/>
       </header>
   )
-}
+};
 
 export default Header;
