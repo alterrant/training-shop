@@ -7,8 +7,13 @@ import ShoppingCartProduct from "./product/ShoppingCartProduct";
 import Partition from "../common/Partition";
 import EmptyShoppingCart from "./emptyShoppingCart/EmptyShoppingCart";
 import {useStableDispatch} from "../../hooks/useRedux";
+import {useEffect, useRef} from "react";
+import {changeBodyOverflow} from "../../encapsulatedCommonLogics/changeBoodyOverflow";
+import classNames from "classnames/bind";
 
 const ShoppingCart = () => {
+  const refCloseSVG = useRef(null);
+
   const dispatch = useStableDispatch();
 
   const isShoppingCartOpen = useSelector((state => state.shoppingCart.isShoppingCartOpen));
@@ -17,19 +22,32 @@ const ShoppingCart = () => {
 
   const totalCartPrice = getTotalCartPrice({shoppingCartProducts});
 
+  const cx = classNames.bind(ShoppingCartStyle);
+  const className = cx('background', (isShoppingCartOpen) ? 'visibilityVisible' : 'visibilityHidden')
+
   const handleShoppingCartKeyDown = (e) => {
     if (e.code === 'Escape') dispatch(shoppingCartToggle());
   }
 
   const closeShoppingCartHandler = (e) => {
-    if (isShoppingCartOpen && e.target.className === 'ShoppingCart_background__SG2EI') {
+    if (isShoppingCartOpen && e.target.className ===
+        'ShoppingCart_background__SG2EI ShoppingCart_visibilityVisible__P-NFP') {
       dispatch(shoppingCartToggle());
     }
   }
 
+  useEffect(() => {
+    changeBodyOverflow(!isShoppingCartOpen);
+  }, [isShoppingCartOpen]);
+
+  useEffect(() => {
+    refCloseSVG.current.focus();
+  }, [isShoppingCartOpen]);
+
   return (
-      <div className={ShoppingCartStyle.background}
-           onClick={(e) => closeShoppingCartHandler(e)}>
+      <div className={className}
+           onClick={(e) => closeShoppingCartHandler(e)}
+           tabIndex={'0'}>
         <section className={ShoppingCartStyle.wrapper}
                  data-test-id={'cart'}>
           <div className={ShoppingCartStyle.header}>
@@ -37,6 +55,7 @@ const ShoppingCart = () => {
               Shopping Cart
             </div>
             <button
+                ref={refCloseSVG}
                 autoFocus={true}
                 onKeyDown={(e) => handleShoppingCartKeyDown(e)}
                 onClick={() => dispatch(shoppingCartToggle())}

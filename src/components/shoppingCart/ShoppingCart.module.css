@@ -1,11 +1,20 @@
+.visibilityVisible {
+  visibility: visible;
+  right: 0;
+}
+.visibilityHidden {
+  visibility: hidden;
+  right: -100vw;
+}
+
 .background {
   z-index: 100;
   position: fixed;
   top:0;
-  left:0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(18, 18, 18, 0.4);
+  transition: right .3s cubic-bezier(.32, .82, .40, .76);
 }
 .products {
   max-height: calc(100vh - 270px);

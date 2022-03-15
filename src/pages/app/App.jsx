@@ -4,28 +4,24 @@ import AppStyle from "./App.module.css";
 import {Outlet} from "react-router-dom";
 import ShoppingCart from "../../components/shoppingCart/ShoppingCart";
 import {useSelector} from "react-redux";
-import {useEffect} from "react";
-import {changeBodyOverflow} from "../../encapsulatedCommonLogics/changeBoodyOverflow";
 import classNames from "classnames/bind";
 
 const App = () => {
-    const isShoppingCartOpen = useSelector((state => state.shoppingCart.isShoppingCartOpen))
-    const cx = classNames.bind(AppStyle);
+  const cx = classNames.bind(AppStyle);
+  const isShoppingCartOpen = useSelector((state => state.shoppingCart.isShoppingCartOpen));
 
-    const className = cx('app', {overflowMargin: isShoppingCartOpen});
+  const className = cx('app', {overflowMargin: isShoppingCartOpen});
 
-  useEffect(() => {
-    changeBodyOverflow(!isShoppingCartOpen);
-  }, [isShoppingCartOpen]);
-
-    return (
-        <div className={className} data-test-id='app'>
-          {isShoppingCartOpen && <ShoppingCart/>}
-          <Header/>
+  return (
+      <div className={className} data-test-id='app'>
+        <Header/>
+        <main>
+          <ShoppingCart/>
           <Outlet/>
-          <Footer/>
-        </div>
-    )
+        </main>
+        <Footer/>
+      </div>
+  )
 }
 
 export default App;
