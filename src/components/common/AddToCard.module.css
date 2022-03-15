@@ -6,7 +6,11 @@
   justify-content: space-between;
   align-items: center;
 }
-.wrapper > p {
+.wrapper > button {
+  border: none;
+  cursor: pointer;
+  outline: none;
+
   background-color: #121212;
   padding-top: 1px;
   height: 100%;

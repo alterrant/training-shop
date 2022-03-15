@@ -4,7 +4,7 @@ import {ReactComponent as ScaleActiveSVG} from "./../../assets/SVG/scaleActive.s
 import {ReactComponent as HeartSVG} from "./../../assets/SVG/heart.svg";
 import {ReactComponent as HeartActiveSVG} from "./../../assets/SVG/heartActive.svg";
 import {useState} from "react";
-import {deleteShoppingCartProduct, setShoppingCartProduct, shoppingCartToggle} from "../../redux/shoppingCartReducer";
+import {deleteShoppingCartProduct, setShoppingCartProduct} from "../../redux/shoppingCartReducer";
 import {useDispatch, useSelector} from "react-redux";
 
 const AddToCard = ({product, selectedCategoriesProduct}) => {
@@ -20,7 +20,8 @@ const AddToCard = ({product, selectedCategoriesProduct}) => {
     if (isProductInCart) {
       dispatch(deleteShoppingCartProduct(shoppingCartProduct));
     } else {
-      dispatch(shoppingCartToggle());
+      /*мне кажется логичным открывать корзину при добавлении нового товара, но тесты не проходят
+      dispatch(shoppingCartToggle());*/
       dispatch(setShoppingCartProduct(shoppingCartProduct));
     }
 
@@ -32,11 +33,11 @@ const AddToCard = ({product, selectedCategoriesProduct}) => {
   }
 
   return (
-      <div className={AddToCardStyle.wrapper}
-           data-test-id={'add-cart-button'}>
-        <p onClick={() => cartToggle({isProductInCart, shoppingCartProduct})}>
+      <div className={AddToCardStyle.wrapper}>
+        <button onClick={() => cartToggle({isProductInCart, shoppingCartProduct})}
+                data-test-id={'add-cart-button'}>
           {isProductInCart ? 'REMOVE FROM CART' : 'ADD TO CART'}
-        </p>
+        </button>
         <div onClick={() => setScaleActive(!isScaleActive)}>
           {isScaleActive ? <ScaleActiveSVG/> : <ScaleSVG/>}
         </div>

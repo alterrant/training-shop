@@ -25,7 +25,7 @@ const SiteTools = () => {
         </li>
         <li className={SiteToolsStyle.shoppingBag}
             onClick={() => dispatch(shoppingCartToggle())}
-        data-test-id={'cart-button'}>
+            data-test-id={'cart-button'}>
           <ShoppingBagSVG/>
           {(bagQuantity > 0) && <div className={SiteToolsStyle.bagQuantity}>
             {bagQuantity}
