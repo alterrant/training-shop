@@ -1,0 +1,128 @@
+.background {
+  z-index: 100;
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(18, 18, 18, 0.4);
+}
+.products {
+  max-height: calc(100vh - 270px);
+  overflow-y: auto;
+}
+.wrapper {
+  z-index: 501;
+  position: fixed;
+  top: 0;
+  right: 0;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 388px;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+  margin-bottom: 24px;
+}
+.container {
+  max-width: 340px;
+  margin: 0 auto 24px auto;
+  /*height: 90%;*/
+  height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  height: 100%;
+  min-height: 48px;
+  background-color: #121212;
+  padding: 0 24px 0 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+.totalPriceWrapper {
+  display: flex;
+  justify-content: space-between;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #121212;
+}
+.totalPrice {
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: right;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.buttons button {
+  width: 100%;
+  min-height: 48px;
+  border: none;
+}
+
+.buttonFurter {
+  background-color: #121212;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  opacity: 0.9;
+}
+.buttonViewCart {
+  background-color: #F8F8F8;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+  opacity: 0.9;
+}
+.closeSVG {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}

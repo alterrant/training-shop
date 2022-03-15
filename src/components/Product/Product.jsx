@@ -7,7 +7,9 @@ const Product = ({product, selectedCategoriesProduct}) => {
   return (
       <section className={ProductStyle.container}>
         <ProductImages product={product} selectedCategoriesProduct={selectedCategoriesProduct}/>
-        <ProductDescription product={product} selectedCategoriesProduct={selectedCategoriesProduct}/>
+        <ProductDescription product={product}
+                            selectedCategoriesProduct={selectedCategoriesProduct}
+        />
       </section>
   )
 }

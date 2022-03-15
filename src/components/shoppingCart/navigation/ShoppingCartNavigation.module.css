@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 22px;
+}
+.wrapper > p {
+  color: #E6E6E6;
+}
+.active {
+  color: #121212;
+}

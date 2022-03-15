@@ -72,7 +72,7 @@ const initialState = {
     productPhoto: 1,
     color: 'Blue',
     size: 'S',
-    image: '1'
+    image: 'url'
   },
   availabilityInStore: {
     sku: '777',

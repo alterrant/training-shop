@@ -10,7 +10,7 @@ import Cards from "../../common/Cards";
 import Reviews from "../../reviews/Reviews";
 import {useDispatch, useSelector} from "react-redux";
 import classNames from 'classnames/bind';
-import {setColor, setSize} from "../../../redux/productReducer";
+import {setColor, setImage, setSize} from "../../../redux/productReducer";
 import {getProductAvailableColors} from "../../../encapsulatedCommonLogics/filters";
 
 const ProductDescription = ({product, selectedCategoriesProduct}) => {
@@ -26,7 +26,10 @@ const ProductDescription = ({product, selectedCategoriesProduct}) => {
   const coloredProducts = unicColoredProducts.map((item) =>
       <li className={cx({selected: selectedColor === item.color}, 'coloredProductsImg')}
           key={item.id}
-          onClick={() => dispatch(setColor(item.color))}>
+          onClick={() => {
+            dispatch(setColor(item.color));
+            dispatch(setImage(item.url));
+          }}>
         <img src={`https://training.cleverland.by/shop${item.url}`} alt={`product ${item.color}`}/>
       </li>)
 
@@ -64,7 +67,7 @@ const ProductDescription = ({product, selectedCategoriesProduct}) => {
         <div className={ProductDescriptionStyle.priceWrapper}>
           <pre><p className={ProductDescriptionStyle.price}>{`$ ${product.price}`}</p></pre>
           <div className={ProductDescriptionStyle.addToCardWrapper}>
-            <AddToCard/>
+            <AddToCard product={product} selectedCategoriesProduct={selectedCategoriesProduct}/>
           </div>
         </div>
         <Partition/>

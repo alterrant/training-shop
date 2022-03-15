@@ -1,0 +1,49 @@
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.container {
+  max-width: 340px;
+  margin: 0 auto 24px auto;
+  height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.buttons button {
+  width: 100%;
+  min-height: 48px;
+  border: none;
+}
+
+.buttonViewCart {
+  background-color: #121212;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  opacity: 0.9;
+}
+.text {
+  height: 100%;
+  max-width: 150px;
+  margin: 0 auto;
+  padding-top: 48px;
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 150%;
+  text-align: center;
+  color: #121212;
+}

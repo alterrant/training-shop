@@ -24,7 +24,6 @@ const NavBar = () => {
       </li>)
 
   const handleClick = (event) => {
-
     if (isMenuOpen && event.target.className !== 'NavBar_menuItem__iAC4P') {
 
       dispatch(menuToggle());

@@ -4,6 +4,7 @@ import productReducer from "./productReducer";
 import headerReducer from "./headerReducer";
 import clothesReducer from "./clothesReducer";
 import initializeReducer from "./initializeReducer";
+import shoppingCartReducer from "./shoppingCartReducer";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     filter: filterReducer,
     product: productReducer,
     header: headerReducer,
-    clothes: clothesReducer
+    clothes: clothesReducer,
+    shoppingCart: shoppingCartReducer
   },
 })
