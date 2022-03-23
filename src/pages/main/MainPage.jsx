@@ -9,7 +9,7 @@ import React, {useEffect} from "react";
 import {MEN, WOMEN} from "../../constants/productType";
 import {useSelector} from "react-redux";
 import {useStableDispatch} from "../../hooks/useRedux";
-import {fetchGenderProducts, fetchProducts} from "../../redux/initializeReducer";
+import {fetchGenderProducts, fetchProducts, resetErrors} from "../../redux/initializeReducer";
 
 const MainPage = () => {
   const dispatch = useStableDispatch();
@@ -25,6 +25,7 @@ const MainPage = () => {
           ? dispatch(fetchGenderProducts(MEN))
           : dispatch(fetchGenderProducts(WOMEN));
     }
+    return () => dispatch(resetErrors());
   }, [dispatch, menProducts.length, womenProducts.length, MEN, WOMEN]);
 
   return (

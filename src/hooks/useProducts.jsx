@@ -17,13 +17,13 @@ import {
 import {getFilters, removeAllFilters} from "../redux/filterReducer";
 import {useStableDispatch} from "./useRedux";
 import {fetchGenderProducts, resetErrors} from "../redux/initializeReducer";
+import {useErrors} from "./useError";
 
 export const useParticularProducts = (productType, genderProducts) => {
   const selectedParticularProducts = useSelector(state => state.clothes?.[productType]?.filteredProducts);
   const clothesNavBar = useSelector(state => state.clothes?.[productType]?.navBar);
   const selectedParticular = useSelector(state => state.clothes?.[productType]?.selectedParticulars);
   const stableDispatch = useStableDispatch();
-
 
   useEffect(() => {
     if (genderProducts.length > 0) {
@@ -42,7 +42,6 @@ export const useParticularProducts = (productType, genderProducts) => {
         gender: productType
       }));
     }
-    return () => stableDispatch(resetErrors());
   }, [genderProducts, productType, stableDispatch]);
 
   useEffect(() => {
@@ -60,11 +59,12 @@ export const useParticularProducts = (productType, genderProducts) => {
 export const useProducts = (productType, genderProducts, selectedFiltersLists, setOpenedStatusFilter) => {
   const filteredProducts = useSelector(state => state.clothes?.[productType]?.filteredProducts);
   const stableDispatch = useStableDispatch();
+  const errors = useErrors();
 
   useEffect(() => {
     if (genderProducts.length === 0) stableDispatch(fetchGenderProducts(productType));
 
-    return () => stableDispatch(resetErrors());
+    if (errors.length > 0) return () => stableDispatch(resetErrors());
   }, [productType]);
 
   useEffect(() => {
