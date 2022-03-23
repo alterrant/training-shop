@@ -117,6 +117,34 @@ export const getProductAvailableColors = (product) => {
   return product.images.filter(image => availableProductColors.delete(image.color));
 }
 
+export const getAvailableFilters = (availableColors, availableSizes, availableBrands) => {
+  const filters = {}
+  const filterTypes = ['color', 'size', 'brand'];
+
+  const availableFilter = (filterType) => {
+    switch (filterType) {
+      case 'color':
+        return availableColors;
+      case 'size':
+        return availableSizes;
+      case 'brand':
+        return availableBrands;
+      default:
+        return [];
+    }
+  };
+
+  filterTypes.forEach(filterType => {
+    let id = 1;
+    filters[filterType] = Array.from(availableFilter(filterType)).map(item => ({
+      id: id++,
+      name: item,
+      selected: false
+    }));
+  })
+
+  return filters;
+}
 
 
 

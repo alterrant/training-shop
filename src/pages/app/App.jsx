@@ -1,26 +1,27 @@
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import AppStyle from "./App.module.css";
-import {Outlet} from "react-router-dom";
-import ShoppingCart from "../../components/shoppingCart/ShoppingCart";
 import {useSelector} from "react-redux";
-import classNames from "classnames/bind";
+import Main from "../../components/main/Main";
+/*import {useSelector} from "react-redux";
+import classNames from "classnames/bind";*/
 
 const App = () => {
-  const cx = classNames.bind(AppStyle);
-  const isShoppingCartOpen = useSelector((state => state.shoppingCart.isShoppingCartOpen));
-
-  const className = cx('app', {overflowMargin: isShoppingCartOpen});
+  const initError = useSelector(state => state.initialize.isInitError);
+  /*const cx = classNames.bind(AppStyle);
+  const isShoppingCartOpen = useSelector((state => state.shoppingCart.isShoppingCartOpen));*/
 
   return (
-      <div className={className} data-test-id='app'>
+      //<div className={cx({overflowPosition: isShoppingCartOpen})}>
+      <div className={AppStyle.app} data-test-id='app'>
         <Header/>
-        <main>
-          <ShoppingCart/>
-          <Outlet/>
-        </main>
+        {initError
+            ? <div>INIT ERROR</div>
+            : <Main/>
+        }
         <Footer/>
       </div>
+      //</div>
   )
 }
 

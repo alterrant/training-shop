@@ -67,16 +67,13 @@ export const counterSlice = createSlice({
     }),
     removeAllFilters: ((state) => {
 
-     /* const stateKeys = Object.keys(state);
+      const stateKeys = Object.keys(state);
 
       stateKeys.forEach(stateKey => {
-        state[stateKey].forEach(filter => {
+        if(stateKey !== 'categories') state[stateKey].forEach(filter => {
           if (filter.selected) filter.selected = false;
         })
-      })*/
-      state.color = [];
-      state.size = [];
-      state.brand = [];
+      })
       state.selectedFilters = [];
     }),
   }

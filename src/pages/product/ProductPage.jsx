@@ -3,18 +3,20 @@ import {useSelector} from "react-redux";
 import Product from "../../components/Product/Product";
 import RelatedProducts from "../../components/relatedProducts/RelatedProducts";
 import {useProduct} from "../../hooks/useProduct";
-import {PRODUCTS} from "../../products";
-import {getGenderProducts} from "../../encapsulatedCommonLogics/getProducts";
+import Preloader from "../../components/common/Preloader/Preloader";
 
 const ProductPage = ({productType}) => {
 
-  const products = PRODUCTS;
-  const productInfo = useProduct({products, productType});
+  //пока не вижу смысла запрашивать отдельно для id, тк relatedProducts всё равно требуют genderProducts
+  const genderProducts = useSelector(state => state.initialize.products[productType]);
+  const isLoadingGenderProducts = useSelector(state => state.initialize.isLoadingGenderProducts);
   const productInStore = useSelector(state => state.product.availabilityInStore);
-  const genderProducts = getGenderProducts(productType, PRODUCTS)
   const selectedCategoriesProduct = useSelector(state => state.product.selectedCategories);
 
-  return (
+  const productInfo = useProduct({genderProducts, productType});
+
+  if (isLoadingGenderProducts) return <Preloader/>
+  else return (
       <div data-test-id={`product-page-${productType}`}>
         <div>
           <Tittle tittle={productInfo.name}

@@ -1,0 +1,13 @@
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+
+  border-bottom: 2px solid red;
+}
+.text {
+  width: 100%;
+  max-width: 1110px;
+
+  margin: 0 auto;
+  padding: 2px 0 2px 0;
+}

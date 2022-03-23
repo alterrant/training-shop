@@ -6,14 +6,14 @@ const initialState = {
     navBar: [
       {id: null, name: null, filterName: null},
     ],
-    products: []
+    filteredProducts: []
   },
   women: {
     selectedParticulars: null,
     navBar: [
       {id: null, name: null, filterName: null},
     ],
-    products: []
+    filteredProducts: []
   }
 }
 
@@ -27,8 +27,8 @@ export const clothesSlice = createSlice({
     setSelectedParticulars: ((state, action) => {
       state[action.payload.gender].selectedParticulars = action.payload.particular;
     }),
-    setProducts: ((state, action) => {
-      state[action.payload.gender].products = action.payload.products;
+    setFilteredProducts: ((state, action) => {
+      state[action.payload.gender].filteredProducts = action.payload.filteredProducts;
     }),
     resetSelectedParticulars: ((state, action) => {
       state[action.payload.gender].selectedParticulars = null;
@@ -38,14 +38,20 @@ export const clothesSlice = createSlice({
         {id: null, name: null, filterName: null}
       ];
       state[action.payload.gender].selectedParticulars = null;
-      state[action.payload.gender].products = [];
+      state[action.payload.gender].filteredProducts = [];
     }),
     resetProducts: ((state, action) => {
-      state[action.payload.gender].products = [];
+      state[action.payload.gender].filteredProducts = [];
     })
   }
 })
 
-export const {setAvailableParticulars, setSelectedParticulars, setProducts, resetParticulars, resetProducts} = clothesSlice.actions
+export const {
+  setAvailableParticulars,
+  setSelectedParticulars,
+  setFilteredProducts,
+  resetParticulars,
+  resetProducts
+} = clothesSlice.actions
 
 export default clothesSlice.reducer

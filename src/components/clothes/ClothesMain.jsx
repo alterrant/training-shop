@@ -4,13 +4,13 @@ import Clothes from "./../clothes/clothesList/Clothes";
 import SeeAllButton from "./../clothes/SeeAllButton";
 import ClothesTitle from "../clothes/ClothesTitle";
 import {useParticularProducts} from "../../hooks/useProducts";
-import {getGenderProducts} from "../../encapsulatedCommonLogics/getProducts";
-import {PRODUCTS} from "../../products";
+import {useSelector} from "react-redux";
+import Preloader from "../common/Preloader/Preloader";
 
-const ClothesMain = ({tittle, productType}) => {
-
-  //genderProducts будут передаваться пропсами
-  const genderProducts = getGenderProducts(productType, PRODUCTS);
+const ClothesMain = ({tittle, productType, genderProducts}) => {
+  const isLoadingProducts = useSelector(state => state.initialize.isLoadingProducts);
+  const isLoadingGenderProducts = useSelector(state => state.initialize.isLoadingGenderProducts);
+  const isLoading = !!(isLoadingProducts || isLoadingGenderProducts);
 
   const {selectedParticularProducts, clothesNavBar} = useParticularProducts(productType, genderProducts);
 
@@ -22,9 +22,12 @@ const ClothesMain = ({tittle, productType}) => {
           </ClothesTitle>
           <ClothesNavBar clothesNavBar={clothesNavBar} productType={productType}/>
         </div>
-        <div className={ClothesStyle.closesWrapper}>
-          {clothesNavBar[0].id && <Clothes product={selectedParticularProducts} productType={productType}/>}
-        </div>
+        {isLoading
+            ? <Preloader/>
+            : <div className={ClothesStyle.closesWrapper}>
+              {<Clothes product={selectedParticularProducts} productType={productType}/>}
+            </div>
+        }
         <SeeAllButton productType={productType}/>
       </article>
   )

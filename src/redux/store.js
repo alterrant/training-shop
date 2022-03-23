@@ -5,6 +5,10 @@ import headerReducer from "./headerReducer";
 import clothesReducer from "./clothesReducer";
 import initializeReducer from "./initializeReducer";
 import shoppingCartReducer from "./shoppingCartReducer";
+import createSagaMiddleware from 'redux-saga';
+import {rootWatcher} from "../saga";
+
+const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: {
@@ -15,4 +19,8 @@ export const store = configureStore({
     clothes: clothesReducer,
     shoppingCart: shoppingCartReducer
   },
+  middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(sagaMiddleware),
 })
+
+sagaMiddleware.run(rootWatcher);
