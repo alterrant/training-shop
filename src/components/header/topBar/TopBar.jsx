@@ -1,4 +1,4 @@
-import {CompanyAddress, CompanyPhone, CompanySchedule, Messengers} from "../../common/CompanyInfo";
+import {CompanyAddress, CompanyPhone, CompanySchedule, Messengers} from "../../common/companyInfo/CompanyInfo";
 import TopBarStyle from "./TopBar.module.css";
 
 const TopBar = () => {

@@ -1,6 +1,6 @@
 import SubscribeStyle from "./Subscribe.module.css";
 import SubscribeOffer from "./SubscribeOffer";
-import {SPECIAL_BENEFIT} from "../../constants/benefits";
+import {SPECIAL_BENEFIT} from "../../../constants/benefits";
 
 const Subscribe = () => {
   return (

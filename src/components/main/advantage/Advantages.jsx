@@ -1,6 +1,6 @@
-import {ReactComponent as TruckSVG} from './../../assets/SVG/truck.svg';
-import {ReactComponent as RefreshSVG} from './../../assets/SVG/refresh.svg';
-import {ReactComponent as SupportSVG} from './../../assets/SVG/support.svg';
+import {ReactComponent as TruckSVG} from '../../../assets/SVG/truck.svg';
+import {ReactComponent as RefreshSVG} from '../../../assets/SVG/refresh.svg';
+import {ReactComponent as SupportSVG} from '../../../assets/SVG/support.svg';
 import AdvantagesStyle from './Advantages.module.css';
 import Advantage from "./Advantage";
 

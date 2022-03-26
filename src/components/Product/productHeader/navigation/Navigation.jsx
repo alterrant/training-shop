@@ -1,5 +1,5 @@
 import NavigationStyle from "./Navigation.module.css";
-import {ReactComponent as ShareSVG} from "../../../assets/SVG/share.svg";
+import {ReactComponent as ShareSVG} from "../../../../assets/SVG/share.svg";
 import {NavLink, useLocation} from "react-router-dom";
 import {useSelector} from "react-redux";
 

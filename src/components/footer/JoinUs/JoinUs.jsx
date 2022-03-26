@@ -1,6 +1,6 @@
 import {useForm} from "react-hook-form";
 import JoinUsStyle from "./JoinUs.module.css";
-import {Messengers} from "../../common/CompanyInfo";
+import {Messengers} from "../../common/companyInfo/CompanyInfo";
 
 const JoinUs = () => {
   const {register, handleSubmit, formState: {errors}} = useForm();

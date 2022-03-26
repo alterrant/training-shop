@@ -1,6 +1,6 @@
 import RelatedProductsStyle from "./RelatedProducts.module.css";
-import {ClothesItem} from "../clothes/clothesList/Clothes";
-import {ReactComponent as Arrow} from "./../../assets/SVG/rightArrow.svg";
+import {ClothesItem} from "../../clothes/clothesList/Clothes";
+import {ReactComponent as Arrow} from "../../../assets/SVG/rightArrow.svg";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation} from 'swiper';
 import 'swiper/css/grid';

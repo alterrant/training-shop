@@ -1,10 +1,10 @@
 import AddToCardStyle from './AddToCard.module.css';
-import {ReactComponent as ScaleSVG} from "./../../assets/SVG/scale.svg";
-import {ReactComponent as ScaleActiveSVG} from "./../../assets/SVG/scaleActive.svg";
-import {ReactComponent as HeartSVG} from "./../../assets/SVG/heart.svg";
-import {ReactComponent as HeartActiveSVG} from "./../../assets/SVG/heartActive.svg";
+import {ReactComponent as ScaleSVG} from "../../../assets/SVG/scale.svg";
+import {ReactComponent as ScaleActiveSVG} from "../../../assets/SVG/scaleActive.svg";
+import {ReactComponent as HeartSVG} from "../../../assets/SVG/heart.svg";
+import {ReactComponent as HeartActiveSVG} from "../../../assets/SVG/heartActive.svg";
 import {useState} from "react";
-import {deleteShoppingCartProduct, setShoppingCartProduct} from "../../redux/shoppingCartReducer";
+import {deleteShoppingCartProduct, setShoppingCartProduct} from "../../../redux/shoppingCartReducer";
 import {useDispatch, useSelector} from "react-redux";
 
 const AddToCard = ({product, selectedCategoriesProduct}) => {

@@ -4,7 +4,7 @@ import ShoppingCartNavigation from "./navigation/ShoppingCartNavigation";
 import {useSelector} from "react-redux";
 import {shoppingCartToggle} from "../../redux/shoppingCartReducer";
 import ShoppingCartProduct from "./product/ShoppingCartProduct";
-import Partition from "../common/Partition";
+import Partition from "../common/partition/Partition";
 import EmptyShoppingCart from "./emptyShoppingCart/EmptyShoppingCart";
 import {useStableDispatch} from "../../hooks/useRedux";
 import {useEffect, useRef, useState} from "react";

@@ -1,6 +1,6 @@
 import ReviewsStyle from "./Reviews.module.css";
-import RatingReviews from "../common/RatingReviews";
-import {ReactComponent as AnnotationSVG} from "./../../assets/SVG/annotation.svg";
+import RatingReviews from "../../common/rating/RatingReviews";
+import {ReactComponent as AnnotationSVG} from "../../../assets/SVG/annotation.svg";
 import Review from "./Review";
 
 const Reviews = ({reviews, rating}) => {

@@ -1,6 +1,6 @@
 import ClothesStyle from "./Clothes.module.css";
 import {NavLink} from "react-router-dom";
-import RatingStars from "../../common/RatingStars";
+import RatingStars from "../../common/rating/RatingStars";
 
 const Clothes = ({product, productType}) => {
 

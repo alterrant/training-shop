@@ -1,9 +1,9 @@
-import Tittle from "../../components/productHeader/ProductHeader";
+import Tittle from "../../components/Product/productHeader/ProductHeader";
 import {useSelector} from "react-redux";
 import Product from "../../components/Product/Product";
-import RelatedProducts from "../../components/relatedProducts/RelatedProducts";
+import RelatedProducts from "../../components/Product/relatedProducts/RelatedProducts";
 import {useProduct} from "../../hooks/useProduct";
-import Preloader from "../../components/common/Preloader/Preloader";
+import Preloader from "../../components/common/preloader/Preloader";
 
 const ProductPage = ({productType}) => {
 

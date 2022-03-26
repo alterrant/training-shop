@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import FilterStyle from "./Filter.module.css";
-import Checkbox from "../common/Checkbox";
+import Checkbox from "../common/customCheckbox/Checkbox";
 
 const Filter = ({filterName, changeHandler}) => {
   const filterList = useSelector((state => state.filter[filterName]));

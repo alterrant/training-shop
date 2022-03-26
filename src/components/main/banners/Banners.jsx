@@ -1,11 +1,11 @@
 import React from 'react';
 import BannersStyle from './Banners.module.css';
-import {ReactComponent as LeftArrow} from "../../assets/SVG/leftArrow.svg";
-import {ReactComponent as RightArrow} from "../../assets/SVG/rightArrow.svg";
+import {ReactComponent as LeftArrow} from "../../../assets/SVG/leftArrow.svg";
+import {ReactComponent as RightArrow} from "../../../assets/SVG/rightArrow.svg";
 import Banner from "./Banner";
-import banner2 from '../../assets/banner/banner2.png';
-import banner3 from '../../assets/banner/banner3.png';
-import banner4 from '../../assets/banner/banner4.png';
+import banner2 from '../../../assets/banner/banner2.png';
+import banner3 from '../../../assets/banner/banner3.png';
+import banner4 from '../../../assets/banner/banner4.png';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import { Controller } from 'swiper';
 import {Navigation} from 'swiper';
@@ -13,7 +13,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import {BANNERS} from "../../constants/banners";
+import {BANNERS} from "../../../constants/banners";
 
 const Banners = () => {
 

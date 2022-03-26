@@ -1,5 +1,5 @@
 import LatestFromBlogStyle from "./LatestFromBlog.module.css";
-import {BLOGS} from "../../constants/blog";
+import {BLOGS} from "../../../constants/blog";
 import Blog from "./Blog";
 
 const LatestFromBlog = () => {

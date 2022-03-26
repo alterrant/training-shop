@@ -5,7 +5,7 @@ import SeeAllButton from "./../clothes/SeeAllButton";
 import ClothesTitle from "../clothes/ClothesTitle";
 import {useParticularProducts} from "../../hooks/useProducts";
 import {useSelector} from "react-redux";
-import Preloader from "../common/Preloader/Preloader";
+import Preloader from "../common/preloader/Preloader";
 
 const ClothesMain = ({tittle, productType, genderProducts}) => {
   const isLoadingProducts = useSelector(state => state.initialize.isLoadingProducts);

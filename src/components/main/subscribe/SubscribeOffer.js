@@ -1,7 +1,7 @@
 import SubscribeStyle from "./SubscribeOffer.module.css";
 import {useForm} from "react-hook-form";
-import subscribeWomen from "./../../assets/banner/subscribeWomen.png";
-import subscribeMen from "./../../assets/banner/subscribeMen.png";
+import subscribeWomen from "../../../assets/banner/subscribeWomen.png";
+import subscribeMen from "../../../assets/banner/subscribeMen.png";
 
 
 const SubscribeOffer = ({specialOffer}) => {

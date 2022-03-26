@@ -1,6 +1,6 @@
 import RatingStarsStyle from "./RatingStars.module.css";
 import {useState} from "react";
-import {WHITE, YELLOW} from "../../constants/colors";
+import {WHITE, YELLOW} from "../../../constants/colors";
 import {nanoid} from "nanoid";
 
 const RatingStars = ({rating, isRatingInteractive = false}) => {

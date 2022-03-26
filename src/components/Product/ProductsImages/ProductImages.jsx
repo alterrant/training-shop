@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 import "swiper/css/grid";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import {getDirection} from "../../../encapsulatedCommonLogics/swipersLogic";
-import BannersStyle from "../../banners/Banners.module.css";
+import BannersStyle from "../../main/banners/Banners.module.css";
 
 const ProductImages = ({product, selectedCategoriesProduct}) => {
 

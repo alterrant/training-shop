@@ -1,7 +1,7 @@
 import {useErrors} from "../../hooks/useError";
 import ShoppingCart from "../shoppingCart/ShoppingCart";
 import {Outlet} from "react-router-dom";
-import Partition from "../common/Partition";
+import Partition from "../common/partition/Partition";
 import Errors from "../errors/Errors";
 
 const Main = () => {

@@ -1,7 +1,7 @@
 import ProductHeaderStyle from "./ProductHeader.module.css";
 import {useParams} from "react-router-dom";
 import Navigation from "./navigation/Navigation";
-import RatingReviews from "../common/RatingReviews";
+import RatingReviews from "../../common/rating/RatingReviews";
 
 const ProductHeader = ({tittle, rating, sku, availability, reviewsCounter}) => {
 

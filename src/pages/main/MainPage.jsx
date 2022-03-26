@@ -1,10 +1,10 @@
-import Advantages from "../../components/advantage/Advantages";
-import Banners from "../../components/banners/Banners";
-import Subscribe from "../../components/subscribe/Subscribe";
-import LatestFromBlog from "../../components/latestFromBlog/LatestFromBlog";
-import Benefits from "../../components/benefits/Benefits";
+import Advantages from "../../components/main/advantage/Advantages";
+import Banners from "../../components/main/banners/Banners";
+import Subscribe from "../../components/main/subscribe/Subscribe";
+import LatestFromBlog from "../../components/main/latestFromBlog/LatestFromBlog";
+import Benefits from "../../components/main/benefits/Benefits";
 import ClothesMain from "../../components/clothes/ClothesMain";
-import Partition from "../../components/common/Partition";
+import Partition from "../../components/common/partition/Partition";
 import React, {useEffect} from "react";
 import {MEN, WOMEN} from "../../constants/productType";
 import {useSelector} from "react-redux";

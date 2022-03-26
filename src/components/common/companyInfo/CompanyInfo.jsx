@@ -1,12 +1,12 @@
 import AboutUsStyle from "./CompanyInfo.module.css";
-import {ReactComponent as SVGAddress} from "../../assets/SVG/location-marker.svg";
-import {ReactComponent as SVGPhone} from "../../assets/SVG/phone.svg";
-import {ReactComponent as SVGClock} from "../../assets/SVG/clock.svg";
-import {ReactComponent as SVGMail} from "../../assets/SVG/mail.svg";
-import { ReactComponent as FaceBook } from './../../assets/SVG/facebook.svg';
-import { ReactComponent as Twitter } from './../../assets/SVG/twitter.svg';
-import { ReactComponent as Instagram } from './../../assets/SVG/instagram.svg';
-import { ReactComponent as Pinterest } from './../../assets/SVG/pinterest.svg';
+import {ReactComponent as SVGAddress} from "../../../assets/SVG/location-marker.svg";
+import {ReactComponent as SVGPhone} from "../../../assets/SVG/phone.svg";
+import {ReactComponent as SVGClock} from "../../../assets/SVG/clock.svg";
+import {ReactComponent as SVGMail} from "../../../assets/SVG/mail.svg";
+import { ReactComponent as FaceBook } from '../../../assets/SVG/facebook.svg';
+import { ReactComponent as Twitter } from '../../../assets/SVG/twitter.svg';
+import { ReactComponent as Instagram } from '../../../assets/SVG/instagram.svg';
+import { ReactComponent as Pinterest } from '../../../assets/SVG/pinterest.svg';
 
 export const CompanyAddress = ()  => {
   return (

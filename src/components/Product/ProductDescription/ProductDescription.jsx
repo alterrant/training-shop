@@ -1,13 +1,13 @@
 import ProductDescriptionStyle from "./ProductDescription.module.css";
 import {ReactComponent as ClosesHangerSVG} from "./../../../assets/SVG/clothesHanger.svg";
-import Partition from "../../common/Partition";
-import AddToCard from "../../common/AddToCard";
+import Partition from "../../common/partition/Partition";
+import AddToCard from "../../common/addToCard/AddToCard";
 import {ReactComponent as TruckSVG} from "./../../../assets/SVG/truck.svg";
 import {ReactComponent as RefreshSVG} from "./../../../assets/SVG/refresh.svg";
 import {ReactComponent as MailSVG} from "./../../../assets/SVG/mail.svg";
 import Advantages from "./Advantages";
-import Cards from "../../common/Cards";
-import Reviews from "../../reviews/Reviews";
+import Cards from "../../common/cards/Cards";
+import Reviews from "../reviews/Reviews";
 import {useDispatch, useSelector} from "react-redux";
 import classNames from 'classnames/bind';
 import {setColor, setImage, setSize} from "../../../redux/productReducer";

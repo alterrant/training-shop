@@ -1,5 +1,5 @@
-import Tittle from "../../components/productHeader/ProductHeader";
-import Preloader from "../../components/common/Preloader/Preloader";
+import Tittle from "../../components/Product/productHeader/ProductHeader";
+import Preloader from "../../components/common/preloader/Preloader";
 import {useState} from "react";
 import FilterBar from "../../components/filter/FilterBar";
 import FilterCategories from "../../components/filter/FilterCategories";
