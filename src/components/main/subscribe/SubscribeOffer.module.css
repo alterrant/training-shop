@@ -64,7 +64,9 @@
 .description span {
   color: #E91E63;
 }
-
+.formError {
+  color: #E91E63;
+}
 .form {
   min-height: 152px;
   min-width: 100%;
@@ -73,6 +75,7 @@
   justify-content: space-between;
 }
 .inputEmail {
+  width: 100%;
   min-height: 64px;
   border: 0;
   background-color: #F8F8F8;
@@ -94,7 +97,9 @@
 }
 
 .submit {
-  min-height: 64px;
+  width: 100%;
+  height: 64px;
+  /*max-height: 64px;*/
   background-color: #121212;
   border: 0;
 
@@ -111,6 +116,12 @@
   text-transform: uppercase;
   color: #FFFFFF;
   opacity: 0.9;
+}
+.successSubmitText {
+  color: greenyellow;
+}
+.errorSubmitText {
+  color: red;
 }
 
 .women {
