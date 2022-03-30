@@ -7,7 +7,7 @@ import {ReactComponent as RefreshSVG} from "./../../../assets/SVG/refresh.svg";
 import {ReactComponent as MailSVG} from "./../../../assets/SVG/mail.svg";
 import Advantages from "./Advantages";
 import Cards from "../../common/cards/Cards";
-import Reviews from "../reviews/Reviews";
+import Reviews from "./reviews/Reviews";
 import {useDispatch, useSelector} from "react-redux";
 import classNames from 'classnames/bind';
 import {setColor, setImage, setSize} from "../../../redux/productReducer";
@@ -94,7 +94,7 @@ const ProductDescription = ({product, selectedCategoriesProduct}) => {
         </div>
         <Partition/>
         <div className={ProductDescriptionStyle.reviewsMargin}>
-          <Reviews reviews={product.reviews} rating={product.rating}/>
+          <Reviews reviews={product.reviews} rating={product.rating} productId={product.id}/>
         </div>
         <Partition/>
       </div>

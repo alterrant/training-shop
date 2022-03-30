@@ -101,7 +101,7 @@ export const productSlice = createSlice({
       state.selectedCategories.size = action.payload;
     }),
     setImage: ((state, action) => {
-      state.selectedCategories.image = action.payload;
+      state.productInfo.image = action.payload;
     }),
     resetProduct: (state) => {
       state.productInfo = baseProduct;

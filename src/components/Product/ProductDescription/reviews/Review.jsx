@@ -1,5 +1,5 @@
 import ReviewStyle from "./Review.module.css";
-import RatingStars from "../../common/rating/RatingStars";
+import RatingStars from "../../../common/rating/RatingStars";
 
 const Review = ({review}) => {
 

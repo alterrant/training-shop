@@ -3,10 +3,11 @@ import {useState} from "react";
 import {WHITE, YELLOW} from "../../../constants/colors";
 import {nanoid} from "nanoid";
 
-const RatingStars = ({rating, isRatingInteractive = false}) => {
+const RatingStars = ({rating, isRatingInteractive = false, formControle = false}) => {
 
   const [myRating, setMyRating] = useState(null);
   const fiveElementsTemplate = [0, 1, 2, 3, 4];
+  //let timer
 
   const starList = fiveElementsTemplate.map((item, index) => {
 
@@ -14,23 +15,39 @@ const RatingStars = ({rating, isRatingInteractive = false}) => {
                                                           color={YELLOW}
                                                           index={index}
                                                           isRatingInteractive={isRatingInteractive}
+                                                          formControle={formControle}
                                                           key={nanoid()}/>
 
     else if (!myRating && rating && (index + 1) <= rating) return <Star setMyRating={setMyRating}
                                                                         color={YELLOW}
                                                                         index={index}
                                                                         isRatingInteractive={isRatingInteractive}
+                                                                        formControle={formControle}
                                                                         key={nanoid()}/>
 
     return <Star setMyRating={setMyRating}
                  color={WHITE}
                  index={index}
                  isRatingInteractive={isRatingInteractive}
+                 formControle={formControle}
                  key={nanoid()}/>
 
   })
   return (
-      <ul className={RatingStarsStyle.wrapper}>
+      <ul className={RatingStarsStyle.wrapper}
+          /*onMouseMove={() => {
+            let timer;
+            clearTimeout(timer);
+            console.log(timer)
+            if (!timer) timer = setTimeout(() => {
+              console.log(timer)
+              setMyRating(null)
+            }, 1000);
+          }}*/
+          onMouseEnter={() => {
+            setTimeout(() => setMyRating(null), 5000)
+          }}
+      >
         {starList}
       </ul>
   )
@@ -38,7 +55,7 @@ const RatingStars = ({rating, isRatingInteractive = false}) => {
 
 export default RatingStars;
 
-const Star = ({color, setMyRating, index, isRatingInteractive}) => {
+const Star = ({color, setMyRating, index, isRatingInteractive, formControle}) => {
 
   if (!isRatingInteractive) return (
       <li className={RatingStarsStyle.item}>
@@ -49,7 +66,8 @@ const Star = ({color, setMyRating, index, isRatingInteractive}) => {
   return (
       <li onMouseEnter={() => setMyRating(index + 1)}
           onMouseLeave={() => setMyRating(null)}
-          className={RatingStarsStyle.item}>
+          onMouseUp={() => formControle('rating', index + 1)}
+          className={`${RatingStarsStyle.item} ${RatingStarsStyle.interactive}`}>
         <StarSVG fill={color}/>
       </li>
   )
