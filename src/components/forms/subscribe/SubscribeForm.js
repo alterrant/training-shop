@@ -9,6 +9,7 @@ import Preloader from "../../common/preloader/Preloader";
 import SubscribeStyle from "../../main/subscribe/SubscribeOffer.module.css";
 import {CustomSubscribeInput} from "./customSubscribeInput/CustomSubscribeInput";
 import {CustomSubscribeError} from "./customSubscribeErrorMessage/customSubscribeError";
+import classNames from "classnames/bind";
 
 export const SubscribeForm = ({formName}) => {
   const dispatch = useDispatch();
@@ -17,9 +18,12 @@ export const SubscribeForm = ({formName}) => {
   const subscribeFormRef = useRef();
   const page = useLocation().pathname;
 
+
   const style = formName === 'mainForm'
       ?  SubscribeStyle
       : JoinUsStyle;
+
+  const classNamesBind = classNames.bind(style);
 
   const initialValues = {
     email: ''
@@ -30,7 +34,7 @@ export const SubscribeForm = ({formName}) => {
   }, [page]);
 
   const onSubmit = async (values, onSubmitProps) => {
-    const {resetForm, setErrors} = onSubmitProps;
+    const {setErrors} = onSubmitProps;
 
     try {
       await dispatch(submittingSubscription({
@@ -38,10 +42,10 @@ export const SubscribeForm = ({formName}) => {
         formName
       }));
 
-      resetForm({
+      /*resetForm({
         values: {email: ''},
         errors: {email: ''}
-      });
+      });*/
     } catch (error) {
       setErrors({submit: error.message});
     } finally {
@@ -58,6 +62,8 @@ export const SubscribeForm = ({formName}) => {
       >
         {
           formik => {
+            const disableCondition = formik.errors.email || isSubmittingSubscription || !formik.values.email;
+
             return (
                 <Form className={style.form}>
                   <Field name='email' component={CustomSubscribeInput} submittingSubscriptionStatus={submittingSubscriptionStatus} subscribeFormStyle={style} formName={formName}/>
@@ -65,9 +71,9 @@ export const SubscribeForm = ({formName}) => {
                   {submittingSubscriptionStatus === 'Subscribed'
                       ? <div className={style.successSubmitText}>{'Subscribed'}</div>
                       : <div className={style.errorSubmitText}>{submittingSubscriptionStatus}</div>}
-                  <button className={style.submit}
+                  <button className={classNamesBind(disableCondition ? 'disableReviewButton' : 'submit')}
                           type='submit'
-                          disabled={formik.errors.email || isSubmittingSubscription || !formik.values.email}
+                          disabled={disableCondition}
                           data-test-id={formName === 'mainForm'
                               ? 'main-subscribe-mail-button'
                               : 'footer-subscribe-mail-button'}

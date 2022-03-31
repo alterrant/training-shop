@@ -9,12 +9,14 @@ import Preloader from "../../common/preloader/Preloader";
 import {CustomReviewErrorMessage} from "./customReviewErrorMessage/CustomReviewErrorMessage";
 import {CustomReviewInput} from "./customReviewInput/CustomReviewInput";
 import {CustomReviewTextarea} from "./customReviewTextarea/CustomReviewTextarea";
+import classNames from "classnames/bind";
 
 export const ReviewForm = ({setStatusAnnotation, isAnnotationOpened, productId}) => {
   const dispatch = useDispatch();
   const isPostingReview = useSelector(state => state.forms.isPostingReview);
   const postingReviewStatus = useSelector(state => state.forms.postingReviewStatus);
   const reviewFormRef = useRef();
+  const classNamesBind = classNames.bind(ReviewsStyle);
 
   const initialValues = {
     name: '',
@@ -64,7 +66,8 @@ export const ReviewForm = ({setStatusAnnotation, isAnnotationOpened, productId})
       >
         {
           formik => {
-            console.log(formik)
+            const disableCondition = formik.errors.email || isPostingReview || !formik.values.name || !formik.values.text;
+
             return (
                 <Form className={ReviewsStyle.form}>
                   <div className={ReviewsStyle.formControl}>
@@ -81,9 +84,9 @@ export const ReviewForm = ({setStatusAnnotation, isAnnotationOpened, productId})
                     <ErrorMessage name='text' component={CustomReviewErrorMessage}/>
                   </div>
                   <div className={ReviewsStyle.formControl}>
-                    <button className={ReviewsStyle.submit}
+                    <button className={classNamesBind(disableCondition ? 'disableReviewButton' : 'submit')}
                             type='submit'
-                            disabled={formik.errors.email || isPostingReview || !formik.values.name || !formik.values.text}
+                            disabled={disableCondition}
                             data-test-id={'review-submit-button'}
                     >{isPostingReview
                         ? <Preloader/>

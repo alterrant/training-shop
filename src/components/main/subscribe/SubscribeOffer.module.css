@@ -141,12 +141,13 @@
   color: rgba(0, 0, 0, 0.4);
 }
 
-.submit {
+.submit,
+.disableReviewButton {
   width: 100%;
   height: 64px;
   /*max-height: 64px;*/
   background-color: #121212;
-  border: 0;
+  border: 1px solid rgb(97, 86, 177);
   transition: 0.21s ease-in;
 
   font-family: Spartan, sans-serif;
@@ -185,4 +186,8 @@
   top: 25px;
   left: 900px;
   z-index: 2;
+}
+.disableReviewButton {
+  background-color: #9C9C9C;
+  border: 0;
 }
