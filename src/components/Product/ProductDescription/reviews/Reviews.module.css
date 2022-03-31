@@ -2,6 +2,7 @@
   margin: 32px 0 24px 0;
 
   height: 22px;
+
   display: flex;
   justify-content: space-between;
 }
@@ -79,10 +80,10 @@
   align-items: center;
   color: #121212;
 }
-.textarea {
+.textareaReview {
   width: 100%;
   min-height: 100px;
-  resize: none;
+  resize: vertical;
 }
 .form {
   width: 100%;
@@ -104,19 +105,37 @@
   width: 21px;
   height: 21px;
 }
-.formControl > input,
-.formControl > textarea {
+.inputReview,
+.textareaReview {
   width: 100%;
-  padding: 4px 6px 4px 6px;
+  padding: 4px 6px 5px 14px;
   border: 1px solid #121212;
   outline: none;
   border-radius: 8px;
   background-color: rgb(250, 250, 250);
+  cursor: pointer;
+  transition: 0.11s ease-in;
+
+  font-size: 17px;
+  line-height: 18px;
 }
+.inputReview:hover,
+.textareaReview:hover {
+  box-shadow: 0 0 5px rgb(67, 76, 153);
+}
+.inputReview:focus,
+.textareaReview:focus {
+  cursor: text;
+  box-shadow: 0 0 5px rgb(6, 7, 23);
+}
+.reviewFormError {
+  box-shadow: 0 0 5px rgb(196, 25, 25) !important;
+  border: 1px solid red;
+}
+
 .submit {
   max-width: 130px;
   width: 100%;
-  /*height: 100%;*/
   height: 40px;
   margin: 0 auto;
 
@@ -125,7 +144,9 @@
   align-items: center;
 
   background-color: #121212;
-  border: 1px solid #FFFFFF;
+  border: none;
+  transition: 0.11s ease-in;
+
   cursor: pointer;
 
   font-family: Spartan, sans-serif;
@@ -137,16 +158,29 @@
   color: #FFFFFF;
   opacity: 0.9;
 }
+.submit:hover {
+  box-shadow: 0 0 4px rgb(67, 76, 153);
+  text-shadow: 0 0 4px rgb(67, 76, 153);
+}
+/*Preloader*/
 .submit div div {
   width: 30px;
   height: 30px;
 }
 
-.formControl > input:-webkit-autofill,
-.formControl > input:-webkit-autofill:hover,
-.formControl > input:-webkit-autofill:focus,
-.formControl > input:-webkit-autofill:active  {
+/*работает как background-color(вместо внешнего box-shadow)
+.inputReview:-webkit-autofill,
+.inputReview:-webkit-autofill:hover,
+.inputReview:-webkit-autofill:focus,
+.inputReview:-webkit-autofill:active  {
   -webkit-box-shadow: 0 0 0 150px rgb(250, 250, 250) inset !important;
+}
+*/
+.inputReview:-webkit-autofill:hover {
+  box-shadow: 0 0 5px rgb(67, 76, 153);
+}
+.inputReview:-webkit-autofill:focus {
+  box-shadow: 0 0 5px rgb(6, 7, 23);
 }
 
 .errorSubmitText {
@@ -159,4 +193,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.formControl ::placeholder {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  padding-left: 2px;
+  color: #000000;
+  opacity: 0.6;
+}
+
+.reviewMessageError {
+  position: absolute;
+  color: #E91E63;
 }
