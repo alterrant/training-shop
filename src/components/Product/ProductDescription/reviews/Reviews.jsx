@@ -13,12 +13,11 @@ const Reviews = ({reviews, rating, productId}) => {
   const classNamesBind = classNames.bind(ReviewsStyle);
   const reviewFormStyle = classNamesBind('reviewForm', {'reviewFormActive': isAnnotationOpened});
 
-  const closeShoppingCartHandler = () => {
-    //Тесты ругаются, функционал обрезаем
-    /*if (isAnnotationOpened && e.target.className === reviewFormStyle) {
+  const closeShoppingCartHandler = (e) => {
+    if (isAnnotationOpened && e.target.className === reviewFormStyle) {
 
       setStatusAnnotation(false)
-    }*/
+    }
   }
 
   useEffect(() => {
