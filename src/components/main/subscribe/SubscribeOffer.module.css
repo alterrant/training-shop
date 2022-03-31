@@ -79,13 +79,19 @@
   height: 100%;
 }
 
+/*работает вместо background
 .inputEmail:-webkit-autofill,
 .inputEmail:-webkit-autofill:hover,
 .inputEmail:-webkit-autofill:focus,
 .inputEmail:-webkit-autofill:active  {
-  /*-webkit-box-shadow: 0 0 0 150px #F8F8F8 inset !important;*/
+  !*-webkit-box-shadow: 0 0 0 150px #F8F8F8 inset !important;*!
+  !*-webkit-text-fill-color: red !important;*!
+}*/
+.inputEmail:-webkit-autofill:hover {
+  -webkit-box-shadow: 1px 1px 3px rgba(58, 30, 239, 0.9);
+}
+.inputEmail:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 5px rgb(79, 67, 151);
-  /*-webkit-text-fill-color: red !important;*/
 }
 
 .inputEmail {
@@ -93,7 +99,7 @@
   min-height: 64px;
   border: 0;
   background-color: #F8F8F8;
-  transition: 0.21s ease-in;
+  transition: box-shadow 0.21s ease-in;
 
   font-family: Spartan, sans-serif;
   font-style: normal;
