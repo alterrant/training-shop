@@ -19,7 +19,7 @@ export const ReviewForm = ({setStatusAnnotation, isAnnotationOpened, productId})
   const initialValues = {
     name: '',
     text: '',
-    rating: '1',
+    rating: 1,
   }
 
   const onSubmit = async (values, onSubmitProps) => {
