@@ -11,7 +11,7 @@ import {setProduct} from "../redux/productReducer";
 
 function* submittingSubscriptionWorker({payload}) {
   const { email, formName } = payload;
-  debugger
+
   try {
     const subscriber = yield call(subscribeAPI.getSubscribe, email);
 
