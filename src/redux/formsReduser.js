@@ -18,7 +18,7 @@ export const formsSlice = createSlice({
   initialState,
   reducers: {
     submittingSubscription: (((state, action) => {
-      state.isSubmittingSubscription[action.payload] = true;
+      state.isSubmittingSubscription[action.payload.formName] = true;
     })),
     submittingSubscriptionSuccess: (((state, action) => {
       state.isSubmittingSubscription[action.payload.formName] = false;
