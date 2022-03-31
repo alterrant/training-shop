@@ -29,16 +29,17 @@ const Reviews = ({reviews, rating, productId}) => {
 
   return (
       <section className={ReviewsStyle.wrapper}>
-        <section className={reviewFormStyle}
-                 onClick={closeShoppingCartHandler}
-                 data-test-id={'review-modal'}>
+        {isAnnotationOpened
+        && <section className={reviewFormStyle}
+                    onClick={closeShoppingCartHandler}
+                    data-test-id={'review-modal'}>
           <div className={ReviewsStyle.reviewFormWrapper}>
             <p>Write a review</p>
             <ReviewForm isAnnotationOpened={isAnnotationOpened}
                         setStatusAnnotation={setStatusAnnotation}
                         productId={productId}/>
           </div>
-        </section>
+        </section>}
         <h4>REVIEWS</h4>
         <div className={ReviewsStyle.commonInform}>
           <RatingReviews reviewsCounter={reviews.length}

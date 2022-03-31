@@ -33,6 +33,10 @@ export const SubscribeForm = ({formName}) => {
     subscribeFormRef.current.resetForm();
   }, [page]);
 
+  useEffect(() => {
+    if (submittingSubscriptionStatus === 'Subscribed') subscribeFormRef.current.resetForm();
+  }, [submittingSubscriptionStatus]);
+
   const onSubmit = async (values, onSubmitProps) => {
     const {setErrors} = onSubmitProps;
 
@@ -42,7 +46,7 @@ export const SubscribeForm = ({formName}) => {
         formName
       }));
 
-      /*resetForm({
+     /* resetForm({
         values: {email: ''},
         errors: {email: ''}
       });*/
