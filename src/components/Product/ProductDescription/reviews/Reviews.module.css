@@ -33,7 +33,8 @@
 }
 
 .reviewForm {
-  visibility: hidden;
+  /*visibility: hidden;*/
+  display: none;
   opacity: 0;
   /*transform: translateX(100%);*/
   transition: 0.3s ease-out;
@@ -45,12 +46,13 @@
   width: 100vw;
   height: 100vh;
 
-  display: flex;
+  /*display: flex;*/
   align-items: center;
   justify-content: center;
   }
 .reviewFormActive {
-  visibility: visible;
+  /*visibility: visible;*/
+  display: flex;
   opacity: 1;
 }
 .reviewFormWrapper {
@@ -209,4 +211,34 @@
 .reviewMessageError {
   position: absolute;
   color: #E91E63;
+}
+
+.disableReviewButton {
+  max-width: 130px;
+  width: 100%;
+  height: 40px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #9C9C9C;
+  border: none;
+  transition: 0.11s ease-in;
+
+  cursor: pointer;
+
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+  opacity: 0.9;
+}
+.disableReviewButton div div {
+  width: 30px;
+  height: 30px;
 }
