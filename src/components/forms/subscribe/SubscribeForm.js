@@ -68,7 +68,9 @@ export const SubscribeForm = ({formName}) => {
                   <button className={style.submit}
                           type='submit'
                           disabled={formik.errors.email || isSubmittingSubscription || !formik.values.email}
-                          data-test-id={'footer-subscribe-mail-button'}
+                          data-test-id={formName === 'mainForm'
+                              ? 'main-subscribe-mail-button'
+                              : 'footer-subscribe-mail-button'}
                   >{isSubmittingSubscription
                       ? <Preloader/>
                       : 'JOIN US'}
