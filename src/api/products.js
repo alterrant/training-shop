@@ -17,6 +17,5 @@ export const productsAPI = {
       rating
     })
     .then(item => item.data);
-  }
-
+  },
 }

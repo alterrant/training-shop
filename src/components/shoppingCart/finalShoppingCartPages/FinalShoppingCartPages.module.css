@@ -1,0 +1,104 @@
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.container {
+  max-width: 340px;
+  margin: 0 auto;
+  padding-bottom: 24px;
+  height: calc(100vh - 48px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.scrollbar {
+  overflow-y: auto;
+}
+.buttons button {
+  width: 100%;
+  min-height: 48px;
+  border: none;
+}
+
+.buttonViewCart {
+  background-color: #121212;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  opacity: 0.9;
+}
+.tittle {
+  /*height: 100%;*/
+
+  /*max-width: 150px;*/
+  margin: 0 auto;
+  padding: 48px 0 24px 0;
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 150%;
+  text-align: center;
+  color: #121212;
+}
+.text {
+  max-width: 246px;
+  margin: 0 auto;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  color: #000000;
+}
+.tittle + .text {
+  padding-bottom: 16px;
+}
+/* полоса прокрутки (скроллбар) */
+.scrollbar::-webkit-scrollbar {
+  width:3px; /* ширина для вертикального скролла */
+  background-color: #E6E6E6;
+}
+
+/* ползунок скроллбара */
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #8D8B8B;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #6d6b6b;
+}
+
+/*
+.tittle {
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 150%;
+  text-align: center;
+  color: #121212;
+}
+.text {
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  color: #000000;
+}*/

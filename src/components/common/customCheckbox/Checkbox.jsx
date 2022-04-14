@@ -18,7 +18,8 @@ const Checkbox = ({filterName, value, payload, changeHandler}) => {
         <input data-test-id={`filter-${filterName}-${payload}`}
                type='checkbox'
                checked={value}
-               onChange={() => dispatch(changeHandler(payload))}/>
+               onChange={() => dispatch(changeHandler(payload))}
+               className={CheckboxStyle.checkbox}/>
       </label>
   )
 }

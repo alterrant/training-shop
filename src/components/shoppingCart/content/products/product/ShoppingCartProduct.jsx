@@ -1,12 +1,12 @@
 import ShoppingCartProductStyle from './ShoppingCartProduct.module.css';
-import {ReactComponent as TrashSVG} from './../../../assets/SVG/trash.svg';
+import {ReactComponent as TrashSVG} from '../../../../../assets/SVG/trash.svg';
 import React from "react";
-import {useStableDispatch} from "../../../hooks/useRedux";
+import {useStableDispatch} from "../../../../../hooks/useRedux";
 import {
   decrementProductQuantity,
   deleteShoppingCartProduct,
   incrementProductQuantity
-} from "../../../redux/shoppingCartReducer";
+} from "../../../../../redux/shoppingCartReducer";
 
 const ShoppingCartProduct = ({shoppingCartProduct}) => {
   const dispatch = useStableDispatch();

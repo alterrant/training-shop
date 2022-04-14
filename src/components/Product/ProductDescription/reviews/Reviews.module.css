@@ -33,9 +33,7 @@
 }
 
 .reviewForm {
-  /*visibility: hidden;*/
   opacity: 0;
-  /*transform: translateX(100%);*/
   transition: 0.3s ease-out;
 
   position: fixed;
@@ -48,15 +46,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(0,0,0,.4);
   }
 .reviewFormActive {
-  /*visibility: visible;*/
   opacity: 1;
 }
 .reviewFormWrapper {
   /*min-width: 200px;*/
   width: calc(60px + 20vw);
-  min-width: 200px;
+  min-width: 400px;
   max-width: 600px;
   min-height: max-content;
   border: 2px solid #121212;

@@ -1,0 +1,66 @@
+.totalPriceWrapper {
+  display: flex;
+  justify-content: space-between;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #121212;
+}
+.totalPrice {
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: right;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.buttons button {
+  width: 100%;
+  min-height: 48px;
+  border: none;
+}
+.buttonFurter {
+  background-color: #121212;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  opacity: 0.9;
+}
+.buttonViewCart {
+  background-color: #F8F8F8;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+  opacity: 0.9;
+}
