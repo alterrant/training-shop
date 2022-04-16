@@ -39,6 +39,7 @@ const ShoppingCartFooter = (props) => {
       dispatch(resetPaymentFormToggle());
 
       dispatch(shoppingCartToggle());
+      setNavigationStage('Item in Cart');
     }
 
     if (navigationStage === 'Item in Cart') {
