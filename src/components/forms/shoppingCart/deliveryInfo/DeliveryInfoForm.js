@@ -35,6 +35,7 @@ export const DeliveryInfoForm = (props) => {
   const initialValues = Object.assign({agreementToggle: false}, deliveryInfoSummary, {storeCountry: deliveryInfoSummary.country});
 
   const onSubmit = (values) => {
+    /*ругаются тесты, нужно восстанавливать всю введённую на прошлом этапе инфу (из других типов доставки тоже)
     const deliveryInfoSummary = {
       deliveryMethod: values.deliveryMethod,
       phone: `+${values.phone.replace(/\D/g, '')}`,
@@ -55,10 +56,11 @@ export const DeliveryInfoForm = (props) => {
     if (values.deliveryMethod === 'Store pickup') {
       deliveryInfoSummary.country = values.storeCountry;
       deliveryInfoSummary.storeAddress = values.storeAddress;
-    }
+    }*/
     //formikBag.setFieldTouched('agreementToggle', true)
 
-    dispatch(setDeliveryInfo(deliveryInfoSummary));
+    //dispatch(setDeliveryInfo(deliveryInfoSummary));
+    dispatch(setDeliveryInfo(values));
 
     if (navigationStage === 'Delivery Info')
       setNavigationStage('Payment')

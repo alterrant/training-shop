@@ -38,8 +38,31 @@ function* submitShoppingCartWorker() {
   const shoppingCartSummary = {};
 
   const productsSummary = yield select((state) => state.shoppingCart.products);
-  const deliveryInfoSummary = yield select((state) => state.shoppingCart.deliveryInfo.deliveryInfoSummary);
+  const values = yield select((state) => state.shoppingCart.deliveryInfo.deliveryInfoSummary);
   const paymentSummary = yield select((state) => state.shoppingCart.paymentSummary);
+
+  //
+  const deliveryInfoSummary = {
+    deliveryMethod: values.deliveryMethod,
+    phone: `+${values.phone.replace(/\D/g, '')}`,
+    email: values.email
+  };
+
+  if (values.deliveryMethod === 'Pickup from post offices'
+      || values.deliveryMethod === 'Express delivery') {
+    deliveryInfoSummary.country = values.country;
+    deliveryInfoSummary.city = values.city;
+    deliveryInfoSummary.street = values.street;
+    deliveryInfoSummary.house = values.house;
+    if (values.apartment) deliveryInfoSummary.apartment = values.apartment;
+  }
+
+  if (values.deliveryMethod === 'Pickup from post offices') deliveryInfoSummary.postcode = values.postcode;
+
+  if (values.deliveryMethod === 'Store pickup') {
+    deliveryInfoSummary.country = values.storeCountry;
+    deliveryInfoSummary.storeAddress = values.storeAddress;
+  }
 
   const products = productsSummary.map(item => {
     return {
