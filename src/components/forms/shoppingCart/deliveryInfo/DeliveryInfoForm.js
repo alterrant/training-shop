@@ -20,6 +20,9 @@ export const DeliveryInfoForm = (props) => {
 
   const dispatch = useStableDispatch();
   const deliveryFormToggle = useSelector(state => state.shoppingCart.deliveryFormToggle);
+
+  const className = classNames.bind(DeliveryInfoFormStyle);
+
   const deliveryFormRef = useRef();
 
   const radioOption = [

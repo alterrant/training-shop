@@ -9,6 +9,7 @@
 .radioLabelFormControl {
   height: 22px;
   margin: 13px 0;
+  cursor: pointer;
 }
 .radioLabelFormControl span {
   padding: 0 0 0 15px;

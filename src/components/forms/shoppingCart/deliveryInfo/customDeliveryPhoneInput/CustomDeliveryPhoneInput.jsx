@@ -54,7 +54,7 @@ export const CustomDeliveryPhoneInput = (props) => {
 
   return (
       <input type='tel'
-             className={className('inputReview', {deliveryFormError: form.errors.phone && form.touched.phone})}
+             /*className={className('inputReview', {deliveryFormError: form.errors.phone && form.touched.phone})}*/
              {...field}
              {...otherProps}
              onChange={phoneChangeHandler}

@@ -1,13 +1,9 @@
-import classNames from "classnames/bind";
-import CustomDeliveryPhoneInputStyle from "./CustomCardDateInput.module.css";
 import React, {useEffect, useRef, useState} from "react";
 import {ErrorMessage} from "formik";
 import {CustomReviewErrorMessage} from "../../../../../review/customReviewErrorMessage/CustomReviewErrorMessage";
 
 export const CustomCardDateInput = (props) => {
   const {field, form, ...otherProps} = props;
-
-  const className = classNames.bind(CustomDeliveryPhoneInputStyle);
 
   const [selectionStart, setSelectionStart] = useState(null);
 
@@ -50,7 +46,6 @@ export const CustomCardDateInput = (props) => {
   return (
       <div>
         <input type='tel'
-               className={className('inputReview', {deliveryFormError: form.errors.card && form.touched.card})}
                {...field}
                {...otherProps}
                onChange={phoneChangeHandler}

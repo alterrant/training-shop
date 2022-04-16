@@ -1,9 +1,8 @@
-import classNames from "classnames/bind";
-import CustomDeliveryPhoneInputStyle from "./CustomCardInput.module.css";
 import {useEffect, useRef, useState} from "react";
 
 export const CustomCardInput = (props) => {
-  const className = classNames.bind(CustomDeliveryPhoneInputStyle);
+  const {field, form, ...otherProps} = props;
+
   const [selectionStart, setSelectionStart] = useState(null);
 
   const cardInputRef = useRef();
@@ -62,7 +61,6 @@ export const CustomCardInput = (props) => {
 
   return (
       <input type='tel'
-             className={className('inputReview', {deliveryFormError: form.errors.card && form.touched.card})}
              {...field}
              {...otherProps}
              onChange={phoneChangeHandler}

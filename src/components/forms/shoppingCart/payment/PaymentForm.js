@@ -20,6 +20,7 @@ export const PaymentForm = (props) => {
   const dispatch = useStableDispatch();
   const paymentFormToggle = useSelector(state => state.shoppingCart.paymentFormToggle);
   const statePaymentInfo = useSelector(state => state.shoppingCart.paymentSummary);
+
   const initialPaymentInfo = Object.assign({totalPrice: totalCartPrice}, statePaymentInfo, {paymentMethod: 'Visa'});
 
   const paymentFormRef = useRef();
@@ -93,7 +94,7 @@ export const PaymentForm = (props) => {
                     </div>
                     <div className={DeliveryInfoFormStyle.formContent}>
                       {
-                        getPaymentMethod(formik.values.paymentMethod)
+                        getPaymentMethod(formik.values.paymentMethod, formik)
                       }
                     </div>
                   </div>
@@ -125,14 +126,14 @@ const getPaymentSVG = (value) => {
   }
 }
 
-const getPaymentMethod = (value) => {
+const getPaymentMethod = (value, formik) => {
   switch (value) {
     case 'PayPal': {
-      return <PayPalMethod/>
+      return <PayPalMethod formik={formik} />
     }
     case 'Visa':
     case 'MasterCard': {
-      return <DebitCardMethod/>
+      return <DebitCardMethod formik={formik}/>
     }
     default:
       return null
