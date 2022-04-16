@@ -38,6 +38,7 @@ const StoreAddressFields = ({formik}) => {
             <p>ADDRESS OF STORE</p>
             <Field as='select'
                    name='storeCountry'
+                   placeholder='Country'
                    className={className(
                        'formControlInputs',
                        'selectField',
