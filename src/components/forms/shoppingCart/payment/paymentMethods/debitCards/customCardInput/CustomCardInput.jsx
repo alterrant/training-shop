@@ -1,18 +1,11 @@
-import classNames from "classnames/bind";
-import CustomDeliveryPhoneInputStyle from "./CustomCardInput.module.css";
 import {useEffect, useRef, useState} from "react";
 
 export const CustomCardInput = (props) => {
-  const className = classNames.bind(CustomDeliveryPhoneInputStyle);
+  const {field, form, ...otherProps} = props;
+
   const [selectionStart, setSelectionStart] = useState(null);
 
   const cardInputRef = useRef();
-
-  useEffect(() => {
-    if (cardInputRef) cardInputRef.current.selectionStart = cardInputRef.current.selectionEnd = selectionStart;
-  }, )
-
-  const {field, form, ...otherProps} = props;
 
   const getInputNumbersValue = (inputElement) => {
     return inputElement.value.replace(/\D/g, '');
@@ -60,15 +53,17 @@ export const CustomCardInput = (props) => {
     if (e.keyCode === 8 && e.target.value === `____ ____ ____ ____`) form.setFieldValue('card', '');
   }
 
+  useEffect(() => {
+    if (cardInputRef) cardInputRef.current.selectionStart = cardInputRef.current.selectionEnd = selectionStart;
+  }, )
+
   return (
       <input type='tel'
-             className={className('inputReview', {deliveryFormError: form.errors.card && form.touched.card})}
              {...field}
              {...otherProps}
              onChange={phoneChangeHandler}
              onKeyDown={onPhoneKeyDown}
-             ref={cardInputRef}
-             data-test-id={'review-name-field'}/>
+             ref={cardInputRef}/>
   )
 }
 

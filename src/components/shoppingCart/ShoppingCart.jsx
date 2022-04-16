@@ -16,16 +16,21 @@ const ShoppingCart = () => {
   const shoppingCartProducts = useSelector((state => state.shoppingCart.products));
   const productsQuantity = useSelector(state => state.shoppingCart.products.length);
 
-  const isSubmittingShoppingCartSuccess = useSelector(state => state.shoppingCart.submittingInfo.isSubmittingSuccess);
-  const isSubmittingShoppingCartError = useSelector(state => state.shoppingCart.submittingInfo.submittingError.isSubmittingError);
-
-  const isFinalShoppingCartPage = !(isSubmittingShoppingCartSuccess || isSubmittingShoppingCartError || productsQuantity === 0);
+  const isSubmittingShoppingCartSuccess = useSelector(state =>
+      state.shoppingCart.submittingInfo.isSubmittingSuccess);
+  const isSubmittingShoppingCartError = useSelector(state =>
+      state.shoppingCart.submittingInfo.submittingError.isSubmittingError);
 
   const [navigationStage, setNavigationStage] = useState('Item in Cart');
 
   const totalCartPrice = getTotalCartPrice({shoppingCartProducts});
 
-  const finalShoppingCardPage = !isFinalShoppingCartPage && getFinalShoppingCartPage(isSubmittingShoppingCartSuccess, isSubmittingShoppingCartError);
+  const isFinalShoppingCartPage = !((isSubmittingShoppingCartSuccess || isSubmittingShoppingCartError)
+      || productsQuantity === 0
+  );
+  const finalShoppingCardPage = !isFinalShoppingCartPage && (
+      getFinalShoppingCartPage(isSubmittingShoppingCartSuccess, isSubmittingShoppingCartError)
+  );
 
   const cx = classNames.bind(ShoppingCartStyle);
   const className = cx('background', (isShoppingCartOpen) ? 'visibilityVisible' : 'visibilityHidden');

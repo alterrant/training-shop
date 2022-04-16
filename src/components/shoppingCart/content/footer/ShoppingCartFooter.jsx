@@ -7,7 +7,7 @@ import {
   resetPaymentInfo,
   resetSubmission,
   setDeliveryInfo,
-  setPaymentInfo
+  setPaymentInfo, shoppingCartToggle
 } from "../../../../redux/shoppingCartReducer";
 import {useStableDispatch} from "../../../../hooks/useRedux";
 
@@ -18,7 +18,7 @@ const ShoppingCartFooter = (props) => {
     setNavigationStage = false,
     isCashMethod = false,
     finalShoppingCardPageName = null,
-    summaryInfo
+    summaryInfo,
   } = props;
 
   const dispatch = useStableDispatch();
@@ -29,6 +29,7 @@ const ShoppingCartFooter = (props) => {
 
       //setNavigationStage('Payment');
     }
+    if (finalShoppingCardPageName === 'emptyOrder') dispatch(shoppingCartToggle());
 
     if (navigationStage === 'Item in Cart') {
       setNavigationStage('Delivery Info');

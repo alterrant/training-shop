@@ -16,7 +16,7 @@ const StoreAddressFields = ({formik}) => {
   const deliveryCountries = useSelector(state => state.shoppingCart.deliveryInfo.deliveryCountries);
   const availableStoreAddresses = useSelector(state => state.shoppingCart.deliveryInfo.availableStoreAddresses);
 
-  const selectClassName = classNames.bind(DeliveryInfoFormStyle);
+  const className = classNames.bind(DeliveryInfoFormStyle);
 
   const storeAddressChangeHandler = (formikField, e) => {
     formikField.field.onChange(e);
@@ -27,20 +27,8 @@ const StoreAddressFields = ({formik}) => {
     }))
   }
 
-  const storeAddressBlurHandler = (formikField, e) => {
+  const storeAddressBlurHandler = (formikField) => {
     formikField.form.setFieldTouched('storeAddress', true, false);
-
-    let isCityCorrect = false;
-
-    availableStoreAddresses.forEach(availableAddress => {
-      if (e.target.value === availableAddress?.city
-          && formik.values.storeCountry === availableAddress?.country) {
-        isCityCorrect = true;
-      }
-    })
-    if (e.target.value.length > 0) {
-      if (!isCityCorrect) formikField.form.setFieldError('storeAddress', 'Unavailable city');
-    }
   }
 
   return (
@@ -50,7 +38,12 @@ const StoreAddressFields = ({formik}) => {
             <p>ADDRESS OF STORE</p>
             <Field as='select'
                    name='storeCountry'
-                   className={selectClassName('selectField', isCountryChosen && 'selectFieldEmpty')}
+                   className={className(
+                       'formControlInputs',
+                       'selectField',
+                       isCountryChosen && 'selectFieldEmpty',
+                       {errorField: formik.errors.storeCountry && formik.touched.storeCountry}
+                       )}
                    validate={deliveryInfoFieldsValidators.requiredValidator}>
               {
                 <option value='' disabled hidden>
@@ -72,17 +65,19 @@ const StoreAddressFields = ({formik}) => {
         </div>
         <div className={DeliveryInfoFormStyle.formControl}>
           <label>
-            <Field type='text' name='storeAddress' validate={deliveryInfoFieldsValidators.requiredValidator}>
+            <Field type='text' name='storeAddress' validate={(e) => deliveryInfoFieldsValidators.storeAddressValidator(e, availableStoreAddresses, formik.values.storeCountry)}>
               {
                 formikField => {
                   return (
                       <input type='text'
                              name='storeAddress'
                              list='storeAddress'
+                             value={formikField.field.value}
                              onChange={event => storeAddressChangeHandler(formikField, event)}
                              onBlur={event => storeAddressBlurHandler(formikField, event)}
                              placeholder={'Store address'}
-                             disabled={isCountryChosen}/>
+                             disabled={isCountryChosen}
+                             className={className('formControlInputs', {errorField: formik.errors.storeAddress && formik.touched.storeAddress})}/>
                   )
                 }
               }

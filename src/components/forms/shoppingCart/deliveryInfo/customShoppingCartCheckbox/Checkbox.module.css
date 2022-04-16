@@ -1,0 +1,32 @@
+.checkbox {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+.customCheckbox {
+  height: 18px;
+  width: 18px;
+  margin-top: 3px;
+
+  background: #FFFFFF;;
+  border: 1px solid #E6E6E6;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.customCheckbox:hover {
+  border: 1px solid #121212;
+}
+
+.customCheckboxActive {
+  border: 1px solid #121212;
+}
+.customCheckboxError {
+  border: 1px solid red;
+}
