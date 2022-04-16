@@ -13,20 +13,41 @@ import classNames from "classnames/bind";
 
 export const SubscribeForm = ({formName}) => {
   const dispatch = useDispatch();
+
   const isSubmittingSubscription = useSelector(state => state.forms.isSubmittingSubscription[formName]);
   const submittingSubscriptionStatus = useSelector(state => state.forms.submittingSubscriptionStatus[formName]);
+
   const subscribeFormRef = useRef();
   const page = useLocation().pathname;
 
-
   const style = formName === 'mainForm'
-      ?  SubscribeStyle
+      ? SubscribeStyle
       : JoinUsStyle;
 
   const classNamesBind = classNames.bind(style);
 
   const initialValues = {
-    email: ''
+    subscribeEmail: ''
+  }
+
+  const onSubmit = async (values, onSubmitProps) => {
+    const {setErrors} = onSubmitProps;
+
+    try {
+      await dispatch(submittingSubscription({
+        subscribeEmail: values,
+        formName
+      }));
+
+      /* resetForm({
+         values: {subscribeEmail: ''},
+         errors: {subscribeEmail: ''}
+       });*/
+    } catch (error) {
+      setErrors({submit: error.message});
+    } finally {
+      setTimeout(() => dispatch(resetSubscribeForm()), 10000);
+    }
   }
 
   useEffect(() => {
@@ -37,26 +58,6 @@ export const SubscribeForm = ({formName}) => {
     if (submittingSubscriptionStatus === 'Subscribed') subscribeFormRef.current.resetForm();
   }, [submittingSubscriptionStatus]);
 
-  const onSubmit = async (values, onSubmitProps) => {
-    const {setErrors} = onSubmitProps;
-
-    try {
-      await dispatch(submittingSubscription({
-        email: values,
-        formName
-      }));
-
-     /* resetForm({
-        values: {email: ''},
-        errors: {email: ''}
-      });*/
-    } catch (error) {
-      setErrors({submit: error.message});
-    } finally {
-      setTimeout(() => dispatch(resetSubscribeForm()), 10000);
-    }
-  }
-
   return (
       <Formik initialValues={initialValues}
               validate={subscribeValidator}
@@ -66,12 +67,19 @@ export const SubscribeForm = ({formName}) => {
       >
         {
           formik => {
-            const disableCondition = formik.errors.email || isSubmittingSubscription || !formik.values.email;
+            console.log(formik)
+            const disableCondition = formik.errors.subscribeEmail || isSubmittingSubscription || !formik.values.subscribeEmail;
 
             return (
                 <Form className={style.form}>
-                  <Field name='email' component={CustomSubscribeInput} submittingSubscriptionStatus={submittingSubscriptionStatus} subscribeFormStyle={style} formName={formName}/>
-                  <ErrorMessage name='email' component={CustomSubscribeError} subscribeFormStyle={style}/>
+                  <Field
+                      name='subscribeEmail'
+                      component={CustomSubscribeInput}
+                      submittingSubscriptionStatus={submittingSubscriptionStatus}
+                      subscribeFormStyle={style}
+                      formName={formName}
+                  />
+                  <ErrorMessage name='subscribeEmail' component={CustomSubscribeError} subscribeFormStyle={style}/>
                   {submittingSubscriptionStatus === 'Subscribed'
                       ? <div className={style.successSubmitText}>{'Subscribed'}</div>
                       : <div className={style.errorSubmitText}>{submittingSubscriptionStatus}</div>}

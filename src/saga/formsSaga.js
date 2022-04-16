@@ -10,10 +10,10 @@ import {productsAPI} from "../api/products";
 import {setProduct} from "../redux/productReducer";
 
 function* submittingSubscriptionWorker({payload}) {
-  const { email, formName } = payload;
+  const { subscribeEmail, formName } = payload;
 
   try {
-    const subscriber = yield call(subscribeAPI.getSubscribe, email);
+    const subscriber = yield call(subscribeAPI.getSubscribe, subscribeEmail);
 
     if (subscriber.status === 200) yield put(submittingSubscriptionSuccess({formName}));
   } catch (error) {

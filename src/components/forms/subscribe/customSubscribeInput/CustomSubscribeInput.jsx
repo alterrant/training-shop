@@ -7,8 +7,11 @@ export const CustomSubscribeInput = (props) => {
 
   return (
       <div className={subscribeFormStyle.inputEmailWrapper}>
-        <input className={className('inputEmail', {inputEmailError: form.errors.email})} type='email' id='email'
-               placeholder='Enter your email' {...field}
+        <input className={className('inputEmail', {inputEmailError: form.errors.email})}
+               type='email'
+               id='subscribeEmail'
+               placeholder='Enter your email'
+               {...field}
                data-test-id={formName === 'mainForm'
                    ? 'main-subscribe-mail-field'
                    : 'footer-mail-field'}/>

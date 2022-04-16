@@ -12,6 +12,6 @@ export const shoppingCartAPI = {
     .then(item => item.data);
   },
   submitShoppingCartSummary(props) {
-    return instance.post('cart/pros', {...props})
+    return instance.post('cart', {...props})
   }
 }
