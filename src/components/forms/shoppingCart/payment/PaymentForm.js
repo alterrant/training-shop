@@ -101,6 +101,7 @@ export const PaymentForm = (props) => {
                   <ShoppingCartFooter totalCartPrice={totalCartPrice}
                                       navigationStage={navigationStage}
                                       setNavigationStage={setNavigationStage}
+                                      isCashMethod={formik.values.paymentMethod === 'Cash'}
                                       summaryInfo={formik.values}/>
                 </Form>
             )
