@@ -31,7 +31,8 @@ export const DeliveryInfoForm = (props) => {
     {key: 'rOption3', value: 'Store pickup'},
   ]
 
-  const initialValues = useSelector(state => state.shoppingCart.deliveryInfo.deliveryInfoSummary);
+  const deliveryInfoSummary = useSelector(state => state.shoppingCart.deliveryInfo.deliveryInfoSummary);
+  const initialValues = Object.assign({agreementToggle: false}, deliveryInfoSummary, {storeCountry: deliveryInfoSummary.country});
 
   const onSubmit = (values) => {
     const deliveryInfoSummary = {
@@ -55,6 +56,7 @@ export const DeliveryInfoForm = (props) => {
       deliveryInfoSummary.country = values.storeCountry;
       deliveryInfoSummary.storeAddress = values.storeAddress;
     }
+    //formikBag.setFieldTouched('agreementToggle', true)
 
     dispatch(setDeliveryInfo(deliveryInfoSummary));
 
@@ -87,7 +89,6 @@ export const DeliveryInfoForm = (props) => {
       >
         {
           formik => {
-            console.log(formik)
             return (
                 <Form className={DeliveryInfoFormStyle.form}>
                   <div>

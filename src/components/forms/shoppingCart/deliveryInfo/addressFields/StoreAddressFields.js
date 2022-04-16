@@ -72,6 +72,7 @@ const StoreAddressFields = ({formik}) => {
                       <input type='text'
                              name='storeAddress'
                              list='storeAddress'
+                             value={formikField.field.value}
                              onChange={event => storeAddressChangeHandler(formikField, event)}
                              onBlur={event => storeAddressBlurHandler(formikField, event)}
                              placeholder={'Store address'}
