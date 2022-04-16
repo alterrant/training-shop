@@ -4,7 +4,7 @@ import {
   resetDeliveryFormToggle,
   resetDeliveryInfo,
   resetPaymentFormToggle,
-  resetPaymentInfo,
+  resetPaymentInfo, resetProducts,
   resetSubmission,
   setDeliveryInfo,
   setPaymentInfo, shoppingCartToggle
@@ -30,6 +30,16 @@ const ShoppingCartFooter = (props) => {
       //setNavigationStage('Payment');
     }
     if (finalShoppingCardPageName === 'emptyOrder') dispatch(shoppingCartToggle());
+
+    if (finalShoppingCardPageName === 'submittingSuccess') {
+      dispatch(resetProducts());
+      dispatch(resetDeliveryInfo());
+      dispatch(resetPaymentInfo());
+      dispatch(resetDeliveryFormToggle());
+      dispatch(resetPaymentFormToggle());
+
+      dispatch(shoppingCartToggle());
+    }
 
     if (navigationStage === 'Item in Cart') {
       setNavigationStage('Delivery Info');
