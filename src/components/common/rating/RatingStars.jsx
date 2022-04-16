@@ -38,9 +38,8 @@ const RatingStars = ({rating, isRatingInteractive = false, formControle = false}
           /*onMouseMove={() => {
             let timer;
             clearTimeout(timer);
-            console.log(timer)
+
             if (!timer) timer = setTimeout(() => {
-              console.log(timer)
               setMyRating(null)
             }, 1000);
           }}*/

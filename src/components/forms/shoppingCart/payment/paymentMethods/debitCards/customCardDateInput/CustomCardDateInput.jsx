@@ -13,10 +13,6 @@ export const CustomCardDateInput = (props) => {
     return inputElement.value.replace(/\D/g, '');
   }
 
-  useEffect(() => {
-    if (cardInputRef) cardInputRef.current.selectionStart = cardInputRef.current.selectionEnd = selectionStart;
-  }, [selectionStart])
-
   const phoneChangeHandler = (e) => {
     const inputElement = e.target;
 
@@ -42,6 +38,10 @@ export const CustomCardDateInput = (props) => {
       setSelectionStart(e.target.selectionStart)
     }
   }
+
+  useEffect(() => {
+    if (cardInputRef) cardInputRef.current.selectionStart = cardInputRef.current.selectionEnd = selectionStart;
+  }, [selectionStart])
 
   return (
       <div>

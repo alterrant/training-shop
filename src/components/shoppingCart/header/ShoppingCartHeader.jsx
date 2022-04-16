@@ -13,7 +13,7 @@ import ShoppingCartNavigation from "./navigation/ShoppingCartNavigation";
 
 const ShoppingCartHeader = ({isShoppingCartOpen, setNavigationStage, navigationStage, isFinalShoppingCartPage, finalShoppingCardPage}) => {
   const dispatch = useStableDispatch();
-  console.log(isFinalShoppingCartPage)
+
   const refCloseSVG = useRef(null);
 
   const handleShoppingCartKeyDown = (e) => {

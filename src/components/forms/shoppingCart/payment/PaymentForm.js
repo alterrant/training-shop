@@ -113,13 +113,13 @@ export const PaymentForm = (props) => {
 const getPaymentSVG = (value) => {
   switch (value) {
     case 'PayPal': {
-      return <PayPalSVG/>
+      return <PayPalSVG />
     }
     case 'Visa': {
-      return <VisaSVG/>
+      return <VisaSVG />
     }
     case 'MasterCard': {
-      return <MasterCardSVG/>
+      return <MasterCardSVG />
     }
     default:
       return 'Cash'

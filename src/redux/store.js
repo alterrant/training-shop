@@ -7,7 +7,7 @@ import initializeReducer from "./initializeReducer";
 import shoppingCartReducer from "./shoppingCartReducer";
 import createSagaMiddleware from 'redux-saga';
 import formsReducer from './formsReduser';
-import {rootWatcher} from "../saga";
+import {rootWatcher} from "../saga/rootSaga";
 
 const sagaMiddleware = createSagaMiddleware();
 
