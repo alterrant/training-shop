@@ -44,7 +44,7 @@ const ShoppingCartFooter = (props) => {
       dispatch(resetDeliveryFormToggle());
       dispatch(resetPaymentFormToggle());
     }
-    if (navigationStage === 'Payment') {
+    else if (navigationStage === 'Payment') {
       dispatch(setPaymentInfo(summaryInfo));
       setNavigationStage('Delivery Info');
     }
