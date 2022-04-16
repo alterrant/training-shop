@@ -12,6 +12,8 @@ import ShoppingCartFooter from "../../../shoppingCart/content/footer/ShoppingCar
 import {setDeliveryInfo} from "../../../../redux/shoppingCartReducer";
 import {useStableDispatch} from "../../../../hooks/useRedux";
 import {useSelector} from "react-redux";
+import classNames from "classnames/bind";
+import CustomShoppingCartCheckbox from "./customShoppingCartCheckbox/Checkbox";
 
 export const DeliveryInfoForm = (props) => {
   const {totalCartPrice, navigationStage, setNavigationStage} = props;
@@ -85,50 +87,65 @@ export const DeliveryInfoForm = (props) => {
             console.log(formik)
             return (
                 <Form className={DeliveryInfoFormStyle.form}>
-                  <div className={DeliveryInfoFormStyle.radioFormControl}>
-                    <p>Choose the method of delivery of the items</p>
-                    <Partition/>
-                    {radioButtons}
-                    <ErrorMessage name='deliveryMethod'/>
-                  </div>
-                  <div className={DeliveryInfoFormStyle.formContent}>
-                    <div className={DeliveryInfoFormStyle.formControl}>
-                      <label className={DeliveryInfoFormStyle.formControlPhone}>
-                        <p>PHONE</p>
-                        <Field type='tel' name='phone' component={CustomDeliveryPhoneInput}
-                               placeholder='+375(__)_______'/>
-                      </label>
-                      <ErrorMessage name='phone' component={CustomReviewErrorMessage}/>
+                  <div>
+                    <div className={DeliveryInfoFormStyle.radioFormControl}>
+                      <p>Choose the method of delivery of the items</p>
+                      <Partition/>
+                      {radioButtons}
+                      <ErrorMessage name='deliveryMethod'/>
                     </div>
-                    <div className={DeliveryInfoFormStyle.formControl}>
-                      <label>
-                        <p>EMAIL</p>
-                        <Field type='email' name='email' placeholder='e-mail'/>
-                      </label>
-                      <ErrorMessage name='email'/>
-                    </div>
-                    {
-                      formik.values.deliveryMethod === 'Store pickup'
-                          ? <StoreAddressFields formik={formik}/>
-                          : <UserAddressFields/>
-                    }
-                    {
-                      formik.values.deliveryMethod === 'Pickup from post offices'
-                      && <div className={DeliveryInfoFormStyle.formControl}>
+                    <div className={DeliveryInfoFormStyle.formContent}>
+                      <div className={DeliveryInfoFormStyle.formControl}>
                         <label className={DeliveryInfoFormStyle.formControlPhone}>
-                          <p>POSTCODE</p>
-                          <Field type='input' name='postcode' placeholder={'BY______'}
-                                 validate={deliveryInfoFieldsValidators.requiredValidator}/>
+                          <p>PHONE</p>
+                          <Field type='tel' name='phone' component={CustomDeliveryPhoneInput}
+                                 placeholder='+375(__)_______'
+                                 className={className('formControlInputs', {errorField: formik.errors.phone && formik.touched.phone})}/>
                         </label>
-                        <ErrorMessage name='postcode' component={CustomReviewErrorMessage}/>
+                        <ErrorMessage name='phone' component={CustomReviewErrorMessage}/>
                       </div>
-                    }
-                    <div className={DeliveryInfoFormStyle.checkboxFormControl}>
-                      <label className={DeliveryInfoFormStyle.checkboxLabelFormControl}>
-                        <Field type='checkbox' name='agreementToggle'/>
-                        <span>I agree to the processing of my personal information</span>
-                      </label>
-                      <ErrorMessage name='agreementToggle' component={CustomReviewErrorMessage}/>
+                      <div className={DeliveryInfoFormStyle.formControl}>
+                        <label>
+                          <p>EMAIL</p>
+                          <Field
+                              type='email'
+                              name='email'
+                              placeholder='e-mail'
+                              className={className('formControlInputs', {errorField: formik.errors.email && formik.touched.email})}/>
+                        </label>
+                        <ErrorMessage name='email' component={CustomReviewErrorMessage}/>
+                      </div>
+                      {
+                        formik.values.deliveryMethod === 'Store pickup'
+                            ? <StoreAddressFields formik={formik}/>
+                            : <UserAddressFields formik={formik}/>
+                      }
+                      {
+                        formik.values.deliveryMethod === 'Pickup from post offices'
+                        && <div className={DeliveryInfoFormStyle.formControl}>
+                          <label className={DeliveryInfoFormStyle.formControlPhone}>
+                            <p>POSTCODE</p>
+                            <Field
+                                type='input'
+                                name='postcode'
+                                placeholder={'BY______'}
+                                validate={deliveryInfoFieldsValidators.requiredValidator}
+                                className={className('formControlInputs', {errorField: formik.errors.postcode && formik.touched.postcode})}/>
+                          </label>
+                          <ErrorMessage name='postcode' component={CustomReviewErrorMessage}/>
+                        </div>
+                      }
+                      <div className={DeliveryInfoFormStyle.checkboxFormControl}>
+                        <label className={DeliveryInfoFormStyle.checkboxLabelFormControl} htmlFor={'agreementToggle'}>
+                          <Field
+                              type='checkbox'
+                              name='agreementToggle'
+                              component={CustomShoppingCartCheckbox}
+                          />
+                          <span>I agree to the processing of my personal information</span>
+                        </label>
+                        <ErrorMessage name='agreementToggle' component={CustomReviewErrorMessage}/>
+                      </div>
                     </div>
                   </div>
                   <ShoppingCartFooter totalCartPrice={totalCartPrice}
