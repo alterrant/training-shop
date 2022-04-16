@@ -67,7 +67,6 @@ export const SubscribeForm = ({formName}) => {
       >
         {
           formik => {
-            console.log(formik)
             const disableCondition = formik.errors.subscribeEmail || isSubmittingSubscription || !formik.values.subscribeEmail;
 
             return (
