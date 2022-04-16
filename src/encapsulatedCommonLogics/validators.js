@@ -1,3 +1,5 @@
+//'Field is empty' => 'Поле должно быть заполнено'
+//'Need agreement' => 'Вы должны согласиться на обработку личной информации'
 export const subscribeValidator = (values) => {
   const errors = {};
 
@@ -13,12 +15,12 @@ export const subscribeValidator = (values) => {
 export const reviewValidator = (values) => {
   const errors = {};
 
-  if (!values.name) errors.name = 'Field is empty';
+  if (!values.name) errors.name = 'Поле должно быть заполнено';
   else if (values.name && values.name.length > 25) errors.name = '\'Value more than 25 symbols\'';
 
-  if (!values.rating) errors.rating = 'Field is empty';
+  if (!values.rating) errors.rating = 'Поле должно быть заполнено';
 
-  if (!values.text) errors.text = 'Field is empty';
+  if (!values.text) errors.text = 'Поле должно быть заполнено';
   else if (values.text && values.text.length > 1000) errors.text = '\'Value more than 1000 symbols\'';
 
   return errors;
@@ -27,7 +29,7 @@ export const reviewValidator = (values) => {
 export const shoppingCartValidator = (values) => {
   const errors = {};
 
-  if (!values.phone) errors.phone = 'Field is empty';
+  if (!values.phone) errors.phone = 'Поле должно быть заполнено';
   else if (values.phone && values.phone.length >= 7) {
     const phoneNumbers = values.phone.replace(/\D/g, '');
 
@@ -43,12 +45,12 @@ export const shoppingCartValidator = (values) => {
     )) errors.phone = 'wrong code';
   }
 
-  if (!values.email) errors.email = 'Field is empty';
+  if (!values.email) errors.email = 'Поле должно быть заполнено';
   else if (values.email
       && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}$/i.test(values.email)
   ) errors.email = 'Invalid email address';
 
-  if (!values.agreementToggle) errors.agreementToggle = 'Need agreement';
+  if (!values.agreementToggle) errors.agreementToggle = 'Вы должны согласиться на обработку личной информации';
 
   return errors;
 }
@@ -57,7 +59,7 @@ export const deliveryInfoFieldsValidators = {
   requiredValidator(value) {
     let errors;
 
-    if (!value) errors = 'Field is empty';
+    if (!value) errors = 'Поле должно быть заполнено';
 
     return errors;
   },
@@ -75,7 +77,7 @@ export const paymentFieldsValidators = {
   requiredValidator(value) {
     let errors;
 
-    if (value === '') errors = 'Field is empty';
+    if (value === '') errors = 'Поле должно быть заполнено';
 
     return errors;
   },
@@ -116,7 +118,7 @@ export const paymentFieldsValidators = {
 
 const validators = {
   requiredValidator(value) {
-    if (value === '') return 'Field is empty';
+    if (value === '') return 'Поле должно быть заполнено';
   },
   sizeValidator(value, size, type) {
     const inputNumbers = getNumbersValue(value);
