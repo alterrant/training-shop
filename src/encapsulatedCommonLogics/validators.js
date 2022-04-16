@@ -1,11 +1,11 @@
 export const subscribeValidator = (values) => {
   const errors = {};
 
-  if (!values.email) errors.email = 'Field is empty';
+  const emptyFieldError = validators.requiredValidator(values.subscribeEmail);
+  const availableEmailError = validators.emailValidator(values.subscribeEmail);
 
-  else if (values.email
-      && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-  ) errors.email = 'Invalid email address';
+  if (emptyFieldError) errors.subscribeEmail = emptyFieldError
+  else if (availableEmailError) errors.subscribeEmail = availableEmailError;
 
   return errors;
 }
