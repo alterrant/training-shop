@@ -61,6 +61,14 @@ export const deliveryInfoFieldsValidators = {
 
     return errors;
   },
+  storeAddressValidator(value, availableStoreAddresses, storeCountry) {
+    let errors;
+
+    errors = validators.requiredValidator(value);
+    if (!errors) errors = validators.availableCityValidator(value, availableStoreAddresses, storeCountry);
+
+    return errors;
+  }
 }
 
 export const paymentFieldsValidators = {
@@ -76,7 +84,7 @@ export const paymentFieldsValidators = {
     let errors;
 
     errors = validators.requiredValidator(value);
-    errors = validators.emailValidator(value);
+    if (!errors) errors = validators.emailValidator(value);
 
     return errors;
   },
@@ -88,7 +96,7 @@ export const paymentFieldsValidators = {
 
     return errors;
   },
-  cvvValidators(value){
+  cvvValidators(value) {
     let errors;
 
     errors = validators.requiredValidator(value);
@@ -144,6 +152,17 @@ const validators = {
     if (value
         && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}$/i.test(value)
     ) return 'Invalid email address';
+  },
+  availableCityValidator(value, availableStoreAddresses, storeCountry) {
+    let isCityCorrect;
+
+    if (availableStoreAddresses.length === 0) return 'Unavailable city'
+    else availableStoreAddresses.forEach(availableAddress => {
+      if (value === availableAddress?.city && (
+          storeCountry === availableAddress?.country
+      )) isCityCorrect = true
+    })
+    if (!isCityCorrect) return 'Unavailable city'
   }
 }
 

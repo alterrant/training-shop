@@ -29,18 +29,6 @@ const StoreAddressFields = ({formik}) => {
 
   const storeAddressBlurHandler = (formikField, e) => {
     formikField.form.setFieldTouched('storeAddress', true, false);
-
-    let isCityCorrect = false;
-
-    availableStoreAddresses.forEach(availableAddress => {
-      if (e.target.value === availableAddress?.city
-          && formik.values.storeCountry === availableAddress?.country) {
-        isCityCorrect = true;
-      }
-    })
-    if (e.target.value.length > 0) {
-      if (!isCityCorrect) formikField.form.setFieldError('storeAddress', 'Unavailable city');
-    }
   }
 
   return (
@@ -72,7 +60,7 @@ const StoreAddressFields = ({formik}) => {
         </div>
         <div className={DeliveryInfoFormStyle.formControl}>
           <label>
-            <Field type='text' name='storeAddress' validate={deliveryInfoFieldsValidators.requiredValidator}>
+            <Field type='text' name='storeAddress' validate={(e) => deliveryInfoFieldsValidators.storeAddressValidator(e, availableStoreAddresses, formik.values.storeCountry)}>
               {
                 formikField => {
                   return (
