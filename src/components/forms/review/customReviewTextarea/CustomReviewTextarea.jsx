@@ -10,8 +10,6 @@ export const CustomReviewTextarea = (props) => {
 
   const className = classNames.bind(ReviewsStyle);
 
-  const {field, form, postingReviewStatus = false, placeholder} = props;
-
   return <textarea className={className('textareaReview', {reviewFormError: form.errors.text && form.touched.text})}
                    onClick={() => {
                      if (postingReviewStatus) dispatch(resetReviewForm())
