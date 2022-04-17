@@ -65,8 +65,8 @@ export const counterSlice = createSlice({
       if (chosenPrice.selected) state.selectedFilters.push({filterType: 'price', filterValue: chosenPrice.name});
       else deleteSelectedFilter(state, 'price', chosenPrice.name);
     }),
-    removeAllFilters: ((state) => {
 
+    removeAllFilters: ((state) => {
       const stateKeys = Object.keys(state);
 
       stateKeys.forEach(stateKey => {

@@ -1,5 +1,4 @@
 export const changeBodyOverflow = (isMenuOpen) => {
-
   if (!isMenuOpen) {
     const windowWidth = document.documentElement.clientWidth;
 
@@ -10,7 +9,6 @@ export const changeBodyOverflow = (isMenuOpen) => {
     if (changedWindowWidth !== windowWidth) {
       document.body.style.paddingRight = (changedWindowWidth - windowWidth) + 'px';
     }
-
   } else {
     document.body.style.overflow = 'visible';
 

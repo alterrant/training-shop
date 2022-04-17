@@ -34,6 +34,7 @@ export const formsSlice = createSlice({
         footerForm: false
       };
     }),
+
     postingReview: (((state) => {
       state.isPostingReview = true;
     })),

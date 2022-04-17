@@ -67,6 +67,7 @@ export const shoppingCartSlice = createSlice({
     setShoppingCartProduct: ((state, action) => {
       state.products.push(action.payload);
     }),
+
     deleteShoppingCartProduct: ((state, action) => {
       const productInCartIndex = findProductIndexInCart({state, action});
 

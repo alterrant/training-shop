@@ -7,6 +7,7 @@ export const CustomReviewTextarea = (props) => {
   const {field, form, postingReviewStatus = false, placeholder} = props;
 
   const dispatch = useDispatch();
+
   const className = classNames.bind(ReviewsStyle);
 
   const {field, form, postingReviewStatus = false, placeholder} = props;
