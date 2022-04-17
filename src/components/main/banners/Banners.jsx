@@ -2,7 +2,7 @@ import React from 'react';
 import BannersStyle from './Banners.module.css';
 import {ReactComponent as LeftArrow} from "../../../assets/SVG/leftArrow.svg";
 import {ReactComponent as RightArrow} from "../../../assets/SVG/rightArrow.svg";
-import Banner from "./Banner";
+import Banner from "./banner/Banner";
 import banner2 from '../../../assets/banner/banner2.png';
 import banner3 from '../../../assets/banner/banner3.png';
 import banner4 from '../../../assets/banner/banner4.png';

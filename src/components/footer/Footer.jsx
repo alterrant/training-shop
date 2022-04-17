@@ -1,6 +1,6 @@
-import JoinUs from "./JoinUs/JoinUs";
-import AboutUs from "./AboutUs/AboutUs";
-import Copyright from "./Copyright/Copyright";
+import JoinUs from "./joinUs/JoinUs";
+import AboutUs from "./aboutUs/AboutUs";
+import Copyright from "./copyright/Copyright";
 import footerStyle from "./Footer.module.css";
 
 const Footer = () => {

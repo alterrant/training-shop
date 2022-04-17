@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
-import NavBar from "./NavBar";
-import SiteTools from "./SiteTools";
+import NavBar from "./navBar/NavBar";
+import SiteTools from "./siteTools/SiteTools";
 import NavStyle from "./Nav.module.css";
 import {useClassNames} from "../../../hooks/useClassName";
 

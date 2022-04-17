@@ -1,4 +1,4 @@
-import ReviewsStyle from "../../../Product/ProductDescription/reviews/Reviews.module.css";
+import ReviewsStyle from "../../../product/productDescription/reviews/Reviews.module.css";
 
 export const CustomReviewErrorMessage = (props) => {
 

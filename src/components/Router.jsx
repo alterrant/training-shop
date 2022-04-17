@@ -9,10 +9,10 @@ import {setInitError, setInitSuccess} from "../redux/initializeReducer";
 import {useStableDispatch} from "../hooks/useRedux";
 
 export const Router = () => {
-
   const isInit = useSelector((state) => state.initialize.isInit);
-  const stableDispatch = useStableDispatch();
 
+  const stableDispatch = useStableDispatch();
+  //думал будет логика инициализации приложения
   useEffect(() => {
     try {
       stableDispatch(setInitSuccess());
