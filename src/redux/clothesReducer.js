@@ -30,6 +30,7 @@ export const clothesSlice = createSlice({
     setFilteredProducts: ((state, action) => {
       state[action.payload.gender].filteredProducts = action.payload.filteredProducts;
     }),
+
     resetSelectedParticulars: ((state, action) => {
       state[action.payload.gender].selectedParticulars = null;
     }),

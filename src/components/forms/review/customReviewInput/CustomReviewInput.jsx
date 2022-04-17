@@ -1,6 +1,6 @@
 import {useDispatch} from "react-redux";
 import classNames from "classnames/bind";
-import ReviewsStyle from "../../../Product/ProductDescription/reviews/Reviews.module.css";
+import ReviewsStyle from "../../../product/productDescription/reviews/Reviews.module.css";
 import {resetReviewForm} from "../../../../redux/formsReduser";
 
 export const CustomReviewInput = (props) => {

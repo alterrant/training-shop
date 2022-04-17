@@ -1,7 +1,7 @@
-import Advantages from "../../components/main/advantage/Advantages";
+import Advantages from "../../components/main/advantages/Advantages";
 import Banners from "../../components/main/banners/Banners";
 import Subscribe from "../../components/main/subscribe/Subscribe";
-import LatestFromBlog from "../../components/main/latestFromBlog/LatestFromBlog";
+import LatestBlogs from "../../components/main/latestBlogs/LatestBlogs";
 import Benefits from "../../components/main/benefits/Benefits";
 import ClothesMain from "../../components/clothes/ClothesMain";
 import Partition from "../../components/common/partition/Partition";
@@ -37,7 +37,7 @@ const MainPage = () => {
         <ClothesMain tittle={'MEN’S'} productType={MEN} genderProducts={menProducts}/>
         <Benefits/>
         <Subscribe/>
-        <LatestFromBlog/>
+        <LatestBlogs/>
       </>
   )
 }

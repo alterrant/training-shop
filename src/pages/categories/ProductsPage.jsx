@@ -1,9 +1,9 @@
-import Tittle from "../../components/Product/productHeader/ProductHeader";
+import Tittle from "../../components/product/productHeader/ProductHeader";
 import Preloader from "../../components/common/preloader/Preloader";
 import {useState} from "react";
-import FilterBar from "../../components/filter/FilterBar";
-import FilterCategories from "../../components/filter/FilterCategories";
-import SelectedFilters from "../../components/filter/SelectedFilters";
+import FilterBar from "../../components/productsPageFilters/filterBar/FilterBar";
+import ProductsFilters from "../../components/productsPageFilters/productsFilters/ProductsFilters";
+import SelectedFilters from "../../components/productsPageFilters/selectedFilters/SelectedFilters";
 import Clothes from "../../components/clothes/clothesList/Clothes";
 import ClothesStyle from "../../components/clothes/ClothesMain.module.css";
 import {useProducts} from "../../hooks/useProducts";
@@ -24,7 +24,7 @@ const ProductsPage = ({productType, tittle}) => {
         <Tittle tittle={tittle}/>
         <FilterBar isOpenedFilter={isOpenedFilter}
                    setOpenedStatusFilter={setOpenedStatusFilter}/>
-        {isOpenedFilter && <FilterCategories productType={productType}/>}
+        {isOpenedFilter && <ProductsFilters productType={productType}/>}
         {(selectedFiltersLists.length > 0) && <SelectedFilters selectedFiltersLists={selectedFiltersLists}/>}
         {isLoadingGenderProducts
             ? <Preloader/>

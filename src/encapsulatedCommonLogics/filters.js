@@ -13,6 +13,7 @@ export const getAvailableParticulars = (products) => {
   })
 
   const clothesNavBar = [];
+
   CLOTHES_DICTIONARY.forEach(item => {
     if (availableParticulars.has(item.filterName)) clothesNavBar.push(item);
   });
@@ -21,7 +22,6 @@ export const getAvailableParticulars = (products) => {
 }
 
 export const filterProducts = (genderProducts, selectedFiltersLists) => {
-
   return genderProducts.filter(product => {
     let isPreviousFiltersConfirm = true;
 
@@ -32,7 +32,10 @@ export const filterProducts = (genderProducts, selectedFiltersLists) => {
     const resultFilterProduct = selectedFiltersLists.reduce((prevFilter, curFilter) => {
       if (prevFilter.filterType === curFilter.filterType) return {
         filterType: curFilter.filterType,
-        isProductConformFilter: (isPreviousFiltersConfirm && isProductConformFilter(product, curFilter)) || prevFilter.isProductConformFilter
+        isProductConformFilter: (
+            (isPreviousFiltersConfirm && isProductConformFilter(product, curFilter))
+            || prevFilter.isProductConformFilter
+        )
       };
 
       isPreviousFiltersConfirm = prevFilter.isProductConformFilter;
@@ -50,6 +53,7 @@ export const filterProducts = (genderProducts, selectedFiltersLists) => {
 const getFilterPrices = (valueRange) => {
   const filterPrices = valueRange.filterValue.split('-').map(item => {
     const price = item.slice(1);
+
     return parseInt(price);
   }).sort((a, b) => a - b);
 
@@ -57,8 +61,7 @@ const getFilterPrices = (valueRange) => {
     minFilterPrice: filterPrices[0],
     maxFilterPrice: filterPrices[1]
         ? filterPrices[1]
-        :
-        filterPrices[0]
+        : filterPrices[0]
   }
 }
 

@@ -1,5 +1,5 @@
 import BenefitsStyle from './Benefits.module.css';
-import Benefit from "./Benefit";
+import Benefit from "./benefit/Benefit";
 import {BENEFITS} from "../../../constants/benefits";
 
 export const Benefits = () => {

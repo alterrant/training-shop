@@ -23,6 +23,7 @@ export const initializeSlice = createSlice({
     setInitError: ((state, error) => {
       state.isInitError = error;
     }),
+
     fetchProducts: (((state) => {
       state.isLoadingProducts = true;
     })),
@@ -33,6 +34,7 @@ export const initializeSlice = createSlice({
       state.isLoadingProductsError = action.payload;
       state.isLoadingProducts = false;
     })),
+
     fetchGenderProducts: (((state) => {
       state.isLoadingGenderProducts = true;
     })),
@@ -43,18 +45,21 @@ export const initializeSlice = createSlice({
       state.isLoadingGenderProductsError = action.payload;
       state.isLoadingGenderProducts = false;
     })),
+
     setProducts: ((state, action) => {
       state.products = action.payload.products;
     }),
     setGenderProducts: ((state, action) => {
       state.products[action.payload.gender] = action.payload.products;
     }),
+
     productsRequestToggle: ((state) => {
       state.isLoadingProducts = !state.isLoadingProducts;
     }),
     productsRequestError: ((state, error) => {
       state.isInitError = error;
     }),
+
     resetErrors: ((state) => {
       state.isInitError = false;
       state.isLoadingProductsError = false;

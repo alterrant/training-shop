@@ -1,7 +1,7 @@
-import ClothesNavBar from "./../clothes/ClothesNavBar";
+import ClothesNavBar from "./clothesNavBar/ClothesNavBar";
 import ClothesStyle from "./../clothes/ClothesMain.module.css";
 import Clothes from "./../clothes/clothesList/Clothes";
-import SeeAllButton from "./../clothes/SeeAllButton";
+import SeeAllButton from "./clothesSeeAllBtn/SeeAllButton";
 import ClothesTitle from "../clothes/ClothesTitle";
 import {useParticularProducts} from "../../hooks/useProducts";
 import {useSelector} from "react-redux";
@@ -10,6 +10,7 @@ import Preloader from "../common/preloader/Preloader";
 const ClothesMain = ({tittle, productType, genderProducts}) => {
   const isLoadingProducts = useSelector(state => state.initialize.isLoadingProducts);
   const isLoadingGenderProducts = useSelector(state => state.initialize.isLoadingGenderProducts);
+
   const isLoading = !!(isLoadingProducts || isLoadingGenderProducts);
 
   const {selectedParticularProducts, clothesNavBar} = useParticularProducts(productType, genderProducts);
@@ -24,9 +25,11 @@ const ClothesMain = ({tittle, productType, genderProducts}) => {
         </div>
         {isLoading
             ? <Preloader/>
-            : <div className={ClothesStyle.closesWrapper}>
-              {<Clothes product={selectedParticularProducts} productType={productType}/>}
-            </div>
+            : (
+                <div className={ClothesStyle.closesWrapper}>
+                  {<Clothes product={selectedParticularProducts} productType={productType}/>}
+                </div>
+            )
         }
         <SeeAllButton productType={productType}/>
       </article>

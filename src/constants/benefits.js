@@ -8,6 +8,4 @@ export const BENEFITS = [
 ]
 
 export const SPECIAL_BENEFIT =
-    {
-      id: '1', tittle: 'SPECIAL OFFER', description: 'Subscribe\nAnd ', discount: 'Get 10% Off'
-    }
+    {id: '1', tittle: 'SPECIAL OFFER', description: 'Subscribe\nAnd ', discount: 'Get 10% Off'}

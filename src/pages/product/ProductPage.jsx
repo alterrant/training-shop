@@ -1,7 +1,7 @@
-import Tittle from "../../components/Product/productHeader/ProductHeader";
+import Tittle from "../../components/product/productHeader/ProductHeader";
 import {useSelector} from "react-redux";
-import Product from "../../components/Product/Product";
-import RelatedProducts from "../../components/Product/relatedProducts/RelatedProducts";
+import Product from "../../components/product/Product";
+import RelatedProducts from "../../components/product/relatedProducts/RelatedProducts";
 import {useProduct} from "../../hooks/useProduct";
 import Preloader from "../../components/common/preloader/Preloader";
 
