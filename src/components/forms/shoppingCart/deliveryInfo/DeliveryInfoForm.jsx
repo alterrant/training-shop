@@ -32,7 +32,7 @@ export const DeliveryInfoForm = (props) => {
   ]
 
   const deliveryInfoSummary = useSelector(state => state.shoppingCart.deliveryInfo.deliveryInfoSummary);
-  const initialValues = Object.assign({agreementToggle: false}, deliveryInfoSummary, {storeCountry: deliveryInfoSummary.country});
+  const initialValues = Object.assign({agreementToggle: false}, deliveryInfoSummary);
 
   const onSubmit = (values) => {
     dispatch(setDeliveryInfo(values));
