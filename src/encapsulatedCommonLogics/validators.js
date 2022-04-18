@@ -160,8 +160,8 @@ const validators = {
 
     if (availableStoreAddresses.length === 0) return 'Unavailable city'
     else availableStoreAddresses.forEach(availableAddress => {
-      if (value === availableAddress?.city && (
-          storeCountry === availableAddress?.country
+      if (value.toLowerCase() === availableAddress?.city.toLowerCase() && (
+          storeCountry.toLowerCase() === availableAddress?.country.toLowerCase()
       )) isCityCorrect = true
     })
     if (!isCityCorrect) return 'Unavailable city'
