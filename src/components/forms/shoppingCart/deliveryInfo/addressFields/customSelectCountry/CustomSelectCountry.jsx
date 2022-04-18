@@ -10,7 +10,7 @@ export const CustomSelectCountry = ({field, form, initPlaceholder, deliveryCount
 
   const selectionCountryHandler = (country) => {
     form.setFieldValue(field.name, country);
-    setSelected(!selected);
+    //setSelected(!selected);
   }
 
   return (
