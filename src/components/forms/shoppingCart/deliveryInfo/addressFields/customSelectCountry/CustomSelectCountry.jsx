@@ -1,14 +1,15 @@
 import React, {useState} from "react";
 import CustomSelectStyle from './CustomSelectCountry.module.css';
 import classNames from "classnames/bind";
+import {CustomStoreAddressSelect} from "../customStoreAddressSelect/CustomStoreAddressSelect";
 
 export const CustomSelectCountry = ({field, form, initPlaceholder, deliveryCountries}) => {
   const [selected, setSelected] = useState(null);
 
   const className = classNames.bind(CustomSelectStyle);
 
-  const onLabelClick = (option) => {
-    form.setFieldValue(field.name, option.name);
+  const selectionCountryHandler = (country) => {
+    form.setFieldValue(field.name, country);
     setSelected(!selected);
   }
 
@@ -18,22 +19,14 @@ export const CustomSelectCountry = ({field, form, initPlaceholder, deliveryCount
           <input className={className('selectTitle', {placeholder: field.value === ''})} type="text" name={field.name} placeholder={initPlaceholder}
                  value={field.value === '' ? initPlaceholder : field.value}
                  onClick={() => setSelected(!selected)}
-                 onChange={(e) => field.onChange(e)}
+                 onChange={() => 'changeDisabled'}
           />
           <div className={CustomSelectStyle.selectContent}>
             {
-              deliveryCountries.map(option => (
-                  <React.Fragment key={option._id}>
-                    <input id={option.name} className={CustomSelectStyle.selectInput} type="radio" name="singleSelect"/>
-                    <label htmlFor={option.name} className={CustomSelectStyle.selectLabel}
-                           onClick={() => onLabelClick(option)}>{option.name}</label>
-                  </React.Fragment>
-              ))
+              <CustomStoreAddressSelect options={deliveryCountries} optionValue={'name'} handleClick={selectionCountryHandler}/>
             }
           </div>
         </div>
       </>
   )
 }
-
-
