@@ -5,6 +5,7 @@ const CustomShoppingCartCheckbox = (props) => {
   const {field, form} = props;
 
   const className = classNames.bind(CheckboxStyle);
+
   const customCheckboxStyle = className(
       'customCheckbox',
       field.value && 'customCheckboxActive',
@@ -19,7 +20,6 @@ const CustomShoppingCartCheckbox = (props) => {
                name={field.name}
                checked={field.value}
                onChange={(e) => field.onChange(e)}
-               onBlur={(e) => field.onBlur(e)}
                className={CheckboxStyle.checkbox}/>
       </label>
   )

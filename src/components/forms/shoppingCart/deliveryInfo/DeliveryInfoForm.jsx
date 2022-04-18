@@ -132,7 +132,8 @@ export const DeliveryInfoForm = (props) => {
                   <ShoppingCartFooter totalCartPrice={totalCartPrice}
                                       navigationStage={navigationStage}
                                       setNavigationStage={setNavigationStage}
-                                      summaryInfo={formik.values}/>
+                                      summaryInfo={formik.values}
+                                      formik={formik}/>
                 </Form>
             )
           }

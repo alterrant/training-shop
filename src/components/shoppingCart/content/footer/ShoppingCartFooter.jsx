@@ -19,6 +19,7 @@ const ShoppingCartFooter = (props) => {
     isCashMethod = false,
     finalShoppingCardPageName = null,
     summaryInfo,
+    formik = null
   } = props;
 
   const dispatch = useStableDispatch();
@@ -54,8 +55,7 @@ const ShoppingCartFooter = (props) => {
       dispatch(resetPaymentInfo());
       dispatch(resetDeliveryFormToggle());
       dispatch(resetPaymentFormToggle());
-    }
-    else if (navigationStage === 'Payment') {
+    } else if (navigationStage === 'Payment') {
       dispatch(setPaymentInfo(summaryInfo));
       setNavigationStage('Delivery Info');
     }
@@ -86,6 +86,12 @@ const ShoppingCartFooter = (props) => {
           : button
     }
   }
+  const onMouseDown = () => {
+    if (formik) {
+      const isFieldsError = (Object.keys(formik.errors).length !== 0 && !formik.errors['agreementToggle']);
+      if (isFieldsError) formik.setFieldValue('agreementToggle', false);
+    }
+  }
 
   return (
       <div className={ShoppingCartFooterStyle.footer}>
@@ -100,6 +106,7 @@ const ShoppingCartFooter = (props) => {
         <div className={ShoppingCartFooterStyle.buttons}>
           <button className={ShoppingCartFooterStyle.buttonFurter}
                   onClick={(e) => onClickHandler(e)}
+                  onMouseDown={() => onMouseDown()}
                   type='submit'>
             {
               getShoppingCartSubmitBtn(navigationStage, isCashMethod, finalShoppingCardPageName)

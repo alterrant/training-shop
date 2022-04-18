@@ -106,9 +106,6 @@
 .selectFieldEmpty {
   color: #9C9C9C;
 }
-.storeCountryOption {
-  color: #121212;
-}
 .formContent {
   display: flex;
   flex-direction: column;
