@@ -1,17 +1,5 @@
 import {useSelector} from "react-redux";
 
-export const useErrorsTest = () => {
-  const initError = useSelector(state => state.initialize.isInitError);
-  const loadingProductsError = useSelector(state => state.initialize.isLoadingProductsError);
-  const loadingGenderProductsError = useSelector(state => state.initialize.isLoadingGenderProductsError);
-
-  return {
-    initError,
-    loadingProductsError,
-    loadingGenderProductsError
-  }
-}
-
 export const useErrors = () => {
   // const initError = useSelector(state => state.initialize.isInitError);
   const loadingProductsError = useSelector(state => state.initialize.isLoadingProductsError);
