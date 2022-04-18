@@ -7,6 +7,7 @@ import classNames from "classnames/bind";
 import {useStableDispatch} from "../../../../../hooks/useRedux";
 import {fetchAvailableStoreAddresses} from "../../../../../redux/shoppingCartReducer";
 import {deliveryInfoFieldsValidators} from "../../../../../encapsulatedCommonLogics/validators";
+import {CustomSelectCountry} from "./customSelectCountry/CustomSelectCountry";
 
 const StoreAddressFields = ({formik}) => {
   const dispatch = useStableDispatch();
@@ -36,31 +37,9 @@ const StoreAddressFields = ({formik}) => {
         <div className={DeliveryInfoFormStyle.formControl}>
           <label>
             <p>ADDRESS OF STORE</p>
-            <Field as='select'
-                   name='storeCountry'
-                   placeholder='Country'
-                   className={className(
-                       'formControlInputs',
-                       'selectField',
-                       isCountryChosen && 'selectFieldEmpty',
-                       {errorField: formik.errors.storeCountry && formik.touched.storeCountry}
-                       )}
-                   validate={deliveryInfoFieldsValidators.requiredValidator}>
-              {
-                <option value='' disabled hidden>
-                  Country
-                </option>
-              }
-              {
-                deliveryCountries.map(option => {
-                  return (
-                      <option key={option._id} value={option.name} className={DeliveryInfoFormStyle.storeCountryOption}>
-                        {option.name}
-                      </option>
-                  )
-                })
-              }
-            </Field>
+            <Field name='storeCountry' component={CustomSelectCountry}
+                   initPlaceholder='Country' deliveryCountries={deliveryCountries}
+                   validate={deliveryInfoFieldsValidators.requiredValidator}/>
           </label>
           <ErrorMessage name='storeCountry' component={CustomReviewErrorMessage}/>
         </div>
