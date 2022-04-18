@@ -8,16 +8,18 @@ export const CustomSelectCountry = ({field, form, initPlaceholder, deliveryCount
   const className = classNames.bind(CustomSelectStyle);
 
   const onLabelClick = (option) => {
-    form.setFieldValue(field.name, option.name)
+    form.setFieldValue(field.name, option.name);
     setSelected(!selected);
   }
 
   return (
       <>
         <div className={className('select', {active: selected}, {errorField: form.errors.storeCountry && form.touched.storeCountry})}>
-          <input id="selectTitle" className={CustomSelectStyle.selectInput} type="radio" name={field.name} placeholder={initPlaceholder}/>
-          <label htmlFor="selectTitle" className={className('selectTitle', {placeholder: field.value === ''})}
-                 onClick={() => setSelected(!selected)}>{field.value === '' ? initPlaceholder : field.value}</label>
+          <input className={className('selectTitle', {placeholder: field.value === ''})} type="text" name={field.name} placeholder={initPlaceholder}
+                 value={field.value === '' ? initPlaceholder : field.value}
+                 onClick={() => setSelected(!selected)}
+                 onChange={(e) => field.onChange(e)}
+          />
           <div className={CustomSelectStyle.selectContent}>
             {
               deliveryCountries.map(option => (
