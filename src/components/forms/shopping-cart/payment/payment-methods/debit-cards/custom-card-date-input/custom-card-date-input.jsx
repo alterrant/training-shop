@@ -53,7 +53,8 @@ const CustomCardDateInput = ({ field, form, ...otherProps }) => {
       <input
         type="tel"
         /* eslint-disable react/jsx-props-no-spreading */
-        {...field}
+        value={field.value}
+        name={field.name}
         {...otherProps}
         onChange={phoneChangeHandler}
         ref={cardInputRef}
