@@ -63,10 +63,10 @@
   top: 43px;
 }
 .successSubmitText {
-  color: #89bb36;
+  color: #89BB36;
 }
 .errorSubmitText {
-  color: red;
+  color: #FF0000;
 }
 .inputEmailWrapper {
   height: 100%;
@@ -162,7 +162,7 @@
   height: 18px;
 }
 .disableReviewButton {
-  background-color: #504e4e;
+  background-color: #504E4E;
   border: none;
 }
 @media screen and (max-width: 633px) {

@@ -169,10 +169,10 @@
   text-shadow: 0 0 4px rgb(58, 30, 239);
 }
 .successSubmitText {
-  color: greenyellow;
+  color: #ADFF2F;
 }
 .errorSubmitText {
-  color: red;
+  color: #FF0000;
 }
 
 .women {
