@@ -1,4 +1,4 @@
-import { deliveryTypes } from "../constants/shoppingCart";
+import { DELIVERY_TYPES } from "../constants/shoppingCart";
 
 export const getSummaryOrderInfo = (
   values,
@@ -14,8 +14,8 @@ export const getSummaryOrderInfo = (
   };
 
   if (
-    values.deliveryMethod === deliveryTypes.office ||
-    values.deliveryMethod === deliveryTypes.express
+    values.deliveryMethod === DELIVERY_TYPES.office ||
+    values.deliveryMethod === DELIVERY_TYPES.express
   ) {
     deliveryInfoSummary.country = values.country;
     deliveryInfoSummary.city = values.city;
@@ -24,10 +24,10 @@ export const getSummaryOrderInfo = (
     if (values.apartment) deliveryInfoSummary.apartment = values.apartment;
   }
 
-  if (values.deliveryMethod === deliveryTypes.office)
+  if (values.deliveryMethod === DELIVERY_TYPES.office)
     deliveryInfoSummary.postcode = values.postcode;
 
-  if (values.deliveryMethod === deliveryTypes.store) {
+  if (values.deliveryMethod === DELIVERY_TYPES.store) {
     deliveryInfoSummary.country = values.storeCountry;
     deliveryInfoSummary.storeAddress = values.storeAddress;
   }
