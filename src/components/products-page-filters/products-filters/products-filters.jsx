@@ -8,7 +8,7 @@ import chooseFilterAction from "../../../encapsulated-common-logics/distribution
 import productsFiltersStyle from "./products-filters.module.css";
 
 const ProductsFilters = ({ productType }) => {
-  const filters = useSelector((state) => state.filter.categories);
+  const { categories: filters } = useSelector((state) => state.filter);
 
   const filterLists = filters.map((filterName) => (
     <ul className={productsFiltersStyle.column} key={filterName}>

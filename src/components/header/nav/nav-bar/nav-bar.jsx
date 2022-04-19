@@ -12,7 +12,7 @@ import NavBarStyle from "./nav-bar.module.css";
 
 const NavBar = () => {
   const dispatch = useDispatch();
-  const isMenuOpen = useSelector((state) => state.header.isMenuOpen);
+  const { isMenuOpen } = useSelector((state) => state.header);
 
   const className = useClassNames(
     "isMenuOpen",

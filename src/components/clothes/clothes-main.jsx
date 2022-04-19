@@ -10,12 +10,8 @@ import { useParticularProducts } from "../../hooks/use-products";
 import Preloader from "../common/preloader/preloader";
 
 const ClothesMain = ({ tittle, productType, genderProducts }) => {
-  const isLoadingProducts = useSelector(
-    (state) => state.initialize.isLoadingProducts
-  );
-  const isLoadingGenderProducts = useSelector(
-    (state) => state.initialize.isLoadingGenderProducts
-  );
+  const { isLoadingProducts } = useSelector((state) => state.initialize);
+  const { isLoadingGenderProducts } = useSelector((state) => state.initialize);
 
   const isLoading = !!(isLoadingProducts || isLoadingGenderProducts);
 

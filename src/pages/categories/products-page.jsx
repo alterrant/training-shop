@@ -17,12 +17,11 @@ import ClothesStyle from "../../components/clothes/clothes-main.module.css";
 const ProductsPage = ({ productType, tittle }) => {
   const [isOpenedFilter, setOpenedStatusFilter] = useState(false);
 
-  const isLoadingGenderProducts = useSelector(
-    (state) => state.initialize.isLoadingGenderProducts
-  );
+  const { isLoadingGenderProducts } = useSelector(
+    (state) => state.initialize);
 
-  const selectedFiltersLists = useSelector(
-    (state) => state.filter.selectedFilters
+  const { selectedFilters: selectedFiltersLists } = useSelector(
+    (state) => state.filter
   );
   const genderProducts = useSelector(
     (state) => state.initialize.products[productType]

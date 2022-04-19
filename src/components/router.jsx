@@ -9,7 +9,7 @@ import ProductsPage from "../pages/categories/products-page";
 import { setInitError, setInitSuccess } from "../redux/initialize-reducer";
 
 export const Router = () => {
-  const isInit = useSelector((state) => state.initialize.isInit);
+  const { isInit } = useSelector((state) => state.initialize);
 
   const stableDispatch = useDispatch();
   // думал будет логика инициализации приложения

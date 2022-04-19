@@ -27,10 +27,8 @@ const PaymentForm = ({
   setNavigationStage,
 }) => {
   const dispatch = useDispatch();
-  const paymentFormToggle = useSelector(
-    (state) => state.shoppingCart.paymentFormToggle
-  );
-  const statePaymentInfo = useSelector(
+  const { paymentFormToggle } = useSelector((state) => state.shoppingCart);
+  const { paymentSummary: statePaymentInfo } = useSelector(
     (state) => state.shoppingCart.paymentSummary
   );
 

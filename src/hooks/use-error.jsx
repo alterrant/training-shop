@@ -2,11 +2,11 @@ import { useSelector } from "react-redux";
 
 export default () => {
   // const initError = useSelector(state => state.initialize.isInitError);
-  const loadingProductsError = useSelector(
-    (state) => state.initialize.isLoadingProductsError
+  const { isLoadingProductsError: loadingProductsError } = useSelector(
+    (state) => state.initialize
   );
-  const loadingGenderProductsError = useSelector(
-    (state) => state.initialize.isLoadingGenderProductsError
+  const { isLoadingGenderProductsError: loadingGenderProductsError } = useSelector(
+    (state) => state.initialize
   );
 
   const allErrors = [loadingProductsError, loadingGenderProductsError];

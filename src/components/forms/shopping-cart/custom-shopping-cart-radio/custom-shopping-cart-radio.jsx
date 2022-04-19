@@ -6,8 +6,8 @@ import CustomDeliveryTypeRadioStyle from "./custom-shopping-cart-radio.module.cs
 
 const CustomShoppingCartRadio = ({ field, form, ...otherProps }) => {
   const dispatch = useDispatch();
-  const isDeliveryCountries = useSelector(
-    (state) => state.shoppingCart.deliveryInfo.deliveryCountries
+  const { isDeliveryCountries } = useSelector(
+    (state) => state.shoppingCart.deliveryInfo
   );
 
   const deliveryTypeChangeHandler = (e) => {

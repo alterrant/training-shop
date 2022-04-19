@@ -16,10 +16,8 @@ import ReviewsStyle from "../../product/product-description/reviews/reviews.modu
 
 const ReviewForm = ({ setStatusAnnotation, isAnnotationOpened, productId }) => {
   const dispatch = useDispatch();
-  const isPostingReview = useSelector((state) => state.forms.isPostingReview);
-  const postingReviewStatus = useSelector(
-    (state) => state.forms.postingReviewStatus
-  );
+  const { isPostingReview } = useSelector((state) => state.forms);
+  const { postingReviewStatus } = useSelector((state) => state.forms);
   const reviewFormRef = useRef();
   const classNamesBind = classNames.bind(ReviewsStyle);
 

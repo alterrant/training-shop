@@ -10,9 +10,9 @@ const FinalShoppingCartPages = ({
   setNavigationStage,
   finalShoppingCardPage,
 }) => {
-  const submittingErrorMessage = useSelector(
+  const { message: submittingErrorMessage } = useSelector(
     (state) =>
-      state.shoppingCart.submittingInfo.submittingError.submittingError?.message
+      state.shoppingCart.submittingInfo.submittingError.submittingError
   );
 
   const getFinalShoppingCardDescription = (finalShoppingCardPageName) => {

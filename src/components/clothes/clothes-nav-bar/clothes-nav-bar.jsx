@@ -6,8 +6,8 @@ import ClothesNavBarStyle from "./clothes-nav-bar.module.css";
 import { setSelectedParticulars } from "../../../redux/clothes-reducer";
 
 const ClothesNavBar = ({ clothesNavBar, productType }) => {
-  const selectedParticular = useSelector(
-    (state) => state.clothes[productType].selectedParticulars
+  const { selectedParticular } = useSelector(
+    (state) => state.clothes[productType]
   );
   const dispatch = useDispatch();
 

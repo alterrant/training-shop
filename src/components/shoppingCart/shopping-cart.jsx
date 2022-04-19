@@ -13,22 +13,19 @@ import ShoppingCartStyle from "./shopping-cart.module.css";
 const ShoppingCart = () => {
   const dispatch = useDispatch();
 
-  const isShoppingCartOpen = useSelector(
-    (state) => state.shoppingCart.isShoppingCartOpen
-  );
-  const shoppingCartProducts = useSelector(
-    (state) => state.shoppingCart.products
+  const { isShoppingCartOpen } = useSelector((state) => state.shoppingCart);
+  const { products: shoppingCartProducts } = useSelector(
+    (state) => state.shoppingCart
   );
   const productsQuantity = useSelector(
     (state) => state.shoppingCart.products.length
   );
 
-  const isSubmittingShoppingCartSuccess = useSelector(
-    (state) => state.shoppingCart.submittingInfo.isSubmittingSuccess
+  const { isSubmittingShoppingCartSuccess } = useSelector(
+    (state) => state.shoppingCart.submittingInfo
   );
-  const isSubmittingShoppingCartError = useSelector(
-    (state) =>
-      state.shoppingCart.submittingInfo.submittingError.isSubmittingError
+  const { isSubmittingError } = useSelector(
+    (state) => state.shoppingCart.submittingInfo.submittingError
   );
 
   const [navigationStage, setNavigationStage] = useState("Item in Cart");
@@ -37,14 +34,14 @@ const ShoppingCart = () => {
 
   const isFinalShoppingCartPage = !(
     isSubmittingShoppingCartSuccess ||
-    isSubmittingShoppingCartError ||
+    isSubmittingError ||
     productsQuantity === 0
   );
   const finalShoppingCardPage =
     !isFinalShoppingCartPage &&
     getFinalShoppingCartPage(
       isSubmittingShoppingCartSuccess,
-      isSubmittingShoppingCartError
+      isSubmittingError
     );
 
   const cx = classNames.bind(ShoppingCartStyle);
@@ -96,11 +93,11 @@ export default ShoppingCart;
 
 const getFinalShoppingCartPage = (
   isSubmittingShoppingCartSuccess,
-  isSubmittingShoppingCartError
+  isSubmittingError
 ) => {
   let finalShoppingCardPage;
 
-  if (isSubmittingShoppingCartSuccess || isSubmittingShoppingCartError) {
+  if (isSubmittingShoppingCartSuccess || isSubmittingError) {
     finalShoppingCardPage = isSubmittingShoppingCartSuccess
       ? "submittingSuccess"
       : "submittingRejected";

@@ -20,14 +20,13 @@ import {
 import useErrors from "./use-error";
 
 export const useParticularProducts = (productType, genderProducts) => {
-  const selectedParticularProducts = useSelector(
-    (state) => state.clothes?.[productType]?.filteredProducts
+  const { filteredProducts: selectedParticularProducts } = useSelector(
+    (state) => state.clothes?.[productType]
   );
-  const clothesNavBar = useSelector(
-    (state) => state.clothes?.[productType]?.navBar
-  );
-  const selectedParticular = useSelector(
-    (state) => state.clothes?.[productType]?.selectedParticulars
+  const { navBar: clothesNavBar } = useSelector(
+    (state) => state.clothes?.[productType]);
+  const { selectedParticulars: selectedParticular } = useSelector(
+    (state) => state.clothes?.[productType]
   );
 
   const stableDispatch = useDispatch();
@@ -82,8 +81,8 @@ export const useProducts = (
   selectedFiltersLists,
   setOpenedStatusFilter
 ) => {
-  const filteredProducts = useSelector(
-    (state) => state.clothes?.[productType]?.filteredProducts
+  const { filteredProducts } = useSelector(
+    (state) => state.clothes?.[productType]
   );
 
   const stableDispatch = useDispatch();

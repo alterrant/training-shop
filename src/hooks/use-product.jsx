@@ -9,7 +9,7 @@ import useErrors from "./use-error";
 export default ({ genderProducts, productType }) => {
   const productId = useParams();
   const stableDispatch = useDispatch();
-  const productInfo = useSelector((state) => state.product.productInfo);
+  const { productInfo } = useSelector((state) => state.product);
   const stableProduct = useMemo(
     () => genderProducts.find((item) => item.id === productId.id),
     [genderProducts, productType, productId.id]

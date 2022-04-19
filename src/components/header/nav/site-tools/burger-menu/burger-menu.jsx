@@ -9,7 +9,7 @@ import BurgerMenuStyle from "./burger-menu.module.css";
 
 const BurgerMenu = () => {
   const dispatch = useDispatch();
-  const isMenuOpen = useSelector((state) => state.header.isMenuOpen);
+  const { isMenuOpen } = useSelector((state) => state.header);
 
   const className = useClassNames(
     "isMenuOpen",

@@ -8,7 +8,7 @@ import Main from "../../components/main/main";
 import AppStyle from "./app.module.css";
 
 const App = () => {
-  const initError = useSelector((state) => state.initialize.isInitError);
+  const { isInitError: initError } = useSelector((state) => state.initialize);
 
   return (
     <div className={AppStyle.app} data-test-id="app">

@@ -13,15 +13,12 @@ const ProductPage = ({ productType }) => {
   const genderProducts = useSelector(
     (state) => state.initialize.products[productType]
   );
-  const isLoadingGenderProducts = useSelector(
-    (state) => state.initialize.isLoadingGenderProducts
-  );
-  const productInStore = useSelector(
-    (state) => state.product.availabilityInStore
-  );
-  const selectedCategoriesProduct = useSelector(
-    (state) => state.product.selectedCategories
-  );
+  const { isLoadingGenderProducts } = useSelector(
+    (state) => state.initialize);
+  const { availabilityInStore: productInStore } = useSelector(
+    (state) => state.product);
+  const { selectedCategories: selectedCategoriesProduct } = useSelector(
+    (state) => state.product);
 
   const productInfo = useProduct({ genderProducts, productType });
 

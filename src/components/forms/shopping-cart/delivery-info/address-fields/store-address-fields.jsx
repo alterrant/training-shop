@@ -10,11 +10,11 @@ import CustomStoreAddressInput from "./custom-store-address-input/custom-store-a
 import DeliveryInfoFormStyle from "../delivery-info-form.module.css";
 
 const StoreAddressFields = ({ formik }) => {
-  const deliveryCountries = useSelector(
-    (state) => state.shoppingCart.deliveryInfo.deliveryCountries
+  const { deliveryCountries } = useSelector(
+    (state) => state.shoppingCart.deliveryInfo
   );
-  const availableStoreAddresses = useSelector(
-    (state) => state.shoppingCart.deliveryInfo.availableStoreAddresses
+  const { availableStoreAddresses } = useSelector(
+    (state) => state.shoppingCart.deliveryInfo
   );
 
   return (

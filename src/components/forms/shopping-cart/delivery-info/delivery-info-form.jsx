@@ -26,9 +26,7 @@ const DeliveryInfoForm = ({
   setNavigationStage,
 }) => {
   const dispatch = useDispatch();
-  const deliveryFormToggle = useSelector(
-    (state) => state.shoppingCart.deliveryFormToggle
-  );
+  const { deliveryFormToggle } = useSelector((state) => state.shoppingCart);
 
   const className = classNames.bind(DeliveryInfoFormStyle);
 
@@ -40,8 +38,8 @@ const DeliveryInfoForm = ({
     { key: "rOption3", value: "Store pickup" },
   ];
 
-  const deliveryInfoSummary = useSelector(
-    (state) => state.shoppingCart.deliveryInfo.deliveryInfoSummary
+  const { deliveryInfoSummary } = useSelector(
+    (state) => state.shoppingCart.deliveryInfo
   );
   const initialValues = Object.assign(
     { agreementToggle: false },

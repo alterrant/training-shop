@@ -7,7 +7,7 @@ import { ReactComponent as ShareSVG } from "../../../../assets/SVG/share.svg";
 import NavigationStyle from "./navigation.module.css";
 
 const Navigation = () => {
-  const product = useSelector((state) => state.product.productInfo);
+  const { productInfo: product } = useSelector((state) => state.product);
   const addresses = useLocation()
     .pathname.split("/")
     .filter((item) => item !== "");

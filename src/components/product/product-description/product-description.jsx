@@ -20,11 +20,11 @@ import { ReactComponent as MailSVG } from "../../../assets/SVG/mail.svg";
 import ProductDescriptionStyle from "./product-description.module.css";
 
 const ProductDescription = ({ product, selectedCategoriesProduct }) => {
-  const selectedColor = useSelector(
-    (state) => state.product.selectedCategories.color
+  const { color: selectedColor } = useSelector(
+    (state) => state.product.selectedCategories
   );
-  const selectedSize = useSelector(
-    (state) => state.product.selectedCategories.size
+  const { size: selectedSize } = useSelector(
+    (state) => state.product.selectedCategories
   );
   const dispatch = useDispatch();
 
