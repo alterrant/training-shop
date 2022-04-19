@@ -1,10 +1,6 @@
-import PartitionStyle from './Partition.module.css';
+import React from "react";
+import PartitionStyle from "./Partition.module.css";
 
-const Partition = () => {
-  return (
-      <div className={PartitionStyle.underline}>
-      </div>
-  )
-}
+const Partition = () => <div className={PartitionStyle.underline} />;
 
 export default Partition;

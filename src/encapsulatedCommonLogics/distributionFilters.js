@@ -1,7 +1,12 @@
-import {setBrand, setColor, setPrice, setSize, removeAllFilters} from "../redux/filterReducer";
+import {
+  setBrand,
+  setColor,
+  setPrice,
+  setSize,
+  removeAllFilters,
+} from "../redux/filterReducer";
 
-export const chooseFilterAction = (actionType) => {
-
+const chooseFilterAction = (actionType) => {
   switch (actionType) {
     case "color":
       return setColor;
@@ -14,6 +19,8 @@ export const chooseFilterAction = (actionType) => {
     case "removeAllFilters":
       return removeAllFilters;
     default:
-      return "haven't chosen action"
+      return "haven't chosen action";
   }
-}
+};
+
+export default chooseFilterAction;

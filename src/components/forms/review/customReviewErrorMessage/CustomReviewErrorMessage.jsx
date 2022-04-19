@@ -1,10 +1,13 @@
+import React from "react";
+import PropTypes from "prop-types";
 import ReviewsStyle from "../../../product/productDescription/reviews/Reviews.module.css";
 
-export const CustomReviewErrorMessage = (props) => {
+const CustomReviewErrorMessage = ({ children }) => (
+  <div className={ReviewsStyle.reviewMessageError}>{children}</div>
+);
 
-  return (
-      <div className={ReviewsStyle.reviewMessageError}>
-        {props.children}
-      </div>
-  )
-}
+export default CustomReviewErrorMessage;
+
+CustomReviewErrorMessage.propTypes = {
+  children: PropTypes.string.isRequired,
+};

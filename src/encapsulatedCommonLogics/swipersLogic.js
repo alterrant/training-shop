@@ -1,3 +1,3 @@
-export function getDirection(width) {
-  return (width <= 750) ? 'horizontal' : 'vertical';
-}
+export default (width) => {
+  return width <= 750 ? "horizontal" : "vertical";
+};

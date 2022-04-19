@@ -1,13 +1,14 @@
-import SubscribeStyle from "./Subscribe.module.css";
-import SubscribeOffer from "./subscribeOffer/SubscribeOffer";
-import {SPECIAL_BENEFIT} from "../../../constants/benefits";
+import React from "react";
 
-const Subscribe = () => {
-  return (
-      <section className={SubscribeStyle.wrapper}>
-        <SubscribeOffer specialOffer={SPECIAL_BENEFIT}/>
-      </section>
-  )
-}
+import SubscribeOffer from "./subscribeOffer/SubscribeOffer";
+import { SPECIAL_BENEFIT } from "../../../constants/benefits";
+
+import SubscribeStyle from "./Subscribe.module.css";
+
+const Subscribe = () => (
+  <section className={SubscribeStyle.wrapper}>
+    <SubscribeOffer specialOffer={SPECIAL_BENEFIT} />
+  </section>
+);
 
 export default Subscribe;

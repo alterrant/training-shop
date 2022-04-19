@@ -1,14 +1,18 @@
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
-export const useErrors = () => {
+export default () => {
   // const initError = useSelector(state => state.initialize.isInitError);
-  const loadingProductsError = useSelector(state => state.initialize.isLoadingProductsError);
-  const loadingGenderProductsError = useSelector(state => state.initialize.isLoadingGenderProductsError);
+  const loadingProductsError = useSelector(
+    (state) => state.initialize.isLoadingProductsError
+  );
+  const loadingGenderProductsError = useSelector(
+    (state) => state.initialize.isLoadingGenderProductsError
+  );
 
   const allErrors = [loadingProductsError, loadingGenderProductsError];
   const currentErrors = [];
 
-  allErrors.forEach(error => {
+  allErrors.forEach((error) => {
     if (error !== false) {
       for (let errorMessage in error) {
         if (error.hasOwnProperty(errorMessage))
@@ -18,4 +22,4 @@ export const useErrors = () => {
   });
 
   return currentErrors;
-}
+};

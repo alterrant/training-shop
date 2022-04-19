@@ -1,13 +1,14 @@
-import {productsAPI} from "../api/products";
+import { call, put, takeLatest } from "@redux-saga/core/effects";
+
+import productsAPI from "../api/products";
 import {
   fetchGenderProductsError,
   fetchGenderProductsSuccess,
   fetchProductsError,
   fetchProductsSuccess,
   setGenderProducts,
-  setProducts
+  setProducts,
 } from "../redux/initializeReducer";
-import {call, put, takeLatest} from "@redux-saga/core/effects";
 
 function* fetchProductsWorker() {
   try {
@@ -15,11 +16,13 @@ function* fetchProductsWorker() {
 
     yield put(fetchProductsSuccess());
 
-    yield put(setProducts({
-      products: products
-    }));
+    yield put(
+      setProducts({
+        products,
+      })
+    );
   } catch (error) {
-    yield put(fetchProductsError({fetchingError: error.message}))
+    yield put(fetchProductsError({ fetchingError: error.message }));
   }
 }
 
@@ -31,17 +34,22 @@ function* fetchGenderProductsWorker(props) {
 
     yield put(fetchGenderProductsSuccess());
 
-    yield put(setGenderProducts({
-      gender: gender,
-      products: products
-    }));
+    yield put(
+      setGenderProducts({
+        gender,
+        products,
+      })
+    );
   } catch (error) {
-    yield put(fetchGenderProductsError({fetchingError: error.message}));
+    yield put(fetchGenderProductsError({ fetchingError: error.message }));
   }
 }
 
 export function* fetchProductsWatcher() {
-  yield takeLatest('initialization/fetchProducts', fetchProductsWorker);
+  yield takeLatest("initialization/fetchProducts", fetchProductsWorker);
 
-  yield takeLatest('initialization/fetchGenderProducts', fetchGenderProductsWorker)
+  yield takeLatest(
+    "initialization/fetchGenderProducts",
+    fetchGenderProductsWorker
+  );
 }

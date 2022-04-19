@@ -1,4 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isInit: false,
@@ -9,64 +9,64 @@ const initialState = {
   isLoadingGenderProductsError: false,
   products: {
     men: [],
-    women: []
-  }
-}
+    women: [],
+  },
+};
 
 export const initializeSlice = createSlice({
-  name: 'initialization',
+  name: "initialization",
   initialState,
   reducers: {
-    setInitSuccess: ((state) => {
+    setInitSuccess: (state) => {
       state.isInit = true;
-    }),
-    setInitError: ((state, error) => {
+    },
+    setInitError: (state, error) => {
       state.isInitError = error;
-    }),
+    },
 
-    fetchProducts: (((state) => {
+    fetchProducts: (state) => {
       state.isLoadingProducts = true;
-    })),
-    fetchProductsSuccess: (((state) => {
+    },
+    fetchProductsSuccess: (state) => {
       state.isLoadingProducts = false;
-    })),
-    fetchProductsError: (((state, action) => {
+    },
+    fetchProductsError: (state, action) => {
       state.isLoadingProductsError = action.payload;
       state.isLoadingProducts = false;
-    })),
+    },
 
-    fetchGenderProducts: (((state) => {
+    fetchGenderProducts: (state) => {
       state.isLoadingGenderProducts = true;
-    })),
-    fetchGenderProductsSuccess: (((state) => {
+    },
+    fetchGenderProductsSuccess: (state) => {
       state.isLoadingGenderProducts = false;
-    })),
-    fetchGenderProductsError: (((state, action) => {
+    },
+    fetchGenderProductsError: (state, action) => {
       state.isLoadingGenderProductsError = action.payload;
       state.isLoadingGenderProducts = false;
-    })),
+    },
 
-    setProducts: ((state, action) => {
+    setProducts: (state, action) => {
       state.products = action.payload.products;
-    }),
-    setGenderProducts: ((state, action) => {
+    },
+    setGenderProducts: (state, action) => {
       state.products[action.payload.gender] = action.payload.products;
-    }),
+    },
 
-    productsRequestToggle: ((state) => {
+    productsRequestToggle: (state) => {
       state.isLoadingProducts = !state.isLoadingProducts;
-    }),
-    productsRequestError: ((state, error) => {
+    },
+    productsRequestError: (state, error) => {
       state.isInitError = error;
-    }),
+    },
 
-    resetErrors: ((state) => {
+    resetErrors: (state) => {
       state.isInitError = false;
       state.isLoadingProductsError = false;
       state.isLoadingGenderProductsError = false;
-    })
-  }
-})
+    },
+  },
+});
 
 export const {
   setInitSuccess,
@@ -79,7 +79,7 @@ export const {
   fetchGenderProductsError,
   setProducts,
   setGenderProducts,
-  resetErrors
-} = initializeSlice.actions
+  resetErrors,
+} = initializeSlice.actions;
 
-export default initializeSlice.reducer
+export default initializeSlice.reducer;

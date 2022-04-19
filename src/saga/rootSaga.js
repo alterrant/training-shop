@@ -1,10 +1,10 @@
-import {all} from 'redux-saga/effects';
-import {fetchProductsWatcher} from "./clothesSaga";
-import {postReviewWatcher, submittingSubscriptionWatcher} from "./formsSaga";
+import { all } from 'redux-saga/effects';
+import { fetchProductsWatcher } from "./clothesSaga";
+import { postReviewWatcher, submittingSubscriptionWatcher } from "./formsSaga";
 import {
   fetchAvailableStoreAddressWatcher,
   fetchDeliveryCountriesWatcher,
-  submitShoppingCartWatcher
+  submitShoppingCartWatcher,
 } from "./shoppingCartSaga";
 
 export function* rootWatcher() {
