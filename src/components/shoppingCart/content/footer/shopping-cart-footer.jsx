@@ -12,6 +12,11 @@ import {
   shoppingCartToggle,
 } from "../../../../redux/shopping-cart-reducer";
 import { useDispatch } from "react-redux";
+import {
+  FINAL_SHOPPINGCART_PAGE,
+  FOOTER_SUBMIT_BTN,
+  ORDER_STAGES,
+} from "../../../../constants/shoppingCart";
 
 const ShoppingCartFooter = (props) => {
   const {
@@ -27,15 +32,15 @@ const ShoppingCartFooter = (props) => {
   const dispatch = useDispatch();
 
   const onClickHandler = () => {
-    if (finalShoppingCardPageName === "submittingRejected") {
+    if (finalShoppingCardPageName === FINAL_SHOPPINGCART_PAGE.rejected) {
       dispatch(resetSubmission());
 
       //setNavigationStage('Payment');
     }
-    if (finalShoppingCardPageName === "emptyOrder")
+    if (finalShoppingCardPageName === FINAL_SHOPPINGCART_PAGE.emptyOrder)
       dispatch(shoppingCartToggle());
 
-    if (finalShoppingCardPageName === "submittingSuccess") {
+    if (finalShoppingCardPageName === FINAL_SHOPPINGCART_PAGE.success) {
       dispatch(resetProducts());
       dispatch(resetDeliveryInfo());
       dispatch(resetPaymentInfo());
@@ -43,28 +48,28 @@ const ShoppingCartFooter = (props) => {
       dispatch(resetPaymentFormToggle());
 
       dispatch(shoppingCartToggle());
-      setNavigationStage("Item in Cart");
+      setNavigationStage(ORDER_STAGES.inCart);
     }
 
-    if (navigationStage === "Item in Cart") {
-      setNavigationStage("Delivery Info");
+    if (navigationStage === ORDER_STAGES.inCart) {
+      setNavigationStage(ORDER_STAGES.delivery);
     }
   };
   const onViewCartClickHandler = () => {
-    if (finalShoppingCardPageName === "submittingRejected") {
-      setNavigationStage("Item in Cart");
+    if (finalShoppingCardPageName === FINAL_SHOPPINGCART_PAGE.rejected) {
+      setNavigationStage(ORDER_STAGES.inCart);
 
       dispatch(resetDeliveryInfo());
       dispatch(resetPaymentInfo());
       dispatch(resetDeliveryFormToggle());
       dispatch(resetPaymentFormToggle());
-    } else if (navigationStage === "Payment") {
+    } else if (navigationStage === ORDER_STAGES.payment) {
       dispatch(setPaymentInfo(summaryInfo));
-      setNavigationStage("Delivery Info");
+      setNavigationStage(ORDER_STAGES.delivery);
     }
-    if (navigationStage === "Delivery Info") {
+    if (navigationStage === ORDER_STAGES.delivery) {
       dispatch(setDeliveryInfo(summaryInfo));
-      setNavigationStage("Item in Cart");
+      setNavigationStage(ORDER_STAGES.inCart);
     }
   };
 
@@ -80,9 +85,11 @@ const ShoppingCartFooter = (props) => {
     );
 
     if (finalShoppingCardPageName) {
-      return finalShoppingCardPageName === "submittingRejected" ? button : null;
+      return finalShoppingCardPageName === FINAL_SHOPPINGCART_PAGE.rejected
+        ? button
+        : null;
     } else {
-      return navigationStage === "Item in Cart" ? null : button;
+      return navigationStage === ORDER_STAGES.inCart ? null : button;
     }
   };
   const onMouseDown = () => {
@@ -133,16 +140,16 @@ const getShoppingCartSubmitBtn = (
   finalShoppingCardPageName
 ) => {
   if (finalShoppingCardPageName) {
-    return finalShoppingCardPageName === "submittingSuccess" ||
-      finalShoppingCardPageName === "emptyOrder"
-      ? "BACK TO SHOPPING"
-      : "BACK TO PAYMENT";
+    return finalShoppingCardPageName === FINAL_SHOPPINGCART_PAGE.success ||
+      finalShoppingCardPageName === FINAL_SHOPPINGCART_PAGE.emptyOrder
+      ? FOOTER_SUBMIT_BTN.emptyOrder
+      : FOOTER_SUBMIT_BTN.rejected;
   }
   switch (navigationStage) {
-    case "Payment": {
-      return isCashMethod ? "READY" : "CHECK OUT";
+    case ORDER_STAGES.payment: {
+      return isCashMethod ? FOOTER_SUBMIT_BTN.cash : FOOTER_SUBMIT_BTN.paypal;
     }
     default:
-      return "FURTHER";
+      return FOOTER_SUBMIT_BTN.card;
   }
 };

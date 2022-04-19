@@ -5,16 +5,17 @@ import {
   setSize,
   removeAllFilters,
 } from "../redux/filter-reducer";
+import { FILTER_TIPES } from "../constants/filterTypes";
 
 const chooseFilterAction = (actionType) => {
   switch (actionType) {
-    case "color":
+    case FILTER_TIPES.color:
       return setColor;
-    case "size":
+    case FILTER_TIPES.size:
       return setSize;
-    case "brand":
+    case FILTER_TIPES.brand:
       return setBrand;
-    case "price":
+    case FILTER_TIPES.price:
       return setPrice;
     case "removeAllFilters":
       return removeAllFilters;

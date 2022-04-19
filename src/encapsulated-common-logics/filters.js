@@ -1,4 +1,5 @@
 import { CLOTHES_DICTIONARY } from "../constants/menu-const";
+import { FILTER_TIPES } from "../constants/filterTypes";
 
 export const getAvailableParticulars = (products) => {
   const availableParticulars = new Set([]);
@@ -23,22 +24,23 @@ export const getAvailableParticulars = (products) => {
 
 const isProductConformFilter = (product, curFilter) => {
   switch (curFilter.filterType) {
-    case "price": {
+    case FILTER_TIPES.price: {
       const { minFilterPrice, maxFilterPrice } = getFilterPrices(curFilter);
 
-      return (minFilterPrice === maxFilterPrice)
+      return minFilterPrice === maxFilterPrice
         ? minFilterPrice <= product[curFilter.filterType]
-        : (minFilterPrice <= product[curFilter.filterType] && (
-          maxFilterPrice >= product[curFilter.filterType])
-        );
+        : minFilterPrice <= product[curFilter.filterType] &&
+            maxFilterPrice >= product[curFilter.filterType];
     }
-    case "brand": {
+    case FILTER_TIPES.brand: {
       return product[curFilter.filterType] === curFilter.filterValue;
     }
-    case "size": {
-      return product["sizes"].find((item) => item === curFilter.filterValue);
+    case FILTER_TIPES.size: {
+      return product[FILTER_TIPES.size].find(
+        (item) => item === curFilter.filterValue
+      );
     }
-    case "color": {
+    case FILTER_TIPES.color: {
       return product.images.find(
         (productPhoto) =>
           productPhoto[curFilter.filterType] === curFilter.filterValue
@@ -96,7 +98,7 @@ const getFilterPrices = (valueRange) => {
 
   return {
     minFilterPrice: filterPrices[0],
-    maxFilterPrice: filterPrices[1] ? filterPrices[1] : filterPrices[0]
+    maxFilterPrice: filterPrices[1] ? filterPrices[1] : filterPrices[0],
   };
 };
 
@@ -142,15 +144,19 @@ export const getAvailableFilters = (
   availableBrands
 ) => {
   const filters = {};
-  const filterTypes = ["color", "size", "brand"];
+  const filterTypes = [
+    FILTER_TIPES.color,
+    FILTER_TIPES.size,
+    FILTER_TIPES.brand,
+  ];
 
   const availableFilter = (filterType) => {
     switch (filterType) {
-      case "color":
+      case FILTER_TIPES.color:
         return availableColors;
-      case "size":
+      case FILTER_TIPES.size:
         return availableSizes;
-      case "brand":
+      case FILTER_TIPES.brand:
         return availableBrands;
       default:
         return [];

@@ -1,5 +1,5 @@
-// 'Field is empty' => 'Поле должно быть заполнено'
-// 'Need agreement' => 'Вы должны согласиться на обработку личной информации'
+import { ERROR_MESSAGES } from "../constants/errorMessages";
+
 export const subscribeValidator = (values) => {
   const errors = {};
 
@@ -15,15 +15,15 @@ export const subscribeValidator = (values) => {
 export const reviewValidator = (values) => {
   const errors = {};
 
-  if (!values.name) errors.name = "Поле должно быть заполнено";
+  if (!values.name) errors.name = ERROR_MESSAGES.require;
   else if (values.name && values.name.length > 25)
-    errors.name = '\'Value more than 25 symbols\'';
+    errors.name = ERROR_MESSAGES.getMaxSymbolMessage(25);
 
-  if (!values.rating) errors.rating = "Поле должно быть заполнено";
+  if (!values.rating) errors.rating = ERROR_MESSAGES.require;
 
-  if (!values.text) errors.text = "Поле должно быть заполнено";
+  if (!values.text) errors.text = ERROR_MESSAGES.require;
   else if (values.text && values.text.length > 1000)
-    errors.text = '\'Value more than 1000 symbols\'';
+    errors.text = ERROR_MESSAGES.getMaxSymbolMessage(1000);
 
   return errors;
 };
@@ -31,7 +31,7 @@ export const reviewValidator = (values) => {
 export const shoppingCartValidator = (values) => {
   const errors = {};
 
-  if (!values.phone) errors.phone = "Поле должно быть заполнено";
+  if (!values.phone) errors.phone = ERROR_MESSAGES.require;
   else if (values.phone && values.phone.length >= 7) {
     const phoneNumbers = values.phone.replace(/\D/g, "");
 
@@ -53,19 +53,17 @@ export const shoppingCartValidator = (values) => {
         (phoneNumbers[3] === "2" && phoneNumbers[4] === "9")
       )
     )
-      errors.phone = "wrong code";
+      errors.phone = ERROR_MESSAGES.wrongCode;
   }
 
-  if (!values.email) errors.email = "Поле должно быть заполнено";
+  if (!values.email) errors.email = ERROR_MESSAGES.require;
   else if (
     values.email &&
     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}$/i.test(values.email)
   )
-    errors.email = "Invalid email address";
+    errors.email = ERROR_MESSAGES.invalidEmail;
 
-  if (!values.agreementToggle)
-    errors.agreementToggle =
-      "Вы должны согласиться на обработку личной информации";
+  if (!values.agreementToggle) errors.agreementToggle = ERROR_MESSAGES.agreement;
 
   return errors;
 };
@@ -74,7 +72,7 @@ export const deliveryInfoFieldsValidators = {
   requiredValidator(value) {
     let errors;
 
-    if (!value) errors = "Поле должно быть заполнено";
+    if (!value) errors = ERROR_MESSAGES.require;
 
     return errors;
   },
@@ -97,7 +95,7 @@ export const paymentFieldsValidators = {
   requiredValidator(value) {
     let errors;
 
-    if (value === "") errors = "Поле должно быть заполнено";
+    if (value === "") errors = ERROR_MESSAGES.require;
 
     return errors;
   },
@@ -122,7 +120,7 @@ export const paymentFieldsValidators = {
     let errors;
 
     errors = validators.requiredValidator(value);
-    if (!errors) errors = validators.sizeValidator(value, 3, "cvv")
+    if (!errors) errors = validators.sizeValidator(value, 3, "cvv");
 
     return errors;
   },
@@ -130,21 +128,23 @@ export const paymentFieldsValidators = {
     let errors;
 
     errors = validators.requiredValidator(value);
-    if (!errors) errors = validators.dateValidator(value)
+    if (!errors) errors = validators.dateValidator(value);
 
     return errors;
-  }
-}
+  },
+};
 
 const validators = {
   requiredValidator(value) {
-    if (value === "") return "Поле должно быть заполнено";
+    if (value === "") return ERROR_MESSAGES.require;
   },
   sizeValidator(value, size, type) {
     const inputNumbers = getNumbersValue(value);
 
-    if (inputNumbers.length < size) {
-      return type === "card" ? `Incomplete card number` : `Incomplete cvv`;
+    if (inputNumbers?.length < size) {
+      return type === "card"
+        ? ERROR_MESSAGES.incompleteCard
+        : ERROR_MESSAGES.incompleteCVV;
     }
   },
   dateValidator(value) {
@@ -153,39 +153,41 @@ const validators = {
 
     const month = date.getMonth() + 1;
     const years = date.getFullYear();
-    const decades = ('' + years)[2];
-    const year = ('' + years)[3];
+    const decades = ("" + years)[2];
+    const year = ("" + years)[3];
 
-    if (inputNumbers.length >= 3) {
-      if (inputNumbers[2] < decades) return "Incorrect date";
+    if (inputNumbers?.length >= 3) {
+      if (inputNumbers[2] < decades) return ERROR_MESSAGES.incorrectData;
       else if (inputNumbers[2] === decades) {
-        if (inputNumbers[3] < year) return "Incorrect date"
+        if (inputNumbers[3] < year) return ERROR_MESSAGES.incorrectData;
         else if (inputNumbers[3] === year) {
-          if (+(inputNumbers[0] + inputNumbers[1]) < month) return "Incorrect date";
+          if (+(inputNumbers[0] + inputNumbers[1]) < month)
+            return ERROR_MESSAGES.incorrectData;
         }
       }
     }
   },
   emailValidator(value) {
     if (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}$/i.test(value))
-      return "Invalid email address";
+      return ERROR_MESSAGES.invalidEmail;
   },
   availableCityValidator(value, availableStoreAddresses, storeCountry) {
     let isCityCorrect;
 
-    if (availableStoreAddresses.length === 0) return 'Unavailable city'
+    if (availableStoreAddresses.length === 0)
+      return ERROR_MESSAGES.unavailableCity;
     else
-      availableStoreAddresses.forEach(availableAddress => {
+      availableStoreAddresses.forEach((availableAddress) => {
         if (
-          value.toLowerCase() === availableAddress?.city.toLowerCase() && (
+          value.toLowerCase() === availableAddress?.city.toLowerCase() &&
           storeCountry.toLowerCase() === availableAddress?.country.toLowerCase()
-        )) 
-          isCityCorrect = true
-    });
-    if (!isCityCorrect) return "Unavailable city";
+        )
+          isCityCorrect = true;
+      });
+    if (!isCityCorrect) return ERROR_MESSAGES.unavailableCity;
   },
 };
 
 const getNumbersValue = (value) => {
-  return value.replace(/\D/g, "");
+  return value && value.replace(/\D/g, "");
 };

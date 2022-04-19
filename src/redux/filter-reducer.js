@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { FILTER_TIPES } from "../constants/filterTypes";
 
 const initialState = {
   selectedFilters: [],
@@ -12,7 +13,12 @@ const initialState = {
     { id: "4", name: "$50-$100", selected: false },
     { id: "5", name: "$0-$50", selected: false },
   ],
-  categories: ["color", "size", "brand", "price"],
+  categories: [
+    FILTER_TIPES.color,
+    FILTER_TIPES.size,
+    FILTER_TIPES.brand,
+    FILTER_TIPES.price,
+  ],
 };
 
 export const counterSlice = createSlice({
@@ -45,10 +51,10 @@ export const counterSlice = createSlice({
 
       if (chosenColor.selected)
         state.selectedFilters.push({
-          filterType: "color",
+          filterType: FILTER_TIPES.color,
           filterValue: chosenColor.name,
         });
-      else deleteSelectedFilter(state, "color", chosenColor.name);
+      else deleteSelectedFilter(state, FILTER_TIPES.color, chosenColor.name);
     },
     setSize: (state, action) => {
       const chosenSize = state.size.find(
@@ -58,10 +64,10 @@ export const counterSlice = createSlice({
 
       if (chosenSize.selected)
         state.selectedFilters.push({
-          filterType: "size",
+          filterType: FILTER_TIPES.size,
           filterValue: chosenSize.name,
         });
-      else deleteSelectedFilter(state, "size", chosenSize.name);
+      else deleteSelectedFilter(state, FILTER_TIPES.size, chosenSize.name);
     },
     setBrand: (state, action) => {
       const chosenBrand = state.brand.find(
@@ -71,10 +77,10 @@ export const counterSlice = createSlice({
 
       if (chosenBrand.selected)
         state.selectedFilters.push({
-          filterType: "brand",
+          filterType: FILTER_TIPES.brand,
           filterValue: chosenBrand.name,
         });
-      else deleteSelectedFilter(state, "brand", chosenBrand.name);
+      else deleteSelectedFilter(state, FILTER_TIPES.brand, chosenBrand.name);
     },
     setPrice: (state, action) => {
       const chosenPrice = state.price.find(
@@ -84,10 +90,10 @@ export const counterSlice = createSlice({
 
       if (chosenPrice.selected)
         state.selectedFilters.push({
-          filterType: "price",
+          filterType: FILTER_TIPES.price,
           filterValue: chosenPrice.name,
         });
-      else deleteSelectedFilter(state, "price", chosenPrice.name);
+      else deleteSelectedFilter(state, FILTER_TIPES.price, chosenPrice.name);
     },
 
     removeAllFilters: (state) => {

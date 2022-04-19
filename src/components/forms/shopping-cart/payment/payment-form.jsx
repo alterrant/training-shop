@@ -13,6 +13,8 @@ import Partition from "../../../common/partition/partition";
 import ShoppingCartFooter from "../../../shoppingCart/content/footer/shopping-cart-footer";
 import PayPalMethod from "./payment-methods/payPal/paypal-method";
 import DebitCardMethod from "./payment-methods/debit-cards/debit-card-method";
+import { PAYMENT } from "../../../../constants/shoppingCart";
+import { PAYMENT_RADIO_OPTIONS } from "../../../../constants/radio-options";
 
 import { ReactComponent as PayPalSVG } from "../../../../assets/SVG/paypal.svg";
 import { ReactComponent as VisaSVG } from "../../../../assets/SVG/visa.svg";
@@ -35,37 +37,30 @@ const PaymentForm = ({
   const initialPaymentInfo = Object.assign(
     { totalPrice: totalCartPrice },
     statePaymentInfo,
-    { paymentMethod: "Visa" }
+    { paymentMethod: PAYMENT.visa }
   );
 
   const paymentFormRef = useRef();
-
-  const radioOption = [
-    { key: "rOption1", value: "PayPal", svg: PayPalSVG },
-    { key: "rOption2", value: "Visa", svg: VisaSVG },
-    { key: "rOption3", value: "MasterCard", svg: MasterCardSVG },
-    { key: "rOption4", value: "Cash" },
-  ];
 
   const onSubmit = (values) => {
     const paymentSummary = {
       totalPrice: values.totalPrice,
     };
 
-    if (values.paymentMethod === "PayPal") {
+    if (values.paymentMethod === PAYMENT.paypal) {
       paymentSummary.paymentMethod = values.paymentMethod;
       paymentSummary.cashEmail = values.cashEmail;
     }
     if (
-      values.paymentMethod === "Visa" ||
-      values.paymentMethod === "MasterCard"
+      values.paymentMethod === PAYMENT.visa ||
+      values.paymentMethod === PAYMENT.mastercard
     ) {
       paymentSummary.paymentMethod = "card";
       paymentSummary.card = values.card;
       paymentSummary.cardDate = values.cardDate;
       paymentSummary.cardCVV = values.cardCVV;
     }
-    if (values.paymentMethod === "Cash") {
+    if (values.paymentMethod === PAYMENT.cash) {
       paymentSummary.paymentMethod = "cash";
     }
 
@@ -77,7 +72,7 @@ const PaymentForm = ({
     paymentFormRef.current.resetForm();
   }, [paymentFormToggle]);
 
-  const radioButtons = radioOption.map((radioButton) => {
+  const radioButtons = PAYMENT_RADIO_OPTIONS.map((radioButton) => {
     return (
       <React.Fragment key={radioButton.key}>
         <label className={PaymentFormStyle.radioLabelFormControl}>
@@ -119,7 +114,7 @@ const PaymentForm = ({
               totalCartPrice={totalCartPrice}
               navigationStage={navigationStage}
               setNavigationStage={setNavigationStage}
-              isCashMethod={formik.values.paymentMethod === "Cash"}
+              isCashMethod={formik.values.paymentMethod === PAYMENT.cash}
               summaryInfo={formik.values}
             />
           </Form>
@@ -133,27 +128,27 @@ export default PaymentForm;
 
 const getPaymentSVG = (value) => {
   switch (value) {
-    case "PayPal": {
+    case PAYMENT.paypal: {
       return <PayPalSVG />;
     }
-    case "Visa": {
+    case PAYMENT.visa: {
       return <VisaSVG />;
     }
-    case "MasterCard": {
+    case PAYMENT.mastercard: {
       return <MasterCardSVG />;
     }
     default:
-      return "Cash";
+      return PAYMENT.cash;
   }
 };
 
 const getPaymentMethod = (value, formik) => {
   switch (value) {
-    case "PayPal": {
+    case PAYMENT.paypal: {
       return <PayPalMethod formik={formik} />;
     }
-    case "Visa":
-    case "MasterCard": {
+    case PAYMENT.visa:
+    case PAYMENT.mastercard: {
       return <DebitCardMethod formik={formik} />;
     }
     default:

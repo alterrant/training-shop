@@ -17,6 +17,8 @@ import UserAddressFields from "./address-fields/user-address-fields";
 import ShoppingCartFooter from "../../../shoppingCart/content/footer/shopping-cart-footer";
 import { setDeliveryInfo } from "../../../../redux/shopping-cart-reducer";
 import CustomShoppingCartCheckbox from "./custom-shopping-cart-checkbox/checkbox";
+import { DELIVERY_TYPES } from "../../../../constants/shoppingCart";
+import { DELIVERY_RADIO_OPTIONS } from "../../../../constants/radio-options";
 
 import DeliveryInfoFormStyle from "./delivery-info-form.module.css";
 
@@ -31,12 +33,6 @@ const DeliveryInfoForm = ({
   const className = classNames.bind(DeliveryInfoFormStyle);
 
   const deliveryFormRef = useRef();
-
-  const radioOption = [
-    { key: "rOption1", value: "Pickup from post offices" },
-    { key: "rOption2", value: "Express delivery" },
-    { key: "rOption3", value: "Store pickup" },
-  ];
 
   const { deliveryInfoSummary } = useSelector(
     (state) => state.shoppingCart.deliveryInfo
@@ -56,7 +52,7 @@ const DeliveryInfoForm = ({
     deliveryFormRef.current.resetForm();
   }, [deliveryFormToggle]);
 
-  const radioButtons = radioOption.map((radioButton) => {
+  const radioButtons = DELIVERY_RADIO_OPTIONS.map((radioButton) => {
     return (
       <React.Fragment key={radioButton.key}>
         <label className={DeliveryInfoFormStyle.radioLabelFormControl}>
@@ -127,13 +123,12 @@ const DeliveryInfoForm = ({
                     component={CustomReviewErrorMessage}
                   />
                 </div>
-                {formik.values.deliveryMethod === "Store pickup" ? (
+                {formik.values.deliveryMethod === DELIVERY_TYPES.store ? (
                   <StoreAddressFields formik={formik} />
                 ) : (
                   <UserAddressFields formik={formik} />
                 )}
-                {formik.values.deliveryMethod ===
-                  "Pickup from post offices" && (
+                {formik.values.deliveryMethod === DELIVERY_TYPES.office && (
                   <div className={DeliveryInfoFormStyle.formControl}>
                     <label className={DeliveryInfoFormStyle.formControlPhone}>
                       POSTCODE

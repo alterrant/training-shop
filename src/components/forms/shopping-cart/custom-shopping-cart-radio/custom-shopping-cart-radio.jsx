@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDeliveryCountries } from "../../../../redux/shopping-cart-reducer";
 import CustomDeliveryTypeRadioStyle from "./custom-shopping-cart-radio.module.css";
+import { DELIVERY_TYPES } from "../../../../constants/shoppingCart";
 
 const CustomShoppingCartRadio = ({ field, form, ...otherProps }) => {
   const dispatch = useDispatch();
-  const { isDeliveryCountries } = useSelector(
-    (state) => state.shoppingCart.deliveryInfo
+  const isDeliveryCountries = useSelector(
+    (state) => state.shoppingCart.deliveryInfo.deliveryCountries
   );
 
   const deliveryTypeChangeHandler = (e) => {
@@ -16,7 +17,10 @@ const CustomShoppingCartRadio = ({ field, form, ...otherProps }) => {
     form.setErrors({});
     form.setTouched({});
 
-    if (otherProps.value === "Store pickup" && isDeliveryCountries.length === 0)
+    if (
+      otherProps.value === DELIVERY_TYPES.store &&
+      isDeliveryCountries.length === 0
+    )
       dispatch(fetchDeliveryCountries());
   };
 

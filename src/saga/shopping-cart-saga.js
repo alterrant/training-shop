@@ -8,6 +8,7 @@ import {
   submittingError,
   submittingSuccess,
 } from "../redux/shopping-cart-reducer";
+import { getSummaryOrderInfo } from "./submit-cart-helper";
 
 function* fetchDeliveryCountriesWorker() {
   try {
@@ -38,61 +39,23 @@ function* fetchAvailableStoreAddressWorker({ payload }) {
 }
 
 function* submitShoppingCartWorker() {
-  const shoppingCartSummary = {};
-
-  const productsSummary = yield select((state) => state.shoppingCart.products);
-  const values = yield select(
-    (state) => state.shoppingCart.deliveryInfo.deliveryInfoSummary
+  const { products: productsSummary } = yield select(
+    (state) => state.shoppingCart
   );
-  const paymentSummary = yield select(
-    (state) => state.shoppingCart.paymentSummary
+  const { deliveryInfoSummary } = yield select(
+    (state) => state.shoppingCart.deliveryInfo
   );
+  const { paymentSummary } = yield select((state) => state.shoppingCart);
 
-  //
-  const deliveryInfoSummary = {
-    deliveryMethod: values.deliveryMethod,
-    phone: `+${values.phone.replace(/\D/g, "")}`,
-    email: values.email,
-  };
-
-  if (
-    values.deliveryMethod === "Pickup from post offices" ||
-    values.deliveryMethod === "Express delivery"
-  ) {
-    deliveryInfoSummary.country = values.country;
-    deliveryInfoSummary.city = values.city;
-    deliveryInfoSummary.street = values.street;
-    deliveryInfoSummary.house = values.house;
-    if (values.apartment) deliveryInfoSummary.apartment = values.apartment;
-  }
-
-  if (values.deliveryMethod === "Pickup from post offices")
-    deliveryInfoSummary.postcode = values.postcode;
-
-  if (values.deliveryMethod === "Store pickup") {
-    deliveryInfoSummary.country = values.storeCountry;
-    deliveryInfoSummary.storeAddress = values.storeAddress;
-  }
-
-  const products = productsSummary.map((item) => {
-    return {
-      name: item.name,
-      size: item.size,
-      color: item.color,
-      quantity: item.productQuantity,
-    };
-  });
-
-  Object.assign(
-    shoppingCartSummary,
-    { products },
+  const summaryOrderInfo = getSummaryOrderInfo(
     deliveryInfoSummary,
-    paymentSummary
+    paymentSummary,
+    productsSummary
   );
 
   try {
     const submittingResult = yield shoppingCartAPI.submitShoppingCartSummary(
-      shoppingCartSummary
+      summaryOrderInfo
     );
 
     if (submittingResult.status === 200) yield put(submittingSuccess());
@@ -108,21 +71,21 @@ function* submitShoppingCartWorker() {
 
 export function* fetchDeliveryCountriesWatcher() {
   yield takeLatest(
-    "shopping-cart/fetchDeliveryCountries",
+    "shoppingCart/fetchDeliveryCountries",
     fetchDeliveryCountriesWorker
   );
 }
 
 export function* fetchAvailableStoreAddressWatcher() {
   yield takeLatest(
-    "shopping-cart/fetchAvailableStoreAddresses",
+    "shoppingCart/fetchAvailableStoreAddresses",
     fetchAvailableStoreAddressWorker
   );
 }
 
 export function* submitShoppingCartWatcher() {
   yield takeLatest(
-    "shopping-cart/submittingShoppingCard",
+    "shoppingCart/submittingShoppingCard",
     submitShoppingCartWorker
   );
 }

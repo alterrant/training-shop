@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { DELIVERY_TYPES } from "../constants/shoppingCart";
 
 const initialDeliveryInfo = {
-  deliveryMethod: "Pickup from post offices",
+  deliveryMethod: DELIVERY_TYPES.office,
   phone: "",
   email: "",
   country: "",
@@ -81,7 +82,8 @@ export const shoppingCartSlice = createSlice({
     decrementProductQuantity: (state, action) => {
       const productInCartIndex = findProductIndexInCart({ state, action });
       // не понравилось ментору. Хочет отключить кнопку, вместо удаления
-      if (state.products[productInCartIndex].productQuantity === 1) deleteProductFromCart({ productInCartIndex, state });
+      if (state.products[productInCartIndex].productQuantity === 1)
+        deleteProductFromCart({ productInCartIndex, state });
       else state.products[productInCartIndex].productQuantity--;
       // if (state.products[productInCartIndex].productQuantity > 1) state.products[productInCartIndex].productQuantity--;
     },
@@ -98,7 +100,8 @@ export const shoppingCartSlice = createSlice({
       state.deliveryInfo.loadingCountriesInfo.isLoadingDeliveryCountries = false;
 
       state.deliveryInfo.loadingCountriesInfo.loadingDeliveryCountriesError.isLoadingDeliveryCountriesError = true;
-      state.deliveryInfo.loadingCountriesInfo.loadingDeliveryCountriesError.loadingDeliveryCountriesErrorMessage = action.payload;
+      state.deliveryInfo.loadingCountriesInfo.loadingDeliveryCountriesError.loadingDeliveryCountriesErrorMessage =
+        action.payload;
     },
 
     fetchAvailableStoreAddresses: (state) => {
@@ -113,7 +116,8 @@ export const shoppingCartSlice = createSlice({
       state.deliveryInfo.availableStoreAddressesInfo.isLoadingAddresses = false;
 
       state.deliveryInfo.availableStoreAddressesInfo.isSubmittingError = true;
-      state.deliveryInfo.availableStoreAddressesInfo.loadingAddressesError.loadingAddressesErrorMessage = action.payload;
+      state.deliveryInfo.availableStoreAddressesInfo.loadingAddressesError.loadingAddressesErrorMessage =
+        action.payload;
     },
 
     submittingShoppingCard: (state) => {
@@ -148,10 +152,12 @@ export const shoppingCartSlice = createSlice({
       state.deliveryInfo.deliveryInfoSummary = initialDeliveryInfo;
 
       state.deliveryInfo.loadingCountriesInfo.loadingDeliveryCountriesError.isLoadingDeliveryCountriesError = false;
-      state.deliveryInfo.loadingCountriesInfo.loadingDeliveryCountriesError.loadingDeliveryCountriesErrorMessage = null;
+      state.deliveryInfo.loadingCountriesInfo.loadingDeliveryCountriesError.loadingDeliveryCountriesErrorMessage =
+        null;
 
       state.deliveryInfo.availableStoreAddressesInfo.isSubmittingError = false;
-      state.deliveryInfo.availableStoreAddressesInfo.loadingAddressesError.loadingAddressesErrorMessage = null;
+      state.deliveryInfo.availableStoreAddressesInfo.loadingAddressesError.loadingAddressesErrorMessage =
+        null;
     },
     resetPaymentInfo: (state) => {
       state.paymentSummary = initialPaymentInfo;

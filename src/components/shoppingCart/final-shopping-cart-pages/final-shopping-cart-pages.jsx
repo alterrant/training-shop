@@ -2,6 +2,7 @@ import { React, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import ShoppingCartFooter from "../content/footer/shopping-cart-footer";
+import { FINAL_SHOPPINGCART_PAGE } from "../../../constants/shoppingCart";
 
 import EmptyShoppingCartStyle from "./final-shopping-cart-pages.module.css";
 
@@ -10,29 +11,29 @@ const FinalShoppingCartPages = ({
   setNavigationStage,
   finalShoppingCardPage,
 }) => {
-  const { message: submittingErrorMessage } = useSelector(
+  const submittingErrorMessage = useSelector(
     (state) =>
-      state.shoppingCart.submittingInfo.submittingError.submittingError
+      state.shoppingCart.submittingInfo.submittingError.submittingError?.message
   );
 
   const getFinalShoppingCardDescription = (finalShoppingCardPageName) => {
     switch (finalShoppingCardPageName) {
-      case "submittingSuccess": {
+      case FINAL_SHOPPINGCART_PAGE.success: {
         return {
-          tittle: "Thank you\n for your order",
-          text1: "Information about your order will appear in your e-mail.",
-          text2: "Our manager will call you back.",
+          tittle: FINAL_SHOPPINGCART_PAGE.tittleSuccess,
+          text1: FINAL_SHOPPINGCART_PAGE.text1Success,
+          text2: FINAL_SHOPPINGCART_PAGE.text2Success,
         };
       }
-      case "submittingRejected": {
+      case FINAL_SHOPPINGCART_PAGE.rejected: {
         return {
-          tittle: "Sorry,\n your payment\n has not been\n processed.",
+          tittle: FINAL_SHOPPINGCART_PAGE.tittleRejected,
           text1: submittingErrorMessage,
         };
       }
       default: {
         return {
-          tittle: "Sorry,\n your cart\n is empty",
+          tittle: FINAL_SHOPPINGCART_PAGE.tittleEmptyOrder,
         };
       }
     }

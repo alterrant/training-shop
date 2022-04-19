@@ -12,6 +12,7 @@ import {
 } from "../../../redux/shopping-cart-reducer";
 import changeBodyOverflow from "../../../encapsulated-common-logics/change-boody-overflow";
 import ShoppingCartNavigation from "./navigation/shopping-cart-navigation";
+import { FINAL_SHOPPINGCART_PAGE } from "../../../constants/shoppingCart";
 
 import { ReactComponent as CloseSVG } from "../../../assets/SVG/close.svg";
 
@@ -33,7 +34,7 @@ const ShoppingCartHeader = ({
   };
 
   const handleCloseShoppingCart = () => {
-    if (finalShoppingCardPage === "submittingSuccess") {
+    if (finalShoppingCardPage === FINAL_SHOPPINGCART_PAGE.success) {
       dispatch(resetProducts());
       dispatch(resetDeliveryInfo());
       dispatch(resetPaymentInfo());

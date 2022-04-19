@@ -1,23 +1,9 @@
 import { React, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
-const getInputNumbersPos = (inputNumber) => {
-  if (inputNumber.length >= 0 && inputNumber.length <= 4) {
-    return inputNumber.length;
-  }
-  if (inputNumber.length > 4 && inputNumber.length <= 8) {
-    return inputNumber.length + 1;
-  }
-  if (inputNumber.length > 8 && inputNumber.length <= 12) {
-    return inputNumber.length + 2;
-  }
-  if (inputNumber.length > 12 && inputNumber.length <= 17) {
-    return inputNumber.length + 3;
-  }
-};
-
 const CustomCardInput = ({ field, form, ...otherProps }) => {
   const [selectionStart, setSelectionStart] = useState(null);
+  console.log(field);
 
   const cardInputRef = useRef();
 
@@ -93,8 +79,6 @@ const CustomCardInput = ({ field, form, ...otherProps }) => {
   );
 };
 
-export default CustomCardInput;
-
 CustomCardInput.propTypes = {
   field: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.bool])
@@ -102,3 +86,20 @@ CustomCardInput.propTypes = {
   form: PropTypes.instanceOf(Object),
   otherProps: PropTypes.objectOf(PropTypes.string),
 };
+
+const getInputNumbersPos = (inputNumber) => {
+  if (inputNumber.length >= 0 && inputNumber.length <= 4) {
+    return inputNumber.length;
+  }
+  if (inputNumber.length > 4 && inputNumber.length <= 8) {
+    return inputNumber.length + 1;
+  }
+  if (inputNumber.length > 8 && inputNumber.length <= 12) {
+    return inputNumber.length + 2;
+  }
+  if (inputNumber.length > 12 && inputNumber.length <= 17) {
+    return inputNumber.length + 3;
+  }
+};
+
+export default CustomCardInput;

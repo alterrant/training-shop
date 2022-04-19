@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import ShoppingCartProducts from "./products/shopping-cart-products";
 import DeliveryInfoForm from "../../forms/shopping-cart/delivery-info/delivery-info-form";
 import PaymentForm from "../../forms/shopping-cart/payment/payment-form";
+import { ORDER_STAGES } from "../../../constants/shoppingCart";
 
 import ShoppingCartContentStyle from "./shopping-cart-content.module.css";
 
@@ -53,7 +54,7 @@ const getShoppingCartContent = ({
   setNavigationStage,
 }) => {
   switch (navigationStage) {
-    case "Item in Cart": {
+    case ORDER_STAGES.inCart: {
       return (
         <ShoppingCartProducts
           shoppingCartProducts={shoppingCartProducts}
@@ -63,7 +64,7 @@ const getShoppingCartContent = ({
         />
       );
     }
-    case "Delivery Info": {
+    case ORDER_STAGES.delivery: {
       return (
         <DeliveryInfoForm
           totalCartPrice={totalCartPrice}
@@ -72,7 +73,7 @@ const getShoppingCartContent = ({
         />
       );
     }
-    case "Payment": {
+    case ORDER_STAGES.payment: {
       return (
         <PaymentForm
           totalCartPrice={totalCartPrice}

@@ -7,6 +7,7 @@ import FinalShoppingCartPages from "./final-shopping-cart-pages/final-shopping-c
 import ShoppingCartHeader from "./header/shopping-cart-header";
 import getTotalCartPrice from "../../encapsulated-common-logics/total-price";
 import ShoppingCartContent from "./content/shopping-cart-content";
+import { FINAL_SHOPPINGCART_PAGE } from "../../constants/shoppingCart";
 
 import ShoppingCartStyle from "./shopping-cart.module.css";
 
@@ -21,14 +22,14 @@ const ShoppingCart = () => {
     (state) => state.shoppingCart.products.length
   );
 
-  const { isSubmittingShoppingCartSuccess } = useSelector(
-    (state) => state.shoppingCart.submittingInfo
+  const isSubmittingShoppingCartSuccess = useSelector(
+    (state) => state.shoppingCart.submittingInfo.isSubmittingSuccess
   );
   const { isSubmittingError } = useSelector(
     (state) => state.shoppingCart.submittingInfo.submittingError
   );
 
-  const [navigationStage, setNavigationStage] = useState("Item in Cart");
+  const [navigationStage, setNavigationStage] = useState(ORDER_STAGES.inCart);
 
   const totalCartPrice = getTotalCartPrice({ shoppingCartProducts });
 
@@ -99,9 +100,9 @@ const getFinalShoppingCartPage = (
 
   if (isSubmittingShoppingCartSuccess || isSubmittingError) {
     finalShoppingCardPage = isSubmittingShoppingCartSuccess
-      ? "submittingSuccess"
-      : "submittingRejected";
-  } else finalShoppingCardPage = "emptyOrder";
+      ? FINAL_SHOPPINGCART_PAGE.success
+      : FINAL_SHOPPINGCART_PAGE.rejected;
+  } else finalShoppingCardPage = FINAL_SHOPPINGCART_PAGE.emptyOrder;
 
   return finalShoppingCardPage;
 };
