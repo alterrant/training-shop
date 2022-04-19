@@ -1,17 +1,17 @@
-import {configureStore} from "@reduxjs/toolkit";
-import filterReducer from "./filterReducer";
-import productReducer from "./productReducer";
-import headerReducer from "./headerReducer";
-import clothesReducer from "./clothesReducer";
-import initializeReducer from "./initializeReducer";
-import shoppingCartReducer from "./shoppingCartReducer";
-import createSagaMiddleware from 'redux-saga';
-import formsReducer from './formsReduser';
-import {rootWatcher} from "../saga/rootSaga";
+import { configureStore } from "@reduxjs/toolkit";
+import createSagaMiddleware from "redux-saga";
+import filterReducer from "./filter-reducer";
+import productReducer from "./product-reducer";
+import headerReducer from "./header-reducer";
+import clothesReducer from "./clothes-reducer";
+import initializeReducer from "./initialize-reducer";
+import shoppingCartReducer from "./shopping-cart-reducer";
+import formsReducer from "./forms-reduser";
+import { rootWatcher } from "../saga/root-saga";
 
 const sagaMiddleware = createSagaMiddleware();
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     initialize: initializeReducer,
     filter: filterReducer,
@@ -19,10 +19,12 @@ export const store = configureStore({
     header: headerReducer,
     clothes: clothesReducer,
     shoppingCart: shoppingCartReducer,
-    forms: formsReducer
+    forms: formsReducer,
   },
   middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(sagaMiddleware),
-})
+    getDefaultMiddleware().concat(sagaMiddleware),
+});
 
 sagaMiddleware.run(rootWatcher);
+
+export default store;

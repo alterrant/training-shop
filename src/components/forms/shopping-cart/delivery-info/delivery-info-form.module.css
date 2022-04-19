@@ -1,0 +1,129 @@
+.form {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000000;
+}
+.form > div:last-child {
+  padding-bottom: 24px;
+}
+
+.radioFormControl {
+  display: flex;
+  flex-direction: column;
+}
+.radioFormControl > p {
+  margin-bottom: 12px;
+}
+.radioLabelFormControl {
+  height: 22px;
+  margin: 13px 0;
+}
+.radioLabelFormControl span {
+  padding: 0 0 0 15px;
+  cursor: pointer;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000000;
+}
+.checkboxFormControl {
+  position: relative;
+}
+.checkboxLabelFormControl {
+  display: flex;
+  column-gap: 15px;
+  cursor: pointer;
+}
+.formControlPhone input::placeholder {
+  letter-spacing: 1px;
+}
+.formControl {
+  position: relative;
+}
+.formControl > label {
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #121212;
+}
+.formControl > label > p{
+  margin-bottom: 8px;
+}
+.formControlInputs {
+  width: 100%;
+  height: 48px;
+  padding: 2px 0 0 16px;
+
+  border: none;
+  background-color: #F8F8F8;
+  cursor: pointer;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  color: #121212;
+}
+.formControl input::placeholder {
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  color: #9C9C9C;
+}
+.formControl label select {
+  padding-left: 16px;
+
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Safari, Chrome, Opera */
+  -webkit-appearance: none;
+}
+.selectField {
+  font-family: Spartan, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  padding-left: 2px;
+  color: #121212;
+}
+.selectFieldEmpty {
+  color: #9C9C9C;
+}
+.formContent {
+  display: flex;
+  flex-direction: column;
+  row-gap: 36px;
+  margin: 40px 0;
+}
+.house {
+  display: flex;
+  gap: 8px;
+}
+
+.errorField{
+  border: 1px red solid;
+}
