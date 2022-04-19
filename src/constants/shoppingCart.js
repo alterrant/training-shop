@@ -13,7 +13,7 @@ export const FINAL_SHOPPINGCART_PAGE = {
   text1Success: "Information about your order will appear in your e-mail.",
   text2Success: "Our manager will call you back.",
   tittleRejected: "Sorry,\n your payment\n has not been\n processed.",
-  tittleEmptyOrder: '"Sorry,\\n your cart\\n is empty"',
+  tittleEmptyOrder: '"Sorry,\n your cart\n is empty"',
 };
 
 export const ORDER_STAGES = {
