@@ -1,0 +1,126 @@
+.select {
+  position: relative;
+  margin: 0 auto;
+}
+.select label {
+  text-transform: none;
+}
+.active {
+  box-shadow: 0 0 6px rgb(188, 188, 189);
+}
+.active .selectTitle::before {
+  transform: translate(-3px, -50%) rotate(-45deg);
+}
+.active .selectTitle::after {
+  transform: translate(3px, -50%) rotate(45deg);
+}
+.active .selectContent {
+  opacity: 1;
+}
+.active label{
+  max-height: 40px;
+  border-top-width: 1px;
+}
+.selectTitle {
+  width: 100%;
+  height: 48px;
+  padding: 2px 0 0 16px;
+
+  border: none;
+  background-color: #F8F8F8;;
+  cursor: pointer;
+  outline: none;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  color: #121212;
+}
+.placeholder {
+  background: #F8F8F8;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  color: #9C9C9C;
+}
+.active .selectTitle::before, .active .selectTitle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  display: block;
+  width: 10px;
+  height: 2px;
+  transition: all 0.3s ease-out;
+  background-color: #333333;
+  transform: translate(-3px, -50%) rotate(-45deg);
+}
+.active .selectTitle::after {
+  transform: translate(3px, -50%) rotate(45deg);
+}
+.selectTitle:hover {
+  border-color: #9C9C9C;
+}
+.selectTitle:hover::before, .selectTitle:hover::after {
+  background-color: #9C9C9C;
+}
+.selectContent {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #FFFFFF;
+  transition: all 0.3s ease-out;
+  opacity: 0;
+  z-index: 8;
+  box-shadow: 0 3px 5px rgb(188, 188, 189);
+}
+
+.selectInput {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+.selectLabel:nth-child(4n) {
+  background-color: #F8F8F8;
+}
+.selectLabel {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  max-height: 0;
+  padding: 0 16px;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+  overflow: hidden;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: #121212;
+}
+.selectLabel + input + .selectLabel {
+  border-top: 0 solid #C7CCD160;
+}
+.selectLabel:hover {
+  background-color: #F1F0F0;
+}
+.errorField{
+  border: 1px red solid;
+}

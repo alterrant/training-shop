@@ -1,0 +1,12 @@
+.formControlInputs {
+  width: 100%;
+  height: 48px;
+  padding-left: 16px;
+
+  border: none;
+  background-color: #F8F8F8;;
+  cursor: pointer;
+}
+.errorField {
+  border: 1px solid red;
+}

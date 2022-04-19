@@ -1,10 +1,9 @@
-import {instance} from "./api";
+import instance from "./api";
 
-export const subscribeAPI = {
+export default {
   getSubscribe(email) {
-    return instance.post('email', {
-          'mail': email
-        }
-    )
-  }
-}
+    return instance.post("email", {
+      mail: email,
+    });
+  },
+};
