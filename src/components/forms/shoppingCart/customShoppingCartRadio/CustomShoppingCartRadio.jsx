@@ -1,13 +1,14 @@
+import React from "react";
+import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDeliveryCountries } from "../../../../redux/shoppingCartReducer";
 import CustomDeliveryTypeRadioStyle from "./CustomShoppingCartRadio.module.css";
-import {useStableDispatch} from "../../../../hooks/useRedux";
-import {useSelector} from "react-redux";
-import {fetchDeliveryCountries} from "../../../../redux/shoppingCartReducer";
 
-export const CustomShoppingCartRadio = (props) => {
-  const {field, form, ...otherProps} = props;
-
-  const dispatch = useStableDispatch();
-  const isDeliveryCountries = useSelector(state => state.shoppingCart.deliveryInfo.deliveryCountries);
+const CustomShoppingCartRadio = ({ field, form, ...otherProps }) => {
+  const dispatch = useDispatch();
+  const isDeliveryCountries = useSelector(
+    (state) => state.shoppingCart.deliveryInfo.deliveryCountries
+  );
 
   const deliveryTypeChangeHandler = (e) => {
     field.onChange(e);
@@ -15,16 +16,27 @@ export const CustomShoppingCartRadio = (props) => {
     form.setErrors({});
     form.setTouched({});
 
-    if (otherProps.value === 'Store pickup'
-        && isDeliveryCountries.length === 0) {
+    if (otherProps.value === "Store pickup" && isDeliveryCountries.length === 0)
       dispatch(fetchDeliveryCountries());
-    }
-  }
+  };
 
   return (
-      <input className={CustomDeliveryTypeRadioStyle.radioInput}
-             {...field}
-             {...otherProps}
-             onChange={deliveryTypeChangeHandler}/>
-  )
-}
+    <input
+      className={CustomDeliveryTypeRadioStyle.radioInput}
+      /* eslint-disable react/jsx-props-no-spreading */
+      {...field}
+      {...otherProps}
+      onChange={deliveryTypeChangeHandler}
+    />
+  );
+};
+
+export default CustomShoppingCartRadio;
+
+CustomShoppingCartRadio.propTypes = {
+  field: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.bool])
+  ),
+  form: PropTypes.instanceOf(Object),
+  otherProps: PropTypes.objectOf(PropTypes.string),
+};

@@ -1,13 +1,15 @@
-import ErrorStyle from './Error.module.css';
+import React from "react";
+import PropTypes from "prop-types";
+import ErrorStyle from "./Error.module.css";
 
-const Error = ({errorMessage}) => {
-  return (
-      <li className={ErrorStyle.wrapper} data-test-id={'error'}>
-        <div className={ErrorStyle.text}>
-          {errorMessage}
-        </div>
-      </li>
-  )
-}
+const Error = ({ errorMessage }) => (
+  <li className={ErrorStyle.wrapper} data-test-id="error">
+    <div className={ErrorStyle.text}>{errorMessage}</div>
+  </li>
+);
 
 export default Error;
+
+Error.propTypes = {
+  errorMessage: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
+};

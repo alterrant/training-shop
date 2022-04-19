@@ -1,27 +1,28 @@
-import {call, put, takeEvery} from "@redux-saga/core/effects";
-import {subscribeAPI} from "../api/subscribe";
+import { call, put, takeEvery } from "@redux-saga/core/effects";
+import subscribeAPI from "../api/subscribe";
 import {
   postingReviewError,
   postingReviewSuccess,
   submittingSubscriptionError,
-  submittingSubscriptionSuccess
+  submittingSubscriptionSuccess,
 } from "../redux/formsReduser";
-import {productsAPI} from "../api/products";
-import {setProduct} from "../redux/productReducer";
+import productsAPI from "../api/products";
+import { setProduct } from "../redux/productReducer";
 
-function* submittingSubscriptionWorker({payload}) {
+function* submittingSubscriptionWorker({ payload }) {
   const { subscribeEmail, formName } = payload;
 
   try {
     const subscriber = yield call(subscribeAPI.getSubscribe, subscribeEmail);
 
-    if (subscriber.status === 200) yield put(submittingSubscriptionSuccess({formName}));
+    if (subscriber.status === 200)
+      yield put(submittingSubscriptionSuccess({ formName }));
   } catch (error) {
-    yield put(submittingSubscriptionError({error: error.message, formName}));
+    yield put(submittingSubscriptionError({ error: error.message, formName }));
   }
 }
 
-function* postingReviewWorker({payload}) {
+function* postingReviewWorker({ payload }) {
   try {
     const postedReview = yield call(productsAPI.postReview, payload);
 
@@ -34,9 +35,9 @@ function* postingReviewWorker({payload}) {
 }
 
 export function* submittingSubscriptionWatcher() {
-  yield takeEvery('forms/submittingSubscription', submittingSubscriptionWorker);
+  yield takeEvery("forms/submittingSubscription", submittingSubscriptionWorker);
 }
 
 export function* postReviewWatcher() {
-  yield takeEvery('forms/postingReview', postingReviewWorker);
+  yield takeEvery("forms/postingReview", postingReviewWorker);
 }

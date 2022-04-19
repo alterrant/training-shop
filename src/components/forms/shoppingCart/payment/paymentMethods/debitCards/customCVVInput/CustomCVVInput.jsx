@@ -1,36 +1,49 @@
-import {ErrorMessage} from "formik";
 import React from "react";
-import {CustomReviewErrorMessage} from "../../../../../review/customReviewErrorMessage/CustomReviewErrorMessage";
+import PropTypes from "prop-types";
+import { ErrorMessage } from "formik";
 
-export const CustomCVVInput = (props) => {
-  const {field, form, ...otherProps} = props;
+import CustomReviewErrorMessage from "../../../../../review/customReviewErrorMessage/CustomReviewErrorMessage";
 
+const CustomCVVInput = ({ field, form, ...otherProps }) => {
   const getInputNumbersValue = (inputElement) => {
-    return inputElement.value.replace(/\D/g, '');
-  }
+    return inputElement.value.replace(/\D/g, "");
+  };
 
   const phoneChangeHandler = (e) => {
     const inputElement = e.target;
 
-    let formatedInputValue = '';
+    let formatedInputValue = "";
 
     const inputNumbers = getInputNumbersValue(inputElement);
 
-    form.setFieldTouched('cardCVV', true, false);
+    form.setFieldTouched("cardCVV", true, false);
 
     formatedInputValue += inputNumbers.substring(0, 3);
 
-    form.setFieldValue('cardCVV', formatedInputValue);
-  }
+    form.setFieldValue("cardCVV", formatedInputValue);
+  };
 
   return (
-      <div>
-        <input type='password'
-               {...field}
-               {...otherProps}
-               onChange={phoneChangeHandler}
-               data-test-id={'review-name-field'}/>
-        <ErrorMessage name='cardCVV' component={CustomReviewErrorMessage}/>
-      </div>
-  )
-}
+    <div>
+      <input
+        type="password"
+        /* eslint-disable react/jsx-props-no-spreading */
+        {...field}
+        {...otherProps}
+        onChange={phoneChangeHandler}
+        data-test-id="review-name-field"
+      />
+      <ErrorMessage name="cardCVV" component={CustomReviewErrorMessage} />
+    </div>
+  );
+};
+
+export default CustomCVVInput;
+
+CustomCVVInput.propTypes = {
+  field: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.bool])
+  ),
+  form: PropTypes.instanceOf(Object),
+  otherProps: PropTypes.objectOf(PropTypes.string),
+};

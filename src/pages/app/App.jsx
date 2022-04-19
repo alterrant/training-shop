@@ -1,28 +1,22 @@
+import React from "react";
+import { useSelector } from "react-redux";
+
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
-import AppStyle from "./App.module.css";
-import {useSelector} from "react-redux";
 import Main from "../../components/main/Main";
-/*import {useSelector} from "react-redux";
-import classNames from "classnames/bind";*/
+
+import AppStyle from "./App.module.css";
 
 const App = () => {
-  const initError = useSelector(state => state.initialize.isInitError);
-  /*const cx = classNames.bind(AppStyle);
-  const isShoppingCartOpen = useSelector((state => state.shoppingCart.isShoppingCartOpen));*/
+  const initError = useSelector((state) => state.initialize.isInitError);
 
   return (
-      //<div className={cx({overflowPosition: isShoppingCartOpen})}>
-      <div className={AppStyle.app} data-test-id='app'>
-        <Header/>
-        {initError
-            ? <div>INIT ERROR</div>
-            : <Main/>
-        }
-        <Footer/>
-      </div>
-      //</div>
-  )
-}
+    <div className={AppStyle.app} data-test-id="app">
+      <Header />
+      {initError ? <div>INIT ERROR</div> : <Main />}
+      <Footer />
+    </div>
+  );
+};
 
 export default App;

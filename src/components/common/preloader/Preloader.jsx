@@ -1,12 +1,10 @@
-import PreloaderStyles from './Preloader.module.css'
+import React from "react";
+import PreloaderStyles from "./Preloader.module.css";
 
-const Preloader = () => {
-  return (
-  <div className={PreloaderStyles.preloader} data-test-id={'loader'}>
-    <div className={PreloaderStyles.spinner}>
-    </div>
+const Preloader = () => (
+  <div className={PreloaderStyles.preloader} data-test-id="loader">
+    <div className={PreloaderStyles.spinner} />
   </div>
-  )
-}
+);
 
 export default Preloader;

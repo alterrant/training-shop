@@ -1,27 +1,39 @@
-import ShoppingCartStyle from "./ShoppingCartHeader.module.css";
+import { React, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
+
 import {
   resetDeliveryFormToggle,
-  resetDeliveryInfo, resetPaymentFormToggle,
-  resetPaymentInfo, resetProducts,
-  shoppingCartToggle
+  resetDeliveryInfo,
+  resetPaymentFormToggle,
+  resetPaymentInfo,
+  resetProducts,
+  shoppingCartToggle,
 } from "../../../redux/shoppingCartReducer";
-import {ReactComponent as CloseSVG} from "../../../assets/SVG/close.svg";
-import {useEffect, useRef} from "react";
-import {changeBodyOverflow} from "../../../encapsulatedCommonLogics/changeBoodyOverflow";
-import {useStableDispatch} from "../../../hooks/useRedux";
+import changeBodyOverflow from "../../../encapsulatedCommonLogics/changeBoodyOverflow";
 import ShoppingCartNavigation from "./navigation/ShoppingCartNavigation";
 
-const ShoppingCartHeader = ({isShoppingCartOpen, setNavigationStage, navigationStage, isFinalShoppingCartPage, finalShoppingCardPage}) => {
-  const dispatch = useStableDispatch();
+import { ReactComponent as CloseSVG } from "../../../assets/SVG/close.svg";
+
+import ShoppingCartStyle from "./ShoppingCartHeader.module.css";
+
+const ShoppingCartHeader = ({
+  isShoppingCartOpen,
+  setNavigationStage,
+  navigationStage,
+  isFinalShoppingCartPage,
+  finalShoppingCardPage,
+}) => {
+  const dispatch = useDispatch();
 
   const refCloseSVG = useRef(null);
 
   const handleShoppingCartKeyDown = (e) => {
-    if (e.code === 'Escape') dispatch(shoppingCartToggle());
-  }
+    if (e.code === "Escape") dispatch(shoppingCartToggle());
+  };
 
   const handleCloseShoppingCart = () => {
-    if (finalShoppingCardPage === 'submittingSuccess') {
+    if (finalShoppingCardPage === "submittingSuccess") {
       dispatch(resetProducts());
       dispatch(resetDeliveryInfo());
       dispatch(resetPaymentInfo());
@@ -34,8 +46,8 @@ const ShoppingCartHeader = ({isShoppingCartOpen, setNavigationStage, navigationS
       dispatch(resetPaymentFormToggle());
     }
 
-    dispatch(shoppingCartToggle())
-  }
+    dispatch(shoppingCartToggle());
+  };
 
   useEffect(() => {
     changeBodyOverflow(!isShoppingCartOpen);
@@ -43,22 +55,37 @@ const ShoppingCartHeader = ({isShoppingCartOpen, setNavigationStage, navigationS
   }, [isShoppingCartOpen]);
 
   return (
-      <div className={ShoppingCartStyle.headerWrapper}>
-        <div className={ShoppingCartStyle.header}>
-          <div>
-            Shopping Cart
-          </div>
-          <button
-              ref={refCloseSVG}
-              onKeyDown={(e) => handleShoppingCartKeyDown(e)}
-              onClick={handleCloseShoppingCart}
-              className={ShoppingCartStyle.closeSVG}>
-            <CloseSVG/>
-          </button>
-        </div>
-        {isFinalShoppingCartPage && <ShoppingCartNavigation setNavigationStage={setNavigationStage}
-                                 navigationStage={navigationStage}/>}
+    <div className={ShoppingCartStyle.headerWrapper}>
+      <div className={ShoppingCartStyle.header}>
+        <div>Shopping Cart</div>
+        <button
+          ref={refCloseSVG}
+          onKeyDown={(e) => handleShoppingCartKeyDown(e)}
+          onClick={handleCloseShoppingCart}
+          className={ShoppingCartStyle.closeSVG}
+          type="button"
+        >
+          <CloseSVG />
+        </button>
       </div>
-  )
-}
+      {isFinalShoppingCartPage && (
+        <ShoppingCartNavigation
+          setNavigationStage={setNavigationStage}
+          navigationStage={navigationStage}
+        />
+      )}
+    </div>
+  );
+};
 export default ShoppingCartHeader;
+
+ShoppingCartHeader.propTypes = {
+  isShoppingCartOpen: PropTypes.bool,
+  isFinalShoppingCartPage: PropTypes.bool,
+  finalShoppingCardPage: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+  ]),
+  navigationStage: PropTypes.string.isRequired,
+  setNavigationStage: PropTypes.func.isRequired,
+};

@@ -1,2 +1,5 @@
-export const getTotalCartPrice = ({shoppingCartProducts}) =>
-    shoppingCartProducts.reduce((prev, curr) => prev + curr.price * curr.productQuantity, 0);
+export default ({ shoppingCartProducts }) =>
+  shoppingCartProducts.reduce(
+    (prev, curr) => prev + curr.price * curr.productQuantity,
+    0
+  );

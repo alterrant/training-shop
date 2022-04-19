@@ -12,6 +12,7 @@
     "classnames": "^2.3.1",
     "formik": "^2.2.9",
     "normalize.css": "^8.0.1",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.26.0",
@@ -43,5 +44,16 @@
   "main": "stop",
   "repository": "https://github.com/alterrant/training-shop.git",
   "author": "alterrant <pandor246@mail.ru>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.13.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.4.0",
+    "prettier": "2.6.2"
+  }
 }

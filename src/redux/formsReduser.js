@@ -1,56 +1,58 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isSubmittingSubscription: {
     mainForm: false,
-    footerForm: false
+    footerForm: false,
   },
   submittingSubscriptionStatus: {
     mainForm: false,
-    footerForm: false
+    footerForm: false,
   },
   isPostingReview: false,
   postingReviewStatus: null,
-}
+};
 
 export const formsSlice = createSlice({
-  name: 'forms',
+  name: "forms",
   initialState,
   reducers: {
-    submittingSubscription: (((state, action) => {
+    submittingSubscription: (state, action) => {
       state.isSubmittingSubscription[action.payload.formName] = true;
-    })),
-    submittingSubscriptionSuccess: (((state, action) => {
+    },
+    submittingSubscriptionSuccess: (state, action) => {
       state.isSubmittingSubscription[action.payload.formName] = false;
-      state.submittingSubscriptionStatus[action.payload.formName] = 'Subscribed';
-    })),
-    submittingSubscriptionError: (((state, action) => {
+      state.submittingSubscriptionStatus[action.payload.formName] =
+        "Subscribed";
+    },
+    submittingSubscriptionError: (state, action) => {
       state.isSubmittingSubscription[action.payload.formName] = false;
-      state.submittingSubscriptionStatus[action.payload.formName] = action.payload.error;
-    })),
-    resetSubscribeForm: ((state) => {
+      state.submittingSubscriptionStatus[action.payload.formName] =
+        action.payload.error;
+    },
+    resetSubscribeForm: (state) => {
       state.submittingSubscriptionStatus = {
         mainForm: false,
-        footerForm: false
+        footerForm: false,
       };
-    }),
+    },
 
-    postingReview: (((state) => {
+    postingReview: (state) => {
       state.isPostingReview = true;
-    })),
-    postingReviewSuccess: (((state) => {
+    },
+    postingReviewSuccess: (state) => {
       state.isPostingReview = false;
-      state.postingReviewStatus = 'posting success';
-    })),
-    postingReviewError: (((state, action) => {
+      state.postingReviewStatus = "posting success";
+    },
+    postingReviewError: (state, action) => {
       state.isPostingReview = false;
       state.postingReviewStatus = action.payload;
-    })),
-    resetReviewForm: ((state) => {
+    },
+    resetReviewForm: (state) => {
       state.postingReviewStatus = null;
-    })
-  }
-})
+    },
+  },
+});
 
 export const {
   submittingSubscription,
@@ -60,7 +62,7 @@ export const {
   postingReview,
   postingReviewSuccess,
   postingReviewError,
-  resetReviewForm
-} = formsSlice.actions
+  resetReviewForm,
+} = formsSlice.actions;
 
-export default formsSlice.reducer
+export default formsSlice.reducer;

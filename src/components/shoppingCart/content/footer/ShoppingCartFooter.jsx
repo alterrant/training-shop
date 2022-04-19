@@ -1,15 +1,17 @@
-import React from 'react';
+import React from "react";
 import ShoppingCartFooterStyle from "./ShoppingCartFooter.module.css";
 import {
   resetDeliveryFormToggle,
   resetDeliveryInfo,
   resetPaymentFormToggle,
-  resetPaymentInfo, resetProducts,
+  resetPaymentInfo,
+  resetProducts,
   resetSubmission,
   setDeliveryInfo,
-  setPaymentInfo, shoppingCartToggle
+  setPaymentInfo,
+  shoppingCartToggle,
 } from "../../../../redux/shoppingCartReducer";
-import {useStableDispatch} from "../../../../hooks/useRedux";
+import { useDispatch } from "react-redux";
 
 const ShoppingCartFooter = (props) => {
   const {
@@ -19,20 +21,21 @@ const ShoppingCartFooter = (props) => {
     isCashMethod = false,
     finalShoppingCardPageName = null,
     summaryInfo,
-    formik = null
+    formik = null,
   } = props;
 
-  const dispatch = useStableDispatch();
+  const dispatch = useDispatch();
 
   const onClickHandler = () => {
-    if (finalShoppingCardPageName === 'submittingRejected') {
+    if (finalShoppingCardPageName === "submittingRejected") {
       dispatch(resetSubmission());
 
       //setNavigationStage('Payment');
     }
-    if (finalShoppingCardPageName === 'emptyOrder') dispatch(shoppingCartToggle());
+    if (finalShoppingCardPageName === "emptyOrder")
+      dispatch(shoppingCartToggle());
 
-    if (finalShoppingCardPageName === 'submittingSuccess') {
+    if (finalShoppingCardPageName === "submittingSuccess") {
       dispatch(resetProducts());
       dispatch(resetDeliveryInfo());
       dispatch(resetPaymentInfo());
@@ -40,101 +43,106 @@ const ShoppingCartFooter = (props) => {
       dispatch(resetPaymentFormToggle());
 
       dispatch(shoppingCartToggle());
-      setNavigationStage('Item in Cart');
+      setNavigationStage("Item in Cart");
     }
 
-    if (navigationStage === 'Item in Cart') {
-      setNavigationStage('Delivery Info');
+    if (navigationStage === "Item in Cart") {
+      setNavigationStage("Delivery Info");
     }
-  }
+  };
   const onViewCartClickHandler = () => {
-    if (finalShoppingCardPageName === 'submittingRejected') {
-      setNavigationStage('Item in Cart');
+    if (finalShoppingCardPageName === "submittingRejected") {
+      setNavigationStage("Item in Cart");
 
       dispatch(resetDeliveryInfo());
       dispatch(resetPaymentInfo());
       dispatch(resetDeliveryFormToggle());
       dispatch(resetPaymentFormToggle());
-    } else if (navigationStage === 'Payment') {
+    } else if (navigationStage === "Payment") {
       dispatch(setPaymentInfo(summaryInfo));
-      setNavigationStage('Delivery Info');
+      setNavigationStage("Delivery Info");
     }
-    if (navigationStage === 'Delivery Info') {
+    if (navigationStage === "Delivery Info") {
       dispatch(setDeliveryInfo(summaryInfo));
-      setNavigationStage('Item in Cart')
+      setNavigationStage("Item in Cart");
     }
-  }
+  };
 
   const getButton = (navigationStage, finalShoppingCardPageName) => {
     const button = (
-        <button
-            className={ShoppingCartFooterStyle.buttonViewCart}
-            onClick={onViewCartClickHandler}
-            type='button'
-        >
-          View Cart
-        </button>
+      <button
+        className={ShoppingCartFooterStyle.buttonViewCart}
+        onClick={onViewCartClickHandler}
+        type="button"
+      >
+        View Cart
+      </button>
     );
 
     if (finalShoppingCardPageName) {
-      return finalShoppingCardPageName === 'submittingRejected'
-          ? button
-          : null
+      return finalShoppingCardPageName === "submittingRejected" ? button : null;
     } else {
-      return navigationStage === 'Item in Cart'
-          ? null
-          : button
+      return navigationStage === "Item in Cart" ? null : button;
     }
-  }
+  };
   const onMouseDown = () => {
     if (formik) {
-      const isFieldsError = (Object.keys(formik.errors).length !== 0 && !formik.errors['agreementToggle']);
-      if (isFieldsError) formik.setFieldValue('agreementToggle', false);
+      const isFieldsError =
+        Object.keys(formik.errors).length !== 0 &&
+        !formik.errors["agreementToggle"];
+      if (isFieldsError) formik.setFieldValue("agreementToggle", false);
     }
-  }
+  };
 
   return (
-      <div className={ShoppingCartFooterStyle.footer}>
-        {
-          !finalShoppingCardPageName && (
-              <div className={ShoppingCartFooterStyle.totalPriceWrapper}>
-                <p>Total</p>
-                <p className={ShoppingCartFooterStyle.totalPrice}>{totalCartPrice}</p>
-              </div>
-          )
-        }
-        <div className={ShoppingCartFooterStyle.buttons}>
-          <button className={ShoppingCartFooterStyle.buttonFurter}
-                  onClick={(e) => onClickHandler(e)}
-                  onMouseDown={() => onMouseDown()}
-                  type='submit'>
-            {
-              getShoppingCartSubmitBtn(navigationStage, isCashMethod, finalShoppingCardPageName)
-            }
-          </button>
-          {
-            getButton(navigationStage, finalShoppingCardPageName, finalShoppingCardPageName)
-          }
+    <div className={ShoppingCartFooterStyle.footer}>
+      {!finalShoppingCardPageName && (
+        <div className={ShoppingCartFooterStyle.totalPriceWrapper}>
+          <p>Total</p>
+          <p className={ShoppingCartFooterStyle.totalPrice}>{totalCartPrice}</p>
         </div>
+      )}
+      <div className={ShoppingCartFooterStyle.buttons}>
+        <button
+          className={ShoppingCartFooterStyle.buttonFurter}
+          onClick={(e) => onClickHandler(e)}
+          onMouseDown={() => onMouseDown()}
+          type="submit"
+        >
+          {getShoppingCartSubmitBtn(
+            navigationStage,
+            isCashMethod,
+            finalShoppingCardPageName
+          )}
+        </button>
+        {getButton(
+          navigationStage,
+          finalShoppingCardPageName,
+          finalShoppingCardPageName
+        )}
       </div>
-  )
-}
+    </div>
+  );
+};
 
 export default ShoppingCartFooter;
 
-const getShoppingCartSubmitBtn = (navigationStage, isCashMethod, finalShoppingCardPageName) => {
+const getShoppingCartSubmitBtn = (
+  navigationStage,
+  isCashMethod,
+  finalShoppingCardPageName
+) => {
   if (finalShoppingCardPageName) {
-    return (
-        (finalShoppingCardPageName === 'submittingSuccess' || finalShoppingCardPageName === 'emptyOrder')
-            ? 'BACK TO SHOPPING'
-            : 'BACK TO PAYMENT'
-    )
+    return finalShoppingCardPageName === "submittingSuccess" ||
+      finalShoppingCardPageName === "emptyOrder"
+      ? "BACK TO SHOPPING"
+      : "BACK TO PAYMENT";
   }
   switch (navigationStage) {
-    case 'Payment': {
-      return isCashMethod ? 'READY' : 'CHECK OUT'
+    case "Payment": {
+      return isCashMethod ? "READY" : "CHECK OUT";
     }
     default:
-      return 'FURTHER'
+      return "FURTHER";
   }
-}
+};
