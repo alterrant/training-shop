@@ -88,7 +88,7 @@ const DeliveryInfoForm = ({
           <Form className={DeliveryInfoFormStyle.form}>
             <div>
               <div className={DeliveryInfoFormStyle.radioFormControl}>
-                <p>Choose the method of delivery of the items</p>
+                Choose the method of delivery of the items
                 <Partition />
                 {radioButtons}
                 <ErrorMessage name="deliveryMethod" />
@@ -96,7 +96,7 @@ const DeliveryInfoForm = ({
               <div className={DeliveryInfoFormStyle.formContent}>
                 <div className={DeliveryInfoFormStyle.formControl}>
                   <label className={DeliveryInfoFormStyle.formControlPhone}>
-                    <p>PHONE</p>
+                    PHONE
                     <Field
                       type="tel"
                       name="phone"
@@ -114,7 +114,7 @@ const DeliveryInfoForm = ({
                 </div>
                 <div className={DeliveryInfoFormStyle.formControl}>
                   <label>
-                    <p>EMAIL</p>
+                    EMAIL
                     <Field
                       type="email"
                       name="email"
@@ -138,7 +138,7 @@ const DeliveryInfoForm = ({
                   "Pickup from post offices" && (
                   <div className={DeliveryInfoFormStyle.formControl}>
                     <label className={DeliveryInfoFormStyle.formControlPhone}>
-                      <p>POSTCODE</p>
+                      POSTCODE
                       <Field
                         type="input"
                         name="postcode"

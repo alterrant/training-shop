@@ -98,7 +98,7 @@ const ShoppingCartFooter = (props) => {
     <div className={ShoppingCartFooterStyle.footer}>
       {!finalShoppingCardPageName && (
         <div className={ShoppingCartFooterStyle.totalPriceWrapper}>
-          <p>Total</p>
+          Total
           <p className={ShoppingCartFooterStyle.totalPrice}>{totalCartPrice}</p>
         </div>
       )}

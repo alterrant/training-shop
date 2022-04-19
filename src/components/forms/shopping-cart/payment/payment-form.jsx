@@ -108,7 +108,7 @@ const PaymentForm = ({
           <Form className={PaymentFormStyle.form}>
             <div>
               <div className={PaymentFormStyle.radioFormControl}>
-                <p>Method of payments</p>
+                Method of payments
                 <Partition />
                 {radioButtons}
                 <ErrorMessage name="paymentMethod" />

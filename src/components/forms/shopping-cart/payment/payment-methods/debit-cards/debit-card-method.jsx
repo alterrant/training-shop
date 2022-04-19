@@ -17,7 +17,7 @@ const DebitCardMethod = ({ formik }) => {
     <>
       <div className={DebitCardMethodStyle.formControl}>
         <label>
-          <p>CARD</p>
+          CARD
           <Field
             type="tel"
             name="card"

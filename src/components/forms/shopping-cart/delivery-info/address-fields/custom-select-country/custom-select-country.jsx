@@ -4,7 +4,7 @@ import classNames from "classnames/bind";
 
 import CustomStoreAddressSelect from "../custom-store-address-select/custom-store-address-select";
 
-import CustomSelectStyle from "./CustomSelectCountry.module.css";
+import CustomSelectStyle from "./custom-select-country.module.css";
 
 const CustomSelectCountry = ({
   field,

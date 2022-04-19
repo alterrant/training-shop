@@ -10,7 +10,7 @@ const CustomShoppingCartCheckbox = (props) => {
   const className = classNames.bind(CheckboxStyle);
 
   const customCheckboxStyle = className(
-    "custom-checkbox",
+    "customCheckbox",
     field.value && "customCheckboxActive",
     { customCheckboxError: form.errors[field.name] && form.touched[field.name] }
   );

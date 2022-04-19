@@ -12,7 +12,7 @@ const UserAddressFields = ({ formik }) => {
     <>
       <div className={DeliveryInfoFormStyle.formControl}>
         <label>
-          <p>ADDRESS</p>
+          ADDRESS
           <Field
             type="text"
             name="country"

@@ -13,7 +13,7 @@ const PayPalMethod = ({ formik }) => {
   return (
     <div className={PayPalMethodStyle.formControl}>
       <label>
-        <p>E-MAIL</p>
+        E-MAIL
         <Field
           type="email"
           name="cashEmail"

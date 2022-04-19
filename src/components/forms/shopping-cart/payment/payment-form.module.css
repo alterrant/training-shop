@@ -4,6 +4,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000000;
 }
 
 .radioLabelFormControl {
