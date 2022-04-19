@@ -4,7 +4,7 @@ import "normalize.css";
 import "./index.css";
 import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { Router } from "./components/Router";
+import { Router } from "./components/router";
 import store from "./redux/store";
 
 ReactDOM.render(

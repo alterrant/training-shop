@@ -1,6 +1,6 @@
-import BlogUser1 from "../assets/blog/blogUser1.png";
-import BlogUser2 from "../assets/blog/blogUser2.png";
-import BlogUser3 from "../assets/blog/blogUser3.png";
+import BlogUser1 from "../assets/blog/blog-user-1.png";
+import BlogUser2 from "../assets/blog/blog-user-2.png";
+import BlogUser3 from "../assets/blog/blog-user-3.png";
 
 export default [
   {

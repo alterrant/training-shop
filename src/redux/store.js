@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
-import filterReducer from "./filterReducer";
-import productReducer from "./productReducer";
-import headerReducer from "./headerReducer";
-import clothesReducer from "./clothesReducer";
-import initializeReducer from "./initializeReducer";
-import shoppingCartReducer from "./shoppingCartReducer";
-import formsReducer from "./formsReduser";
-import { rootWatcher } from "../saga/rootSaga";
+import filterReducer from "./filter-reducer";
+import productReducer from "./product-reducer";
+import headerReducer from "./header-reducer";
+import clothesReducer from "./clothes-reducer";
+import initializeReducer from "./initialize-reducer";
+import shoppingCartReducer from "./shopping-cart-reducer";
+import formsReducer from "./forms-reduser";
+import { rootWatcher } from "../saga/root-saga";
 
 const sagaMiddleware = createSagaMiddleware();
 
