@@ -6,8 +6,8 @@ import ClothesNavBarStyle from "./clothes-nav-bar.module.css";
 import { setSelectedParticulars } from "../../../redux/clothes-reducer";
 
 const ClothesNavBar = ({ clothesNavBar, productType }) => {
-  const { selectedParticular } = useSelector(
-    (state) => state.clothes[productType]
+  const selectedParticular = useSelector(
+    (state) => state.clothes[productType].selectedParticulars
   );
   const dispatch = useDispatch();
 
@@ -15,6 +15,8 @@ const ClothesNavBar = ({ clothesNavBar, productType }) => {
 
   const navBarList = clothesNavBar.map((item) => (
     <li key={item.id}>
+      {console.log("selectedParticular", selectedParticular)}
+      {console.log("item.filterName", item.filterName)}
       <button
         className={cs("button", {
           activeButton: selectedParticular === item.filterName,
