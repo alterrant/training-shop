@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 const CustomCardInput = ({ field, form, ...otherProps }) => {
   const [selectionStart, setSelectionStart] = useState(null);
-  console.log(field);
 
   const cardInputRef = useRef();
 
@@ -70,7 +69,8 @@ const CustomCardInput = ({ field, form, ...otherProps }) => {
     <input
       type="tel"
       /* eslint-disable react/jsx-props-no-spreading */
-      {...field}
+      value={field.value}
+      name={field.name}
       {...otherProps}
       onChange={phoneChangeHandler}
       onKeyDown={onPhoneKeyDown}

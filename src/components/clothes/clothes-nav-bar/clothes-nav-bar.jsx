@@ -15,8 +15,6 @@ const ClothesNavBar = ({ clothesNavBar, productType }) => {
 
   const navBarList = clothesNavBar.map((item) => (
     <li key={item.id}>
-      {console.log("selectedParticular", selectedParticular)}
-      {console.log("item.filterName", item.filterName)}
       <button
         className={cs("button", {
           activeButton: selectedParticular === item.filterName,

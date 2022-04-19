@@ -29,9 +29,12 @@ const PaymentForm = ({
   setNavigationStage,
 }) => {
   const dispatch = useDispatch();
-  const { paymentFormToggle } = useSelector((state) => state.shoppingCart);
+  const paymentFormToggle = useSelector(
+    (state) => state.shoppingCart.paymentFormToggle
+  );
+
   const { paymentSummary: statePaymentInfo } = useSelector(
-    (state) => state.shoppingCart.paymentSummary
+    (state) => state.shoppingCart
   );
 
   const initialPaymentInfo = Object.assign(
@@ -97,6 +100,7 @@ const PaymentForm = ({
       innerRef={paymentFormRef}
     >
       {(formik) => {
+        // console.log("formik", formik);
         return (
           <Form className={PaymentFormStyle.form}>
             <div>

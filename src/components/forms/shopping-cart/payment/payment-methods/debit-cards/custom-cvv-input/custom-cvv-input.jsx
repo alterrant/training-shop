@@ -28,7 +28,8 @@ const CustomCVVInput = ({ field, form, ...otherProps }) => {
       <input
         type="password"
         /* eslint-disable react/jsx-props-no-spreading */
-        {...field}
+        value={field.value}
+        name={field.name}
         {...otherProps}
         onChange={phoneChangeHandler}
         data-test-id="review-name-field"
