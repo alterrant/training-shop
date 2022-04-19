@@ -7,7 +7,10 @@ import FinalShoppingCartPages from "./final-shopping-cart-pages/final-shopping-c
 import ShoppingCartHeader from "./header/shopping-cart-header";
 import getTotalCartPrice from "../../encapsulated-common-logics/total-price";
 import ShoppingCartContent from "./content/shopping-cart-content";
-import { FINAL_SHOPPINGCART_PAGE } from "../../constants/shoppingCart";
+import {
+  FINAL_SHOPPINGCART_PAGE,
+  ORDER_STAGES,
+} from "../../constants/shoppingCart";
 
 import ShoppingCartStyle from "./shopping-cart.module.css";
 
